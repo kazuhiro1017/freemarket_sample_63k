@@ -95,14 +95,14 @@ Things you may want to cover:
 |price|integer|null: false|
 |brand_sub_id|references|null: false, foreign_key: true|
 |likes_count|integer|default: 0|
-|category_sub2_id|references|null: false, foreign_key: true|
+|category_id|references|null: false, foreign_key: true|
 |profit_id|references|null: false, foreign_key: true|
 |size_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :brand_sub
 - belongs_to :postage
 - belongs_to :delivery_method
-- belongs_to :category_sub2, dependent: :destroy
+- belongs_to :category, dependent: :destroy
 - belongs_to :prefecture
 - has_many :images, dependent: :destroy
 - belongs_to :profit
@@ -113,30 +113,15 @@ Things you may want to cover:
 - has_one :transactions, dependent: :destroy
 - belongs_to :condition
 
-## Category_mainsテーブル
+## Categorysテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
+|ancestry|integer|null: false|
 ### Association
-- has_many :category_sub1s
-
-## Category_sub1sテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-|category_main_id|references|null: false, foreign_key: true|
-### Association
-- belongs_to :category_main
-- has_many :category_sub2s
-
-## Category_sub2sテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-|category_sub1_id|references|null: false, foreign_key: true|
-### Association
-- belongs_to :category_sub1
 - has_many :items
+
+
 
 ## Ratesテーブル
 |Column|Type|Options|
@@ -177,7 +162,7 @@ Things you may want to cover:
 |------|----|-------|
 |name|string|null: false|
 ### Association
-- has_many :brand_sub1s
+- has_many :brand_subs
 
 ## Brand_subテーブル
 |Column|Type|Options|
