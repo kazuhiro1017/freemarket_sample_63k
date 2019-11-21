@@ -199,7 +199,7 @@ Things you may want to cover:
 |transaction_id|references|null: false, foreign_key: true|
 |comment|text|null: false|
 
-
+aaaaaaa
 
 
 
