@@ -1,0 +1,20 @@
+.container {
+
+  .main {
+
+    &__header3 {
+      @include mainheader;
+    }
+    &__phone-form {
+      width: 700px;
+      height: 347px;
+      border-top: 1px solid #f5f5f5;
+      box-sizing: border-box;
+      padding: 24px 16px 40px;
+      color: #333333;
+      font-size: 14px;
+      background-color: #fff;
+      margin: 0 auto;
+    }
+  }
+}

@@ -1,0 +1,123 @@
+.container {
+  background-color: rgb(245, 245, 245);
+
+  .header {
+    width: 100vw;
+    height: 128px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .mercari-top-logo {
+      width: 185px;
+      height: 49px;
+    }
+  }
+
+  .header-with-progress {
+    width: 100vw;
+    height: 128px;
+    display: flex;
+    justify-content: center;
+    .mercari-top-logo {
+      width: 185px;
+      height: 49px;
+      margin-top: 40px;
+      margin-left: 50px;
+    }
+    &__nav {
+      width: 552px;
+      height: 72px;
+      padding: 40px 0 0 44px;
+      box-sizing: border-box;
+      &__lists {
+        display: flex;
+        justify-content: space-between;
+        &__li {
+          font-size: 12px;
+          line-height: 12px;
+          color: #CCCCCC;
+          min-width: 60px;
+          text-align: center;
+          
+          .circle {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #CCCCCC;
+            margin: 8px auto 0px;
+            position: relative;
+            }
+          .circle::after {
+            width: 65px;
+            height: 2px;
+            content: '';
+            background-color: inherit;
+            position: absolute;
+            left: 50%;
+            bottom: 5px;
+          }
+          .circle::before {
+            width: 65px;
+            height: 2px;
+            content: '';
+            background-color: inherit;
+            position: absolute;
+            bottom: 5px;
+            right: 50%;
+          }
+        }
+        &__li:last-of-type {
+          .circle::after {
+            content: none;
+          }
+        }
+        &__li:first-of-type {
+          .circle::before {
+            content: none;
+          }
+        }
+      }
+    }
+  }
+
+  .footer {
+    width: 100vw;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    &__center {
+      width: 456px;
+      height: calc(220px - 40px -40px);
+      padding: 40px 0;
+    
+      &__notation {
+        display: flex;
+        justify-content: space-around;
+        &__text {
+          font-size: 12px;
+        }
+      }
+      .mercari-bottom-logo {
+        width: 80px;
+        height: 65px;
+        display: block;
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+
+      }
+
+      &__bottom-notation {
+        height: 14px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 14px;
+        margin-top: 8px;
+      }
+    }
+  }
+
+  .main {
+    width: 100vw;
+  }
+}
