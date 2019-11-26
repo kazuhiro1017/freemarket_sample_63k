@@ -7,16 +7,16 @@
     = form_for "#", {html: {class: "main__address"}} do |f|
       = f.label '郵便番号'
       %span 必須
-      = f.text_field :postal_code, class: 'main__address__postal-code', placeholder: '例）123-4567'
+      = f.text_field :post_number, class: 'main__address__postal-code', placeholder: '例）123-4567'
       = f.label '都道府県'
       %span 必須
-      = f.select :prefecture, ['北海道', '沖縄', '東京']
+      = f.select :prefecture_id, ['北海道', '沖縄', '東京']
       = f.label '市区町村'
       %span 必須
       = f.text_field :city, class: 'main__address__city', placeholder: '例）横浜市緑区'
       = f.label '番地'
       %span 必須
-      = f.text_field :banchi, class: 'main__address__banchi', placeholder: '例）青山1-1-1'
+      = f.text_field :address, class: 'main__address__banchi', placeholder: '例）青山1-1-1'
       = f.label '建物名'
       %span.gray 任意
       = f.text_field :building, class: 'main__address__building', placeholder: '例）柳ビル103'

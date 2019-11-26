@@ -24,13 +24,13 @@
       .main__form__kanji-label
         = f.label 'お名前（全角）'
         %span 必須
-      = f.text_field :familyname, class: 'main__form__kanji-familyname', placeholder: '例）山田'
-      = f.text_field :firstname, class: 'main__form__kanji-firstname', placeholder: '例）綾'
+      = f.text_field :last_name, class: 'main__form__kanji-familyname', placeholder: '例）山田'
+      = f.text_field :first_name, class: 'main__form__kanji-firstname', placeholder: '例）綾'
       .main__form__kana-label
         = f.label 'お名前カナ（全角）'
         %span 必須
-      = f.text_field :kana_familyname, class: 'main__form__kana-familyname', placeholder: '例）ヤマダ'
-      = f.text_field :kana_firstname, class: 'main__form__kana-firstname', placeholder: '例）アヤ'
+      = f.text_field :last_name_kana, class: 'main__form__kana-familyname', placeholder: '例）ヤマダ'
+      = f.text_field :first_name_kana, class: 'main__form__kana-firstname', placeholder: '例）アヤ'
       .main__form__birthday-label
         = f.label '生年月日'
         %span 必須
