@@ -39,10 +39,13 @@ Things you may want to cover:
 |birthday|string|null: false|
 |phone_number|string|null: false|
 ### Association
-- has_ones :address
-- has_many :item_comments
-- has_many :sns_credentials,dependent::destroy
-- has_many :items,dependent::destroy
+- has_many :rates
+- has_many :likes
+- has_many :items, dependent: :destroy
+- has_many :transaction_comments, dependent: :destroy
+- has_one :address
+- has_one :cards
+- has_one :sns_credentials, dependent: :destroy
 
 
 ## Addressesテーブル
@@ -55,7 +58,8 @@ Things you may want to cover:
 |address|string|null: false|
 |building|string|
 ### Association
-- 
+- belongs_to :user
+- belongs_to :prefecture
 
 ## Cardsテーブル
 |Column|Type|Options|
@@ -65,10 +69,8 @@ Things you may want to cover:
 |expiration_date_year|integer|null: false|
 |expiration_date_month|string|null: false|
 |security_code|integer|null: false|
-
 ### Association
 - belongs_to :user
-- belongs_to :group
 
 ## Sns_credentialsテーブル
 |Column|Type|Options|
@@ -76,6 +78,8 @@ Things you may want to cover:
 |user_id|references|null: false, foreign_key: true|
 |uid|string||
 |provider|string||
+### Association
+- belongs_to :user
 
 ## Itemsテーブル
 |Column|Type|Options|
@@ -91,30 +95,33 @@ Things you may want to cover:
 |price|integer|null: false|
 |brand_sub_id|references|null: false, foreign_key: true|
 |likes_count|integer|default: 0|
-|category_sub2_id|references|null: false, foreign_key: true|
+|category_id|references|null: false, foreign_key: true|
 |profit_id|references|null: false, foreign_key: true|
 |size_id|references|null: false, foreign_key: true|
-
 ### Association
-- belongs_to :group
+- belongs_to :brand_sub
+- belongs_to :postage
+- belongs_to :delivery_method
+- belongs_to :category, dependent: :destroy
+- belongs_to :prefecture
+- has_many :images, dependent: :destroy
+- belongs_to :profit
+- belongs_to :delivery_day
 - belongs_to :user
+- belongs_to :size
+- has_many :likes, dependent: :destroy
+- has_one :transactions, dependent: :destroy
+- belongs_to :condition
 
-## Category_mainsテーブル
+## Categorysテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
+|ancestry|integer|null: false|
+### Association
+- has_many :items
 
-## Category_sub1sテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-|category_main_id|references|null: false, foreign_key: true|
 
-## Category_sub2sテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-|category_sub1_id|references|null: false, foreign_key: true|
 
 ## Ratesテーブル
 |Column|Type|Options|
@@ -122,62 +129,88 @@ Things you may want to cover:
 |rate|integer|
 |user_id|references|null: false, foreign_key: true|
 |transaction_id|references|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :transaction
 
 ## Likesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
 |item_id|references|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :item
 
 ## Delivery_methodsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |method|string|null: false|
+### Association
+- has_many :items
 
 
 ## Postagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |postage|string|null: false|
+### Association
+- has_many :items
 
 ## Brand_mainテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
+### Association
+- has_many :brand_subs
 
 ## Brand_subテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 |brand_main_id|references|null: false, foreign_key: true|
-
+### Association
+- belongs_to :brabd_main
+- has_many :items
 
 ## Imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |item_id|references|null: false, foreign_key: true|
 |image|string|null: false|
+### Association
+- belongs_to :item
 
 ## Profitsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |profit|integer|null: false|
 |delivery_cost|integer|null: false|
+### Association
+- has_many :items
 
 ## Delivery_daysテーブル
 |Column|Type|Options|
 |------|----|-------|
 |days|string|null: false|
+### Association
+- has_many :items
 
 ## Sizesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |size|string|null: false|
+### Association
+- has_many :items
+- has_many :categorys
 
 ## Prefecturesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |prefecture|string||
+### Association
+- has_many :addresses
+- has_many :items
 
 ## Transactionsテーブル
 |Column|Type|Options|
@@ -186,11 +219,18 @@ Things you may want to cover:
 |seller_id|references|null: false, foreign_key: {to_table: :users}|
 |buyer_id|references|foreign_key: {to_table: :users}|
 |transaction_state_id|references|null: false, foreign_key: true|
+### Association
+- belongs_to :item
+- belongs_to :transaction_state
+- belongs_to :transaction_comment
+- has_one :rates
 
 ## Transaction_statesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |state|string|null: false|
+### Association
+- has_many :transactions
 
 ## Transaction_commentsテーブル
 |Column|Type|Options|
@@ -198,10 +238,16 @@ Things you may want to cover:
 |user_id|references|null: false, foreign_key: true|
 |transaction_id|references|null: false, foreign_key: true|
 |comment|text|null: false|
+### Association
+- belongs_to :transactions
+- belongs_to :user
 
-
-
-
+## Conditionsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|condition|string|null: false|
+### Association
+- has_many :items
 
 
 
