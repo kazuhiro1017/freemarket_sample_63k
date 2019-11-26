@@ -51,19 +51,19 @@
             width: 65px;
             height: 2px;
             content: '';
-            background-color: inherit;
+            background-color: #CCCCCC;
             position: absolute;
-            left: 50%;
+            left: 100%;
             bottom: 5px;
           }
           .circle::before {
             width: 65px;
             height: 2px;
             content: '';
-            background-color: inherit;
+            background-color: #CCCCCC;
             position: absolute;
             bottom: 5px;
-            right: 50%;
+            right: 100%;
           }
         }
         &__li:last-of-type {
