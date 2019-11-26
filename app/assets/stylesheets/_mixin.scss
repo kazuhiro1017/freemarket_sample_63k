@@ -6,6 +6,25 @@
   padding: 10px 16px 8px;
 }
 
+@mixin sub_btn {
+  width: 343px;
+  height: 50px;
+  box-sizing: border-box;
+  margin-top: 24px;
+  background-color: #ea352d;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+}
+
+@mixin notice_message {
+  width: 343px;
+  height: 42px;
+  margin-top: 8px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #333333;
+}
 @mixin mainheader {
   width: 700px;
   height: 97px;
