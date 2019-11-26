@@ -7,7 +7,7 @@
   .hedder{
     background-color: #fff;
     position: relative;
-    &__memu{
+    &__menu{
       width: 700px;
       margin: 0px auto;
       padding: 8px 0px 0px;
@@ -336,6 +336,10 @@
         text-align: center;
         height: 36px;
         width: 134px;
+        color: #fff;
+        .footer__bottom__logo__do{
+          color: #fff;
+        }
       }
       &__copyright{
         text-align: center;
