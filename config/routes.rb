@@ -10,4 +10,6 @@ Rails.application.routes.draw do
     get 'users/sign_up/complete', to: 'users/registrations#complete'
   end
   root to: 'items#index'
+  resources :items, only: [:index, :new]
+  resources :users, only: :show
 end
