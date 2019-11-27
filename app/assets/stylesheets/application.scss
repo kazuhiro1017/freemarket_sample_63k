@@ -1,10 +1,16 @@
+@import "reset";
 @import "font-awesome";
+@import "mixin";
+@import "base-component";
+@import "login";
+@import "registration_portal";
+@import "user_add";
+@import "phone_add";
+@import "address_add";
+@import "card_add";
+@import "registration_complete";
 @import "config/colors";
 @import "mixins/vendor_prefix";
 @import "users";
-@import "reset";
 @import "items";
 @import "sell";
-
-
-

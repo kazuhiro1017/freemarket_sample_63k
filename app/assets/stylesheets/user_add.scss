@@ -1,0 +1,130 @@
+.container {
+
+  .main {
+
+    &__header2 {
+      @include mainheader;
+    }
+    &__form {
+      width: 700px;
+      height: 1099px;
+      background-color: #fff;
+      border-top: 1px solid #f5f5f5;
+      margin: 0 auto;
+      padding: 24px 178.5px 40px;
+      box-sizing: border-box;
+      position: relative;
+
+      &__reveal-pass {
+        width: 343px;
+        height: 48px;
+        box-sizing: border-box;
+        padding: 4px 8px;
+        font-size: 16px;
+        line-height: 40px;
+        color: #333333;
+        background-color: #f5f5f5;
+        margin-top: 14px;
+        display: none;
+      }
+      
+      &__auth-text {
+        margin-top: 14px;
+        &__sub {
+          font-size: 16px;
+          font-weight: bold;
+          height: 16px;
+        }
+        &__text {
+          font-size: 14px;
+          height: 63px;
+          margin-top: 8px;
+        }
+      } 
+      label {
+        @include label;
+      }
+      span {
+        @include hissu;
+      }
+      
+      &__nickname {
+        @include formfield;
+      }
+      &__email {
+        @include formfield;
+      }
+      &__password {
+        @include formfield;
+      }
+      &__kanji-label {
+        margin-top: 14px;
+      }
+      &__kanji-familyname {
+        width: 165.5px;
+        height: 48px;
+        box-sizing: border-box;
+        padding: 10px 16px 8px;
+        margin-top: 8px;
+        margin-right: 5px;
+      }
+      &__kanji-firstname {
+        width: 165.5px;
+        height: 48px;
+        box-sizing: border-box;
+        padding: 10px 16px 8px;
+        margin-top: 8px;
+      }
+
+      &__kana-label {
+        margin-top: 14px;
+      }
+      &__kana-familyname {
+        width: 165.5px;
+        height: 48px;
+        box-sizing: border-box;
+        padding: 10px 16px 8px;
+        margin-top: 8px;
+        margin-right: 5px;
+      }
+      &__kana-firstname {
+        width: 165.5px;
+        height: 48px;
+        box-sizing: border-box;
+        padding: 10px 16px 8px;
+        margin-top: 8px;
+      }
+      &__birthday-label {
+        margin-top: 14px;
+      }
+      select {
+        margin-top: 8px;
+        width: 76px;
+        height: 48px;
+        box-sizing: border-box;
+      }
+      &__be-collect-info {
+        margin-top: 8px;
+        font-size: 14px;
+        color: #888888;
+      }
+      &__conf-message {
+        color: #333333;
+        font-size: 14px;
+        margin-top: 20px;
+        text-align: center;
+      }
+      &__btn {
+        @include sub_btn;
+      }
+      &__register-message {
+        font-size: 14px;
+        color: #333333;
+        text-align: right;
+        position: absolute;
+        bottom: 40px;
+        right: 178.5px;
+      }
+    }
+  }
+}

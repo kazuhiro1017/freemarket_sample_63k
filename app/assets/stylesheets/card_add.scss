@@ -1,0 +1,44 @@
+.container {
+  .main {
+    &__header5 {
+      @include mainheader;
+    }
+    &__card {
+      width: 700px;
+      height: 430px;
+      border-top: 1px solid #f5f5f5;
+      box-sizing: border-box;
+      padding: 24px 178.5px 40px;
+      background-color: #fff;
+      margin: 0 auto;
+
+      label {
+        @include label;
+      }
+      span {
+        @include hissu;
+      }
+      &__expiry-label {
+        margin-top: 14px;
+      }
+      select {
+        margin-top: 8px;
+        width: 140px;
+        height: 48px;
+        box-sizing: border-box;
+      }
+      &__security-label {
+        margin-top: 14px;
+      }
+      &__number {
+        @include formfield;
+      }
+      &__security {
+        @include formfield;
+      }
+      &__btn {
+        @include sub_btn;
+      }
+    }
+  }
+}

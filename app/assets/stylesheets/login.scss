@@ -1,0 +1,111 @@
+.container {
+
+  .main {
+
+    &__no-account {
+      height: 144px;
+      width: 456px;
+      margin: 0 auto;
+      padding: 40px 64px;
+      background-color: #fff;
+      box-sizing: border-box;
+      &__text {
+        display: block;
+        height: 14px;
+        font-size: 14px;
+        text-align: center;
+        line-height: 14px;
+      }
+      &__btn {
+        margin-top: 8px;
+        border: 1px solid #0099e8;
+        background-color: #0099e8;
+        color: #fff;
+        font-size: 14px;
+        line-height: 40px;
+        text-align: center;
+      }
+    }
+    &__sns-login {
+      height: 182px;
+      width: 456px;
+      margin: 0 auto;
+      padding: 32px 64px;
+      border-top: 1px solid #eee;
+      background-color: #fff;
+      box-sizing: border-box;
+      &__facebook {
+        height: 50px;
+        border: 1px solid transparent;
+        font-size: 14px;
+        color: #fff;
+        line-height: 48px;
+        text-align: center;
+        background-color: #385185;
+        box-sizing: border-box;
+        position: relative;
+        .fa {
+          @include icon_posi;
+        }
+      }
+      &__google {
+        margin-top: 16px;
+        height: 50px;
+        font-size: 14px;
+        text-align: center;
+        line-height: 48px;
+        border: 1px solid #979797;
+        color: #333;
+        box-sizing: border-box;
+        position: relative;
+        .fa {
+          @include icon_posi;
+        }
+      }
+    }
+    &__email-pass-form {
+      height: 406px;
+      width: 456px;
+      margin: 0 auto;
+      padding: 24px 64px 32px;
+      background-color: #fff;
+      box-sizing: border-box;
+      &__email {
+        width: 330px;
+        height: 50px;
+        padding: 10px 16px 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      &__password {
+        margin-top: 24px;
+        width: 330px;
+        height: 50px;
+        padding: 10px 16px 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      .g-recaptcha {
+        margin-top: 14px;
+      }
+      &__btn {
+        margin-top: 24px;
+        width: 330px;
+        height: 50px;
+        border: 1px solid #ea352d;
+        background-color: #ea352d;
+        font-size: 14px;
+        color: white;
+        box-sizing: border-box;
+      }
+      &__forgot-password {
+        margin-top: 40px;
+        font-size: 14px;
+        height: 14px;
+        line-height: 14px;
+      }
+    }
+  }
+}
