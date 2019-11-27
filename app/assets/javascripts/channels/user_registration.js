@@ -28,4 +28,18 @@ $(function(){
       addClass("circle--red");
     }
   }
+
+  $(".main__form__password").on("keyup", function() {
+    let pass = $(this).val();
+    $(".main__form__reveal-pass").text(pass);
+  });
+
+  $("#main__form__checkbox").change(function() {
+    let r = $(this).prop('checked');
+    if (r) {
+      $(".main__form__reveal-pass").show();
+    } else {
+      $(".main__form__reveal-pass").hide();
+    }
+  })
 });

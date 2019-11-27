@@ -16,14 +16,16 @@
       position: relative;
 
       &__reveal-pass {
-        width: 40px;
-        height: 32px;
+        width: 343px;
+        height: 48px;
         box-sizing: border-box;
         padding: 4px 8px;
         font-size: 16px;
+        line-height: 40px;
         color: #333333;
         background-color: #f5f5f5;
         margin-top: 14px;
+        display: none;
       }
       
       &__auth-text {
