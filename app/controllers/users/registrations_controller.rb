@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+
   def user_add
   end
 
@@ -13,5 +14,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def complete
   end
-  
 end
