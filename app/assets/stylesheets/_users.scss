@@ -32,11 +32,13 @@
         font-size: 16px;
       }
     }
+
+
     &__right {
       float: right;
       width: 700px;
+      @include list();
       &--top {
-        @include list();
         background-color: $white;
         .mypageicon {
           background: url(https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?37328315);
@@ -70,12 +72,10 @@
           }
         }
       }
-
       &--bottom{
         margin: 30px 0 0;
         background-color: $white;
         padding-top: 20px;
-        @include list();
         h4 {
           line-height: 74px;
           font-size: 16px;
@@ -86,3 +86,7 @@
     }
   }  
 }
+
+
+
+
