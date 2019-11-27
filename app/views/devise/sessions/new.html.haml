@@ -1,5 +1,5 @@
 .container
-  = render partial: 'header'
+  = render partial: 'devise/shared/header'
 
   .main
     .main__no-account
@@ -11,11 +11,11 @@
     .main__sns-login
       = link_to 'Facebook', {data: {"turbolinks": false}} do
         .main__sns-login__facebook
-          = icon('fab', 'facebook-square')
+          = fa_icon 'facebook-square'
           Facebookでログイン
       = link_to 'Google', {data: {"turbolinks": false}} do
         .main__sns-login__google
-          = icon('fab', 'google')
+          = fa_icon 'google'
           Googleでログイン
     = form_for "#", {html: {class: "main__email-pass-form"}} do |f|
       = f.email_field :email, class: 'main__email-pass-form__email', placeholder: 'メールアドレス'
@@ -25,4 +25,4 @@
       .main__email-pass-form__forgot-password
         パスワードをお忘れの方
         
-  = render partial: 'footer'
+  = render partial: 'devise/shared/footer'

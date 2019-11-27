@@ -1,5 +1,5 @@
 .container
-  = render partial: 'header'
+  = render partial: 'devise/shared/header'
 
   .main
     .main__header
@@ -7,15 +7,15 @@
     .main__how-to-register
       = link_to 'email', {data: {"turbolinks": false}} do
         .main__how-to-register__email
-          = icon('far', 'envelope')
+          = fa_icon 'envelope'
           メールアドレスで登録する
       = link_to 'facebook', {data: {"turbolinks": false}} do
         .main__how-to-register__facebook
-          = icon('fab', 'facebook-square')
+          = fa_icon 'facebook-square'
           facebookで登録する
       = link_to 'google', {data: {"turbolinks": false}} do
         .main__how-to-register__google
-          = icon('fab', 'google')
+          = fa_icon 'google'
           googleで登録する
 
-  = render partial: 'footer'
+  = render partial: 'devise/shared/footer'

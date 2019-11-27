@@ -3,11 +3,12 @@
   .main {
 
     &__no-account {
-      height: calc(144px - 40px - 40px);
-      width: calc(456px - 64px - 64px);
+      height: 144px;
+      width: 456px;
       margin: 0 auto;
       padding: 40px 64px;
       background-color: #fff;
+      box-sizing: border-box;
       &__text {
         display: block;
         height: 14px;
@@ -26,74 +27,82 @@
       }
     }
     &__sns-login {
-      height: calc(181px - 32px - 32px);
-      width: calc(456px - 64px - 64px);
+      height: 182px;
+      width: 456px;
       margin: 0 auto;
       padding: 32px 64px;
       border-top: 1px solid #eee;
       background-color: #fff;
+      box-sizing: border-box;
       &__facebook {
-        height: 48px;
+        height: 50px;
         border: 1px solid transparent;
         font-size: 14px;
         color: #fff;
         line-height: 48px;
         text-align: center;
         background-color: #385185;
+        box-sizing: border-box;
         position: relative;
-        .fab {
+        .fa {
           @include icon_posi;
         }
       }
       &__google {
         margin-top: 16px;
-        height: 48px;
+        height: 50px;
         font-size: 14px;
         text-align: center;
         line-height: 48px;
         border: 1px solid #979797;
         color: #333;
+        box-sizing: border-box;
         position: relative;
-        .fab {
+        .fa {
           @include icon_posi;
         }
       }
     }
     &__email-pass-form {
-      height: calc(406px - 24px - 32px);
-      width: calc(456px - 64px - 64px);
+      height: 406px;
+      width: 456px;
       margin: 0 auto;
       padding: 24px 64px 32px;
       background-color: #fff;
+      box-sizing: border-box;
       &__email {
-        width: calc(328px - 16px - 16px - 2px);
-        height: calc(48px - 10px - 8px - 2px);
+        width: 330px;
+        height: 50px;
         padding: 10px 16px 8px;
         border: 1px solid #ccc;
         border-radius: 4px;
+        box-sizing: border-box;
       }
       &__password {
         margin-top: 24px;
-        width: calc(328px - 16px - 16px - 2px);
-        height: calc(48px - 10px - 8px - 2px);
+        width: 330px;
+        height: 50px;
         padding: 10px 16px 8px;
         border: 1px solid #ccc;
         border-radius: 4px;
+        box-sizing: border-box;
       }
       &__login-captcha {
-        width: 326px;
-        height: 76px;
+        width: 330px;
+        height: 80px;
         margin-top: 24px;
         border: 1px solid black;
+        box-sizing: border-box;
       }
       &__btn {
         margin-top: 24px;
-        width: 328px;
-        height: 48px;
+        width: 330px;
+        height: 50px;
         border: 1px solid #ea352d;
         background-color: #ea352d;
         font-size: 14px;
         color: white;
+        box-sizing: border-box;
       }
       &__forgot-password {
         margin-top: 40px;
