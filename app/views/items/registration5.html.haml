@@ -1,5 +1,5 @@
 .container
-  = render partial: 'header-with-progress'
+  = render partial: 'devise/shared/header-with-progress'
 
   .main
     .main__header5
@@ -21,4 +21,4 @@
       = f.text_field :security_code, class: 'main__card__security', placeholder: 'カード背面４桁もしくは３桁の番号'
       = f.submit '次へ進む', class: 'main__card__btn'
 
-  = render partial: 'footer'
+  = render partial: 'devise/shared/footer'

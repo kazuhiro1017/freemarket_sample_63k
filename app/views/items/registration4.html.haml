@@ -1,5 +1,5 @@
 .container
-  = render partial: 'header-with-progress'
+  = render partial: 'devise/shared/header-with-progress'
 
   .main
     .main__header4
@@ -22,4 +22,4 @@
       = f.text_field :building, class: 'main__address__building', placeholder: '例）柳ビル103'
       = f.submit '次へ進む', class: 'main__address__btn'
 
-  = render partial: 'footer'
+  = render partial: 'devise/shared/footer'
