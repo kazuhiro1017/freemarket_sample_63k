@@ -1,1 +1,187 @@
-hello!!!!
+.wrapper
+  .hedder
+    .hedder__menu
+      .hedder__menu__top
+        .hedder__menu__top__logo
+          <svg class="hedder__menu__top__logo__do" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 281.19 84.08"><defs><style>.cls-1{fill:#dc4912;stroke:#fff;stroke-miterlimit:10;}.cls-2{font-size:48px;fill:#231815;font-family:YuGo-Bold-83pv-RKSJ-H, YuGothic;}</style></defs><title>アセット 3</title><g id="レイヤー_2" data-name="レイヤー 2"><g id="レイヤー_1-2" data-name="レイヤー 1"><polygon class="cls-1" points="36.41 83.5 0.5 62.77 0.5 21.31 36.41 0.58 72.32 21.31 72.32 62.77 36.41 83.5"/><polyline class="cls-1" points="0.5 21.31 36.41 42.04 72.32 21.31"/><polyline class="cls-1" points="36.41 83.5 36.41 49.36 36.41 42.04"/><line class="cls-1" x1="36.41" y1="52.41" x2="0.5" y2="31.67"/><line class="cls-1" x1="72.32" y1="33.2" x2="36.41" y2="50.88"/><text class="cls-2" transform="translate(86.41 62.77)">Fmarket</text></g></g></svg>
+        %form#sform.hedder__menu__top__search{action: "", method: "get"}
+          %input#sbox.hedder__menu__top__search__input{name: "search", type: "text", placeholder: "何かお探しですか？"}/
+          %button#sbtn.hedder__menu__top__search__icon{type: "submit"}
+            = fa_icon 'search', class: "search-icon"
+      .hedder__menu__bottom
+        .hedder__menu__bottom__left
+          .hedder__menu__bottom__left__category
+            =link_to "", class: "item-link-list" do
+              = fa_icon 'list-ul', class: "item-link-logo"
+              カテゴリーから探す
+          .hedder__menu__bottom__left__brand
+            =link_to "", class: "item-link-list" do
+              = fa_icon 'shopping-bag', class: "item-link-logo"
+              ブランドから探す
+        .hedder__menu__bottom__right
+          .hedder__menu__bottom__right__entry
+            =link_to "", class: "new-entry-link" do
+              新規会員登録
+          .hedder__menu__bottom__right__login
+            =link_to "", class: "login-link" do
+              ログイン
+
+  .middle 
+    .middle__contents
+      .middle__contents__advertisement
+        %span.middle__contents__advertisement__image
+          = image_tag src="/assets/KZ190105004_TP_V.jpg", size: "826x290"
+        .middle__contents__advertisement__slide-left
+          .middle__contents__advertisement__slide-left__do
+        .middle__contents__advertisement__slide-right
+          .middle__contents__advertisement__slide-right__do
+      .middle__contents__famous
+        %h2.middle__contents__famous__text
+          人気のカテゴリー
+        .middle__contents__famous__tags
+          %ul.middle__contents__famous__tags__list
+            %li.middle__contents__famous__tags__list__tag
+              =link_to "", class: "categorys__tag" do
+                レディース
+            %li.middle__contents__famous__tags__list__tag
+              =link_to "", class: "categorys__tag" do
+                メンズ
+      .middle__contents__new-items
+        .middle__contents__new-items__category
+          .middle__contents__new-items__category__top
+            %a.middle__contents__new-items__category__top__text
+              レディース新着アイテム
+            .middle__contents__new-items__category__top__link
+              =link_to "", class: "middle__contents__new-items__category__top__link__submit" do
+                もっと見る　＞
+          .middle__contents__new-items__category__bottom
+            %ul.middle__contents__new-items__category__bottom__item
+              %li.middle__contents__new-items__category__bottom__item__link
+              %li.middle__contents__new-items__category__bottom__item__link
+      .middle__contents__famous
+        %h2.middle__contents__famous__text
+          人気のブランド
+        .middle__contents__famous__tags
+          %ul.middle__contents__famous__tags__list
+            %li.middle__contents__famous__tags__list__tag
+              =link_to "", class: "categorys__tag" do
+                ルイヴィトン
+            %li.middle__contents__famous__tags__list__tag
+              =link_to "", class: "categorys__tag" do
+                シャネル
+      .middle__contents__new-items
+        .middle__contents__new-items__category
+          .middle__contents__new-items__category__top
+            %a.middle__contents__new-items__category__top__text
+              ルイヴィトン新着アイテム
+            .middle__contents__new-items__category__top__link
+              =link_to "", class: "middle__contents__new-items__category__top__link__submit" do
+                もっと見る　＞
+          .middle__contents__new-items__category__bottom
+            %ul.middle__contents__new-items__category__bottom__item
+              %li.middle__contents__new-items__category__bottom__item__link
+              %li.middle__contents__new-items__category__bottom__item__link
+
+  .exhibit
+    .exhibit__obj
+      .exhibit__obj__text
+      .exhibit__obj__icon
+
+  .footer
+    .footer__top
+      .footer__top__menu
+        %h2.footer__top__menu__title
+          フリマケについて
+        %ul.footer__top__menu__list
+          %li.footer__top__menu__list__link
+            =link_to "", class: "footer__top__menu__list__link__do" do
+              会社概要（運営会社）
+          %li.footer__top__menu__list__link
+            =link_to "", class: "footer__top__menu__list__link__do" do
+              採用情報
+          %li.footer__top__menu__list__link
+            =link_to "", class: "footer__top__menu__list__link__do" do
+              プレリリース
+          %li.footer__top__menu__list__link
+            =link_to "", class: "footer__top__menu__list__link__do" do
+              公式ブログ
+          %li.footer__top__menu__list__link
+            =link_to "", class: "footer__top__menu__list__link__do" do
+              メルカリロゴ利用ライン
+          =link_to "", class: "footer__top__menu__list__link-icon" do
+            = fa_icon 'twitter', class: "sns-icon"
+          =link_to "", class: "footer__top__menu__list__link-icon" do
+            = fa_icon 'facebook-square', class: "sns-icon"
+      .footer__top__menu
+        %h2.footer__top__menu__title
+          ヘルプ＆ガイド
+        %ul.footer__top__menu__list
+          %li.footer__top__menu__list__link
+            =link_to "", class: "footer__top__menu__list__link__do" do
+              メルカリガイド
+          %li.footer__top__menu__list__link
+            =link_to "", class: "footer__top__menu__list__link__do" do
+              らくらくメルカリ便
+          %li.footer__top__menu__list__link
+            =link_to "", class: "footer__top__menu__list__link__do" do
+              ゆうゆうメルカリ便
+          %li.footer__top__menu__list__link
+            =link_to "", class: "footer__top__menu__list__link__do" do
+              大型メルカリ便
+          %li.footer__top__menu__list__link
+            =link_to "", class: "footer__top__menu__list__link__do" do
+              車体取引ガイド
+          %li.footer__top__menu__list__link
+            =link_to "", class: "footer__top__menu__list__link__do" do
+              メルカリあんしん・あんぜん宣言！
+          %li.footer__top__menu__list__link
+            =link_to "", class: "footer__top__menu__list__link__do" do
+              偽ブランド品撲滅への取り組み
+          %li.footer__top__menu__list__link
+            =link_to "", class: "footer__top__menu__list__link__do" do
+              メルカリボックス
+      .footer__top__privacy
+        %h2.footer__top__privacy__title
+          プライバシーと利用規約
+        %ul.footer__top__privacy__list
+          %li.footer__top__privacy__list__link
+            =link_to "", class: "footer__top__privacy__list__link__do" do
+              プライバシーポリシー
+          %li.footer__top__privacy__list__link
+            =link_to "", class: "footer__top__privacy__list__link__do" do
+              メルカリ利用規約
+          %li.footer__top__privacy__list__link
+            =link_to "", class: "footer__top__privacy__list__link__do" do
+              あんしんスマホサポート制度に関する利用特約
+          %li.footer__top__privacy__list__link
+            =link_to "", class: "footer__top__privacy__list__link__do" do
+              コンプライアンスポリシー
+        %ul.footer__top__privacy__list
+          %li.footer__top__privacy__list__link
+            =link_to "", class: "footer__top__privacy__list__link__do" do
+              個人データの安全管理に係る基本方針
+          %li.footer__top__privacy__list__link
+            =link_to "", class: "footer__top__privacy__list__link__do" do
+              特定商取引に関する表記
+          %li.footer__top__privacy__list__link
+            =link_to "", class: "footer__top__privacy__list__link__do" do
+              資金決済法に基づく表示
+          %li.footer__top__privacy__list__link
+            =link_to "", class: "footer__top__privacy__list__link__do" do
+              法令順守と犯罪抑止のために
+      .footer__top__langage
+        %h2.footer__top__langage__title
+          国
+        %ul.footer__top__langage__list
+          %li.footer__top__langage__list__link
+            =link_to "", class: "footer__top__langage__list__link__do" do
+              日本
+          %li.footer__top__langage__list__link
+            =link_to "", class: "footer__top__langage__list__link__do" do
+              United States
+    .footer__bottom
+      .footer__bottom__logo
+        <svg class="footer__bottom__logo__do" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 281.19 84.08"><defs><style>.cls-1{fill:#fff;stroke:#b53d22;stroke-miterlimit:10;}.cls-2{font-size:48px;fill:#231815;font-family:YuGo-Bold-83pv-RKSJ-H, YuGothic;}</style></defs><title>アセット 1</title><g id="レイヤー_2" data-name="レイヤー 2"><g id="レイヤー_1-2" data-name="レイヤー 1"><polygon class="cls-1" points="36.41 83.5 0.5 62.77 0.5 21.31 36.41 0.58 72.32 21.31 72.32 62.77 36.41 83.5"/><polyline class="cls-1" points="0.5 21.31 36.41 42.04 72.32 21.31"/><polyline class="cls-1" points="36.41 83.5 36.41 49.36 36.41 42.04"/><line class="cls-1" x1="36.41" y1="52.41" x2="0.5" y2="31.67"/><line class="cls-1" x1="72.32" y1="33.2" x2="36.41" y2="50.88"/><text class="cls-2" transform="translate(86.41 62.77)">Fmarket</text></g></g></svg>
+      .footer__bottom__copyright
+        © 2019 Freemarket
+
