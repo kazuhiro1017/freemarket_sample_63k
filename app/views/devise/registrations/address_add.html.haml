@@ -10,7 +10,7 @@
       = f.text_field :post_number, class: 'main__address__postal-code', placeholder: '例）123-4567'
       = f.label '都道府県'
       %span 必須
-      = f.select :prefecture_id, ['北海道', '沖縄', '東京']
+      = f.collection_select :prefecture_id, Prefecture.all, :id, :name
       = f.label '市区町村'
       %span 必須
       = f.text_field :city, class: 'main__address__city', placeholder: '例）横浜市緑区'
