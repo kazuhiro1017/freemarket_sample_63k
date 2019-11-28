@@ -15,13 +15,15 @@
         display: flex;
         justify-content: space-between;
         &__logo{
-          align-items: center;
           display: flex;
           height: 40px;
           margin-right: 45px;
-          &__do{
+          &__link{
+            align-items: center;
+            &__do{
             height: 36px;
             width: 134px;
+            }
           }
         }
         &__search{
@@ -246,7 +248,7 @@
     color: #fff;
     padding: 0px 20px 10px;
     &__top{
-      width: 700px;
+      width: 100%;
       margin: 0px auto;
       &__menu{
         display: inline-block;
@@ -327,29 +329,17 @@
       }
     }
     &__bottom{
-      width: 700px;
+      width: 100%;
       margin: 55px auto 10px;
-      align-items: center;
       display: flex;
-      position: relative;
       &__logo{
-        text-align: center;
-        height: 36px;
-        width: 134px;
-        color: #fff;
-        .footer__bottom__logo__do{
-          color: #fff;
+        &__link{
+          height: 36px;
+          width: 134px;
         }
       }
       &__copyright{
-        text-align: center;
         font-size: 11px;
-        top: 15px;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        margin: auto;
-        position: absolute;
       }
     }
   }
