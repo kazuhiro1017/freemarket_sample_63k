@@ -1,3 +1,11 @@
+.exhibit
+  =link_to "", class: "exhibit__link" do
+    .exhibit__link__obj
+      .exhibit__link__obj__text
+        出品
+      .exhibit__link__obj__icon
+        = fa_icon 'camera', class: "camera-icon"
+
 .wrapper
   .hedder
     = render 'hedder'
@@ -57,11 +65,6 @@
             %ul.middle__contents__new-items__category__bottom__item
               %li.middle__contents__new-items__category__bottom__item__link
               %li.middle__contents__new-items__category__bottom__item__link
-
-  .exhibit
-    .exhibit__obj
-      .exhibit__obj__text
-      .exhibit__obj__icon
 
   .footer
     = render 'footer'
