@@ -5,7 +5,7 @@
     .main__no-account
       %p.main__no-account__text
         アカウントをお持ちでない方はこちら
-      = link_to '#', {data: {"turbolinks": false}} do
+      = link_to new_user_registration_path, {data: {"turbolinks": false}} do
         .main__no-account__btn
           新規会員登録
     .main__sns-login
