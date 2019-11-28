@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-    registrations: 'users/registrations'
-  }
-    devise_scope :user do
+  devise_for :users, controllers: {registrations: 'users/registrations'}
+    
+  devise_scope :user do
     get 'users/sign_up/user_info', to: 'users/registrations#user_add'
     get 'users/sign_up/phone_info', to: 'users/registrations#phone_add'
     get 'users/sign_up/address_info', to: 'users/registrations#address_add'
