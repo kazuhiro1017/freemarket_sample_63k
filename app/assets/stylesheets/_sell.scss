@@ -223,6 +223,22 @@
                   background-color: #fff;
                 }
               }
+              .category1{
+                margin: 8px 0 0;
+                select{
+                  width: 100%;
+                  height: 50px;
+                  background-color: #fff;
+                }
+              }
+              .category2{
+                margin: 8px 0 0;
+                select{
+                  width: 100%;
+                  height: 50px;
+                  background-color: #fff;
+                }
+              }
             }
             .form-group{
               margin: 40px 0 0;
@@ -492,6 +508,7 @@
                         line-height: 1.5;
                         font-size: 16px;
                         text-align: right;
+                        padding: 10px 16px 8px;
                       }
                     }
                   }
@@ -501,7 +518,7 @@
                 padding: 24px 0;
                 border-top: 1px solid #ccc;;
                 p.fee-text{
-                  font-size: 14px;
+                  font-size: 13.5px;
                 }
                 span.hyphen{
                   float: right;
@@ -516,7 +533,7 @@
                 }
                 span.hyphen-bold{
                   float: right;
-                  font-size: 25px;
+                  font-size: 30px;
                   font-weight: bold;
                   margin-top: -26px;
                 }

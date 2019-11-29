@@ -44,9 +44,9 @@
                   %span 必須
                   = form_for "#", html: {class: "category"} do |f|
                     = f.select :ancestry, ["---","レディース","メンズ","ベビー・キッズ"]
-                  = form_for "#", html: {class: "category"} do |f|
+                  = form_for "#", html: {class: "category1"} do |f|
                     = f.select :ancestry, ["---",1,2,3,4,5,6]
-                  = form_for "#", html: {class: "category"} do |f|
+                  = form_for "#", html: {class: "category2"} do |f|
                     = f.select :ancestry, ["---",1,2,3,4,5,6]
                 .form-group
                   %label サイズ
@@ -75,10 +75,11 @@
                   = form_for "#", html: {class: "postage"} do |f|
                     = f.select :postage, ["---",1,2,3,4,5,6]
                 .form-group
-                  %label 配送の方法
-                  %span 必須
-                  = form_for "#", html: {class: "delivery-method"} do |f|
-                    = f.select :method, ["---",1,2,3,4,5,6]
+                  .after-selected-postage
+                    %label 配送の方法
+                    %span 必須
+                    = form_for "#", html: {class: "delivery-method"} do |f|
+                      = f.select :method, ["---",1,2,3,4,5,6]
                 .form-group
                   %label 発送元の地域
                   %span 必須
@@ -103,9 +104,9 @@
                       .cost 
                         %p ¥
                         = form_for "#", html: {class: "form-cost"} do |f|
-                          = f.text_field :price, class: "field-cost", placeholder: "例）300    "
+                          = f.text_field :price, class: "field-cost", placeholder: "例）300"
                   %li.form-group
-                    %p.fee-text 販売手数料
+                    %p.fee-text 販売手数料(10%)
                     %span.hyphen -
                   %li.form-group
                     %p.profit-text 販売利益
