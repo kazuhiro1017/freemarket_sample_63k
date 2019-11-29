@@ -2,11 +2,43 @@
   text-decoration: none;
 }
 
+.exhibit{
+  bottom: 32px;
+  right: 32px;
+  z-index: 2;
+  position: fixed;
+  .exhibit__link{
+    display: block;
+    text-decoration: none;
+    .exhibit__link__obj{
+      background-color: rgb(255, 81, 0);
+      height: 160px;
+      width: 160px;
+      padding-top: 28px;
+      text-align: center;
+      border-radius: 50%;
+      .exhibit__link__obj__text{
+        color: #fff;
+        font-size: 22px;
+      }
+      .exhibit__link__obj__icon{
+        margin-top: 8px;
+        margin: 5px auto 0px;
+        .camera-icon{
+          color: #fff;
+          font-size: 54px;
+        }
+      }
+    }
+  }
+}
+
 .wrapper{
   background-color: rgb(245, 245, 245);
   .hedder{
     background-color: #fff;
     position: relative;
+    z-index: 3;
     &__menu{
       width: 700px;
       margin: 0px 210px;
@@ -16,13 +48,15 @@
         display: flex;
         justify-content: space-between;
         &__logo{
-          align-items: center;
           display: flex;
           height: 40px;
           margin-right: 45px;
-          &__do{
+          &__link{
+            align-items: center;
+            &__do{
             height: 36px;
             width: 134px;
+            }
           }
         }
         &__search{
@@ -235,10 +269,12 @@
     }
   }
   .exhibit{
-    &__obj{
-      &__text{
-      }
-      &__icon{
+    &__link{
+      &__obj{
+        &__text{
+        }
+        &__icon{
+        }
       }
     }
   }
@@ -246,8 +282,9 @@
     background-color: rgb(34, 34, 34);
     color: #fff;
     padding: 0px 20px 10px;
+    z-index: 3;
     &__top{
-      width: 700px;
+      width: 100%;
       margin: 0px auto;
       &__menu{
         display: inline-block;
@@ -327,30 +364,19 @@
         }
       }
     }
+
     &__bottom{
-      width: 700px;
+      width: 100%;
       margin: 55px auto 10px;
-      align-items: center;
       display: flex;
-      position: relative;
       &__logo{
-        text-align: center;
-        height: 36px;
-        width: 134px;
-        color: #fff;
-        .footer__bottom__logo__do{
-          color: #fff;
+        &__link{
+          height: 36px;
+          width: 134px;
         }
       }
       &__copyright{
-        text-align: center;
         font-size: 11px;
-        top: 15px;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        margin: auto;
-        position: absolute;
       }
     }
   }
