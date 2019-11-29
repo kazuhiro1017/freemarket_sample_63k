@@ -110,12 +110,16 @@
               出品数
               0
         %ul.mypagetabs
-          %li
-            %h3
-              = link_to "お知らせ", "#"
-          %li
-            %h3
-              = link_to "やることリスト", "#"
+          %li.mypagetab お知らせ
+          %li.mypagetab やることリスト
+        .panel-group
+        .tabcontent
+          %ul
+            %li
+            %li
+            %li
+            %li
+              = link_to "一覧を見る", "#", class: "mypageBtn"
         .tabcontent
           %ul
             %li
@@ -125,18 +129,42 @@
               = link_to "一覧を見る", "#", class: "mypageBtn"
       .content__right--bottom
         %h4 購入した商品
-        %ul.mypagetabs  
-          %li
-            %h3
-              = link_to "取引中", "#"
-          %li
-            %h3
-              = link_to "過去の取引", "#"
-        .tabcontent
+        %ul.mypagetabs2  
+          %li.mypagetab2 お知らせ
+          %li.mypagetab2 やることリスト
+        .tabcontent2
           %ul
             %li
             %li
             %li
             %li
               = link_to "一覧を見る", "#", class: "mypageBtn"
+        .tabcontent2
+          %ul
+            %li
+            %li
+            %li
+            %li
+              = link_to "一覧を見る", "#", class: "mypageBtn"
+
+
+-# %ul.tab.cf
+-#   %li.tab1.tab_current 一つ目
+-#   %li.tab2 2つめ
+-#   %li.tab3 3つめ
+-# %ul.contents
+-#   %li.content1.content_current aaa
+-#   %li.content2 いいいい
+-#   %li.content3 3つめ
+
+
+-# %ul.ChangeElem_Btn_Content
+-#   %li.ChangeElem_Btn 1番目のタブ
+-#   %li.ChangeElem_Btn 2番目のタブ
+-#   %li.ChangeElem_Btn 3番目のタブ
+-# %ul
+-#   %li.ChangeElem_Panel 1番目のコンテンツ
+-#   %li.ChangeElem_Panel 2番目のコンテンツ
+-#   %li.ChangeElem_Panel 3番目のコンテンツ
+
 
