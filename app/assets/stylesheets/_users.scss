@@ -1,3 +1,28 @@
+.tabcontent{
+  display: none;
+}
+
+.is-active{
+  background : #fff;
+}
+
+.mypagetabs{
+  background :#eee;
+  line-height: 73px;
+  border-top: 2px solid $red;
+  font-weight: bold;
+}
+
+.mypagetabs2{
+  background :#eee;
+  line-height: 73px;
+  border-top: 2px solid $red;
+  font-weight: bold;
+}
+
+
+
+
 .main {
   background: $hexWhite;
   .content {
