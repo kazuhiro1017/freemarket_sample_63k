@@ -1,0 +1,49 @@
+= render "header"
+.main
+  .purchase
+    .purchase__title
+      購入内容の確認
+    .purchase__item
+      %figure
+        = image_tag src="/assets/sample.jpg", size: "150x150"
+      .purchase__item-name
+        %p 【即納】 SENSE OF PLACE　ミモレ丈スカート　コクーンスカート36
+      .price
+        %p ¥3480 
+        %p (送料込み)
+      .point
+        %div 
+          = link_to "#" do
+            ポイントはありません
+      .money
+        %p 支払金額
+        %p ¥3480 
+      %h5 配送先と支払方法の入力を完了して下さい
+      .point
+        %div 
+          = link_to "#" do
+            購入する
+    .delivery
+      .delivery__box
+        %ul
+          %li 配送先
+          %li 〒 aaa-aaaa
+          %li 東京都
+          %li 田中太郎
+          %li
+            = link_to "#" do
+              変更する
+              = fa_icon 'angle-right'
+    .delivery
+      .delivery__box
+        %ul
+          %li 支払方法
+          %li /
+          %li
+            = link_to "#" do
+              変更する
+              = fa_icon 'angle-right'
+= render "footer"
+              
+
+

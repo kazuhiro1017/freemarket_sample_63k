@@ -41,7 +41,8 @@
     z-index: 3;
     &__menu{
       width: 700px;
-      margin: 0px auto;
+      margin: 0px 210px;
+      margin-right: -210px;
       padding: 8px 0px 0px;
       &__top{
         display: flex;
@@ -64,7 +65,7 @@
           &__input{
             background-color: rgb(230, 230, 230);
             height: 40px;
-            width: 100%;
+            width: 791px;
             font-size: 16px;
             padding: 0px 50px 0px 10px;
             border-radius: 4px;
@@ -83,10 +84,12 @@
             border-radius: 0px 4px 4px 0px;
             border:none;
             position: absolute;
+            margin-right: -90px;
             .fa-search{
               font-size: 14px;
               display: flex;
               justify-content: center;
+
             }
           }
         }
@@ -96,6 +99,7 @@
         display: flex;
         justify-content: space-between;
         margin-top: 8px;
+        margin-left: 8px;
         &__left{
           display: flex;
           &__category{
@@ -140,6 +144,7 @@
         }
         &__right{
           display: flex;
+          margin-right: -270px;
           .hedder__menu__bottom__right__entry{
             text-align: center;
             .new-entry-link{
@@ -187,11 +192,7 @@
         top: 0px;
         width: 100vw;
         &__image{
-          box-sizing: border-box;
-          display: block;
-          height: auto;
-          position: relative;
-          visibility: inherit;
+          height: 390px;
           width: 100%;
         }
         &__slide-left{

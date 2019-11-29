@@ -1,0 +1,68 @@
+.container {
+
+  .main {
+  
+    &__header {
+      @include mainheader;
+    }
+    &__how-to-register {
+      width: 700px;
+      height: 247px;
+      box-sizing: border-box;
+      border-top: 1px solid #f5f5f5;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 24px 16px 40px;
+      &__email {
+        width: 343px;
+        height: 50px;
+        box-sizing: border-box;
+        color: #fff;
+        background-color: #ea352d;
+        border-radius: 4px;
+        border: 1px solid transparent;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 14px;
+        line-height: 48px;
+        position: relative;
+        .fa {
+          @include icon_posi;
+        }
+      }
+      &__facebook {
+        width: 343px;
+        height: 50px;
+        box-sizing: border-box;
+        background: #385185;
+        color: #fff;
+        border-radius: 4px;
+        border: 1px solid transparent;
+        margin: 16px auto 0px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 48px;
+        position: relative;
+        .fa {
+          @include icon_posi;
+        }
+      }
+      &__google {
+        width: 343px;
+        height: 50px;
+        box-sizing: border-box;
+        color: #333;
+        border-radius: 4px;
+        border: #979797 solid 1px;
+        margin: 16px auto 0px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 48px;
+        position: relative;
+        .fa {
+          @include icon_posi;
+        }
+      }
+    }
+  }
+}

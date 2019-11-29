@@ -1,0 +1,21 @@
+.container
+  = render partial: 'devise/shared/header'
+
+  .main
+    .main__header
+      新規会員登録
+    .main__how-to-register
+      = link_to 'email', {data: {"turbolinks": false}} do
+        .main__how-to-register__email
+          = fa_icon 'envelope'
+          メールアドレスで登録する
+      = link_to 'facebook', {data: {"turbolinks": false}} do
+        .main__how-to-register__facebook
+          = fa_icon 'facebook-square'
+          facebookで登録する
+      = link_to 'google', {data: {"turbolinks": false}} do
+        .main__how-to-register__google
+          = fa_icon 'google'
+          googleで登録する
+
+  = render partial: 'devise/shared/footer'
