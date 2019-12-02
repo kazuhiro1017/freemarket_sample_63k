@@ -15,13 +15,15 @@ ActiveRecord::Schema.define(version: 2019_12_02_042530) do
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.string "post_number", null: false
+    t.bigint "prefecture_id"
     t.string "city", null: false
     t.string "address", null: false
     t.string "building"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["prefecture_id"], name: "index_addresses_on_prefecture_id"
     t.index ["user_id"], name: "index_addresses_on_user_id"
-ActiveRecord::Schema.define(version: 2019_11_29_075254) do
+  end
 
   create_table "brand_mains", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -87,6 +89,16 @@ ActiveRecord::Schema.define(version: 2019_11_29_075254) do
     t.string "brand"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["brand_sub_id"], name: "index_items_on_brand_sub_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["condition_id"], name: "index_items_on_condition_id"
+    t.index ["delivery_day_id"], name: "index_items_on_delivery_day_id"
+    t.index ["delivery_method_id"], name: "index_items_on_delivery_method_id"
+    t.index ["postage_id"], name: "index_items_on_postage_id"
+    t.index ["prefecture_id"], name: "index_items_on_prefecture_id"
+    t.index ["profit_id"], name: "index_items_on_profit_id"
+    t.index ["size_id"], name: "index_items_on_size_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -123,15 +135,6 @@ ActiveRecord::Schema.define(version: 2019_11_29_075254) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "provider"
-    t.string "uid"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
-  end
-
   create_table "transaction_states", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "state", null: false
     t.datetime "created_at", null: false
@@ -166,8 +169,18 @@ ActiveRecord::Schema.define(version: 2019_11_29_075254) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "prefectures"
   add_foreign_key "addresses", "users"
+  add_foreign_key "items", "brand_subs"
+  add_foreign_key "items", "categories"
+  add_foreign_key "items", "conditions"
+  add_foreign_key "items", "delivery_days"
+  add_foreign_key "items", "delivery_methods"
+  add_foreign_key "items", "postages"
+  add_foreign_key "items", "prefectures"
+  add_foreign_key "items", "profits"
+  add_foreign_key "items", "sizes"
+  add_foreign_key "items", "users"
   add_foreign_key "likes", "items"
   add_foreign_key "likes", "users"
-  add_foreign_key "sns_credentials", "users"
 end
