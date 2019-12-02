@@ -98,6 +98,7 @@ Things you may want to cover:
 |category_id|references|null: false, foreign_key: true|
 |profit_id|references|null: false, foreign_key: true|
 |size_id|references|null: false, foreign_key: true|
+|brand|string||
 ### Association
 - belongs_to :brand_sub
 - belongs_to :postage
@@ -110,14 +111,14 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :size
 - has_many :likes, dependent: :destroy
-- has_one :transactions, dependent: :destroy
+- has_one :transaction, dependent: :destroy
 - belongs_to :condition
 
 ## Categorysテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|ancestry|integer|null: false|
+|ancestry|string|null: false|
 ### Association
 - has_many :items
 
@@ -145,7 +146,7 @@ Things you may want to cover:
 ## Delivery_methodsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|method|string|null: false|
+|method|string|null: false, unique: true|
 ### Association
 - has_many :items
 
@@ -157,20 +158,20 @@ Things you may want to cover:
 ### Association
 - has_many :items
 
-## Brand_mainテーブル
+## Brand_mainsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|name|string|null: false, unique: true|
 ### Association
 - has_many :brand_subs
 
-## Brand_subテーブル
+## Brand_subsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|name|string|null: false, unique: true|
 |brand_main_id|references|null: false, foreign_key: true|
 ### Association
-- belongs_to :brabd_main
+- belongs_to :brand_main
 - has_many :items
 
 ## Imagesテーブル
@@ -192,17 +193,16 @@ Things you may want to cover:
 ## Delivery_daysテーブル
 |Column|Type|Options|
 |------|----|-------|
-|days|string|null: false|
+|days|string|null: false, unique: true|
 ### Association
 - has_many :items
 
 ## Sizesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|size|string|null: false|
+|size|string|null: false, unique: true|
 ### Association
 - has_many :items
-- has_many :categorys
 
 ## Prefecturesテーブル
 |Column|Type|Options|
