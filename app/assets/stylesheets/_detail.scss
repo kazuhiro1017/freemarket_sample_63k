@@ -1,0 +1,342 @@
+a{
+  text-decoration: none;
+  color: #0099e8;
+}
+.item-detail a {
+  display: block;
+}
+body{
+  position: relative;
+  min-height: 100%;
+  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  font-size: 14px;
+  color: rgb(51, 51, 51);
+  line-height: 1;
+  background: rgb(245, 245, 245);
+}
+.items-box:nth-child(3n+2) {
+  margin: 0 20px;
+}
+
+.item-box{
+  background: #fff;
+  width: 620px;
+  margin: 40px auto 0;
+  padding: 24px 40px 40px;
+  .item-name{
+    font-size: 24px;
+    text-align: center;
+    line-height: 1.4;
+    font-weight: bold;
+  }
+  .item-content{
+    @include clearfix();
+    margin-top: 16px;
+    .item-photo{
+      min-width: 300px;
+      max-width: 300px;
+      min-height: 375px;
+      float: left;
+      margin: 0 auto;
+      .item-main-slider{
+      }
+      .item-sub-slider{
+        .slide{
+        }
+      }
+    }
+    .item-detail{
+      float: right;
+      max-width: 300px;
+      width: 100%;
+      .tbody{
+        .tr{
+          display: flex;
+          .th{
+            background: #fafafa;
+            width: 39%;
+            text-align: left;
+            font-weight: 400;
+            padding: 8px;
+            border: 0.5px solid #f5f5f5;
+          }
+          .td{
+            width: 61%;
+            background: #fff;
+            padding: 8px;
+            border: 0.5px solid #f5f5f5;
+            .ratings{
+              display: flex;
+              .item-user-rating{
+                margin: 8px 16px 0 0;
+                font-size: 16px;
+                .fa-laugh {
+                  color: #ef5185;
+                }
+                .fa-meh{
+                  color: #fba933;
+                }
+                .fa-frown{
+                  color: #6ab5d8;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .item-price-box{
+    margin-top: 24px;
+    text-align: center;
+    .item-price{
+      margin-right: 16px;
+      font-size: 50px;
+      font-weight: 600;
+    }
+    .item-tax{
+      font-size: 10px;
+    }
+    .item-shipping-fee{
+      font-size: 16px;
+    }
+  }
+  .item-buy-btn{
+    background: #ea352d;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    font-weight: 600;
+    line-height: 60px;
+    margin-top: 16px;
+    display: block;
+  }
+  .item-description{
+    padding-top: 32px;
+    line-height: 1.5;
+    font-size: 18px;
+    .item-description-inner{
+      white-space: pre-wrap;
+    }
+  }
+  .item-btn-container{
+    @include clearfix();
+    margin-top: 16px;
+    .item-btn-left{
+      float: left;
+      .item-btn-left__like{
+        color: #333;
+        border: 1px solid #f5f5f5;
+        background: #f5f5f5;
+        display: inline-block;
+        padding: 8px 16px;
+        border-radius: 40px;
+        cursor: pointer;
+        display: inline-block;
+        .fa-heart{
+          font-size: 12px;
+        }
+        .like-number{
+        }
+      }
+      .item-btn-left__report{
+        margin-left: 16px;
+        color: #333;
+        border: 1px solid #f5f5f5;
+        background: #f5f5f5;
+        display: inline-block;
+        padding: 8px 16px;
+        border-radius: 40px;
+        cursor: pointer;
+        .fa-flag{
+          font-size: 12px;
+        }
+      }
+    }
+    .item-btn-right{
+      margin-top: 8px;
+      float: right;
+      .torikumi{
+        .icon-lock{
+        }
+      }
+    }
+  }
+}
+
+.item-detail-message{
+  width: 700px;
+  margin: 8px auto;
+  .message-container{
+    .message-content{
+      background-color: #fff;
+      padding: 24px;
+      .message-form{
+        background: #fff6de;
+        padding: 8px;
+        font-size: 14px;
+      }
+      .message-text{
+        margin-top: 8px;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        min-height: 104px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background: #fff;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+      .message-submit{
+        width: 100%;
+        margin-top: 8px;
+        line-height: 48px;
+        text-align: center;
+        background: #aaa;
+        border: 1px solid #aaa;
+        color: #fff;
+        font-size: 14px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.item-sns-box{
+  background: #fff;
+  margin: 24px auto;
+  padding: 32px 0 24px;
+  width: 700px;
+  .sns{
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    .share-facebook{
+      margin: 0 8px 8px 0;
+      .share-btn{
+        .fa-facebook-square{
+          background: #385185;
+          width: 44px;
+          height: 44px;
+          border-radius: 9px;
+          color: #fff;
+          font-size: 29px;
+          line-height: 44px;
+          text-align: center;
+        }
+      }
+    }
+    .share-twitter{
+      margin: 0 8px 8px 0;
+      .share-btn{
+        .fa-twitter{
+          background: #5d9dc9;
+          width: 44px;
+          height: 44px;
+          border-radius: 9px;
+          color: #fff;
+          font-size: 28px;
+          line-height: 44px;
+          text-align: center;
+        }
+      }
+    }
+    .share-line{
+      margin: 0 8px 8px 0;
+      .share-btn{
+        .fa-line{
+          color: #00c137;
+          width: 44px;
+          height: 44px;
+          border-radius: 9px;
+          font-size: 50px;
+          line-height: 44px;
+          text-align: center;
+        }
+      }
+    }
+    .share-pinterest{
+      .share-btn{
+        .fa-pinterest{
+          background: #aa262a;
+          width: 44px;
+          height: 44px;
+          border-radius: 9px;
+          color: #fff;
+          font-size: 26px;
+          line-height: 44px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+.items-another{
+  width: 700px;
+  margin: 0 auto;
+  .items-container{
+    width: 700px;
+    margin: 0 auto;
+    .items-top{
+      font-size: 22px;
+      margin: 24px 0 8px;
+      line-height: 1.4;
+      font-weight: bold;
+    }
+    .items-content{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: auto;
+      margin: 0 auto;
+      .items-box{
+        background: #fff;
+        width: 220px;
+        position: relative;
+        margin-bottom: 20px;
+        .items-box-link{
+          .items-box-photo{
+          }
+          .items-box-text{
+            display: block;
+            color: #333;
+            padding: 16px;
+            .items-box-name{
+              position: relative;
+              font-size: 16px;
+              font-weight: 400;
+              height: 3em;
+              line-height: 1.5;
+              word-break: break-word;
+              white-space: normal;
+            }
+            .items-box-num{
+              display: flex;
+              justify-content: space-between;
+              .items-box-price{
+              font-size: 16px;
+              font-weight: 600;
+              color: #333;
+              }
+              .items-box-likes{
+                font-size: 16px;
+                font-weight: 400;
+                color: #333;
+                .fa-heart{
+                  display: inline-block;
+                  color: #ccc;
+                  font-style: normal;
+                  font-weight: 400;
+                  font-variant: normal;
+                  text-transform: none;
+                  line-height: 1;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
