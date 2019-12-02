@@ -1,0 +1,192 @@
+.header{
+  height: 128px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  &__logo{
+    width: 185px;
+    height: 49px;
+    polygon{
+      fill:#dc4912;
+      opacity: 1;
+    }
+  }
+}
+
+.main{
+  background-color: #f5f5f5;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  .purchase{
+    width: 700px;
+    margin: 0 auto;
+    background-color: white;
+    &__title{
+      padding: 32px 16px;
+      font-size: 22px;
+      text-align: center;
+      font-weight: bolder;
+      border-bottom: 1px solid $hex;
+    } 
+    &__item{
+      border-bottom: 1px solid $hex;
+      figure {
+        text-align: center;
+      }
+      &-name{          
+        margin: 8px 0 0;
+        font-size: 16px;
+        line-height: 1.5;
+        font-weight: bolder;
+        text-align: center;
+        p{
+          width: 300px;
+          margin: auto;
+        }
+      }
+      .price{
+        font-size: 26px;
+        line-height: 3;
+        font-weight: 600;
+        justify-content: center;
+        text-align: center;
+        display: flex;
+        p{
+          &:last-child{
+            font-size: 16px;
+            margin-top: 15px;
+          }
+        }
+      }
+      .point{
+        background: #ccc;
+        width: 320px;
+        height: 48px;
+        margin: 0 auto;
+        div{
+          text-align: center;
+          line-height: 46px;
+        }
+      }
+      .money{
+        font-size: 26px;
+        line-height: 3;
+        font-weight: bolder;
+        justify-content: center;
+        text-align: center;
+        display: flex;
+        p{
+          &:last-child{
+            font-size: 26px;
+            margin-left: 120px;
+          }
+        }
+      }
+      h5{
+        color: red;
+        text-align: center;
+        font-size: 14px;
+      }
+      .point{
+        background: #ccc;
+        width: 320px;
+        height: 48px;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        div{
+          text-align: center;
+          line-height: 46px;
+        }
+      }
+    }
+    .delivery{
+      border-bottom: 1px solid $hex;
+      &__box{
+        margin-left:200px ;
+      }
+      ul{
+        li{
+          &:first-child{
+            margin-top: 15px;
+            font-weight: bolder;
+          }
+          &:last-child{
+            margin-left: 300px;
+
+            a{
+              text-decoration: none;
+              color: skyblue;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+.footer-okamoto{
+  height: 220px;
+  margin: 0 auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  padding: 40px 0;
+  text-align: center;
+  background-color: #f5f5f5;
+  
+  nav {
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    ul{
+      list-style: none;
+      font-size: 0;
+      li:first-child{
+        margin: 0;
+      }
+      li{
+        display: inline-block;
+        margin: 0 0 0 16px;
+        font-size: 12px;
+        a{
+          text-decoration: none;
+          font-size: 12px;
+          display: block;
+          color: #333;
+        }
+      }
+    }
+  }
+  a.footer__logo2{
+    margin: 40px auto 0;
+    display: block;
+    .footer--img{
+      width: 80px;
+      height: 65px;
+      margin: auto;
+    }
+  }
+  p{
+    font-size: 14px;
+  }
+}
+
+
+
+
+
+
+
+
+ 
+
+
+
+  
+ 
