@@ -16,6 +16,7 @@
 
 .main{
   background-color: #f5f5f5;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
   .purchase{
     width: 700px;
     margin: 0 auto;
@@ -46,7 +47,7 @@
       .price{
         font-size: 26px;
         line-height: 3;
-        font-weight: bolder;
+        font-weight: 600;
         justify-content: center;
         text-align: center;
         display: flex;
@@ -162,19 +163,21 @@ a{
       }
     }
   }
-  a.footer__logo{
+  a.footer__logo2{
     margin: 40px auto 0;
     display: block;
-    margin-left: 420px;
     .footer--img{
       width: 80px;
       height: 65px;
+      margin: auto;
     }
   }
   p{
     font-size: 14px;
   }
 }
+
+
 
 
 
