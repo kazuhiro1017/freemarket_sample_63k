@@ -3,7 +3,7 @@ $(document).on('turbolinks:load', function (){
   $(".category1").hide();
   $(".category2").hide();
 
-  $(".category #_ancestry").change(function(){
+  $(".select-default").change(function(){
     $(".category1").show();
   });
   $(".category1 #_ancestry").change(function(){
