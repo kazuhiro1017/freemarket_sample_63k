@@ -79,3 +79,9 @@ gem 'devise'
 gem "font-awesome-rails"
 gem "jquery-rails"
 gem "active_hash"
+
+gem 'ancestry'
+
+gem "faker"
+gem "gimei"
+

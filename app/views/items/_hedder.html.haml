@@ -1,0 +1,26 @@
+.hedder__menu
+  .hedder__menu__top
+    .hedder__menu__top__logo
+      =link_to "http://localhost:3000/", class: "hedder__menu__top__logo__link" do
+        <svg class="hedder__menu__top__logo__link__do" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 281.19 84.08"><defs><style>.color-logo{fill:#dc4912;stroke:#fff;stroke-miterlimit:10;}.color-logo-text{font-size:48px;fill:#231815;font-family:YuGo-Bold-83pv-RKSJ-H, YuGothic;}</style></defs><title>アセット 3</title><g id="レイヤー_2" data-name="レイヤー 2"><g id="レイヤー_1-2" data-name="レイヤー 1"><polygon class="color-logo" points="36.41 83.5 0.5 62.77 0.5 21.31 36.41 0.58 72.32 21.31 72.32 62.77 36.41 83.5"/><polyline class="color-logo" points="0.5 21.31 36.41 42.04 72.32 21.31"/><polyline class="color-logo" points="36.41 83.5 36.41 49.36 36.41 42.04"/><line class="color-logo" x1="36.41" y1="52.41" x2="0.5" y2="31.67"/><line class="color-logo" x1="72.32" y1="33.2" x2="36.41" y2="50.88"/><text class="color-logo-text" transform="translate(86.41 62.77)">Fmarket</text></g></g></svg>
+    %form#sform.hedder__menu__top__search{action: "", method: "get"}
+      %input#sbox.hedder__menu__top__search__input{name: "search", type: "text", placeholder: "何かお探しですか？"}/
+      %button#sbtn.hedder__menu__top__search__icon{type: "submit"}
+        = fa_icon 'search', class: "search-icon"
+  .hedder__menu__bottom
+    .hedder__menu__bottom__left
+      .hedder__menu__bottom__left__category
+        =link_to "", class: "item-link-list" do
+          = fa_icon 'list-ul', class: "item-link-logo"
+          カテゴリーから探す
+      .hedder__menu__bottom__left__brand
+        =link_to "", class: "item-link-list" do
+          = fa_icon 'shopping-bag', class: "item-link-logo"
+          ブランドから探す
+    .hedder__menu__bottom__right
+      .hedder__menu__bottom__right__entry
+        =link_to new_user_registration_path, class: "new-entry-link" do
+          新規会員登録
+      .hedder__menu__bottom__right__login
+        =link_to "", class: "login-link" do
+          ログイン
