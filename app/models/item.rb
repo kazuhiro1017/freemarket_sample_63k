@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   belongs_to :user
   belongs_to :size
   has_many :likes, dependent: :destroy
-  has_one :transaction, dependent: :destroy
+  has_one :tran, class_name: 'Transaction', dependent: :destroy
   belongs_to :condition
 
   validates :name, presence: true
