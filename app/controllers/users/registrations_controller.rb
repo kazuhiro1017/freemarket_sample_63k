@@ -1,6 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
   def user_add
+    @user = User.new
   end
 
   def phone_add
