@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_042530) do
+ActiveRecord::Schema.define(version: 2019_12_02_093736) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -36,6 +36,17 @@ ActiveRecord::Schema.define(version: 2019_12_02_042530) do
     t.bigint "brand_main_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "card_number", null: false
+    t.integer "expiry_date_year", null: false
+    t.integer "expiry_date_month", null: false
+    t.integer "security_code", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -171,6 +182,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_042530) do
 
   add_foreign_key "addresses", "prefectures"
   add_foreign_key "addresses", "users"
+  add_foreign_key "cards", "users"
   add_foreign_key "items", "brand_subs"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "conditions"

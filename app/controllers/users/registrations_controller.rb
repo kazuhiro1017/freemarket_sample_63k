@@ -9,16 +9,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def address_add
-    @address = User.new
+    @user = User.new
+    @user.address = Address.new
   end
 
   def card_add
     @user = User.new
+    @user.card = Card.new
   end
 
-  def create
+  # def create
     # params[:user][:birthday] = birthday_join
-  end
+  # end
 
   def complete
   end

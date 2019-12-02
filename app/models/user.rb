@@ -22,8 +22,10 @@ class User < ApplicationRecord
   validates :phone_number, presence: true
   validates :email, uniqueness: true, presence: true
 
-  has_one :address
+  has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address
+  has_one :card, dependent: :destroy
+  accepts_nested_attributes_for :card
 
 
   enum prefecture: {

@@ -66,8 +66,8 @@ Things you may want to cover:
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
 |card_number|string|null: false|
-|expiration_date_year|integer|null: false|
-|expiration_date_month|string|null: false|
+|expiry_date_year|integer|null: false|
+|expiry_date_month|integer|null: false|
 |security_code|integer|null: false|
 ### Association
 - belongs_to :user

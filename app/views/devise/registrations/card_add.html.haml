@@ -4,21 +4,22 @@
   .main
     .main__header5
       支払い方法
-    = form_for "#", {html: {class: "main__card"}} do |f|
-      = f.label 'カード番号'
-      %span 必須
-      = f.text_field :card_number, class: 'main__card__number', placeholder: '半角数字のみ'
-      .main__card__expiry-label
-        = f.label '有効期限'
+    = form_for @user, url: users_sign_up_complete_path, method: :get, html: {class: "main__card"} do |f|
+      = f.fields_for :card do |c|
+        = c.label 'カード番号'
         %span 必須
-      = f.select :expiry_date_month, [1,2,3,4,5,6,7,8,9,10,11,12]
-      月
-      = f.select :expiry_date_year, [2019, 2020, 2021, 2022, 2023, 2024, 2025]
-      年
-      .main__card__security-label
-        = f.label 'セキュリティコード'
-        %span 必須
-      = f.text_field :security_code, class: 'main__card__security', placeholder: 'カード背面４桁もしくは３桁の番号'
+        = c.text_field :card_number, class: 'main__card__number', placeholder: '半角数字のみ'
+        .main__card__expiry-label
+          = c.label '有効期限'
+          %span 必須
+        = c.select :expiry_date_month, [1,2,3,4,5,6,7,8,9,10,11,12]
+        月
+        = c.select :expiry_date_year, [2019, 2020, 2021, 2022, 2023, 2024, 2025]
+        年
+        .main__card__security-label
+          = c.label 'セキュリティコード'
+          %span 必須
+        = c.text_field :security_code, class: 'main__card__security', placeholder: 'カード背面４桁もしくは３桁の番号'
       = f.submit '次へ進む', class: 'main__card__btn'
 
   = render partial: 'devise/shared/footer'
