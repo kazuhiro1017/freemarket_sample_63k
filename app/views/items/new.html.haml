@@ -18,7 +18,8 @@
                   .sell-upload-items-container
                     .items-have-item-0
                       %ul
-                %label.dropbox-have-item-0
+                -# %label.dropbox-have-item-0
+                = f.label :image, class: "dropbox-have-item-0" do
                   = f.file_field :image, class: "hidden"
                   %p.visible-pc ドラッグアンドドロップ  
                   %p.also-visible-pc またはクリックしてファイルファイルをアップロード
@@ -43,8 +44,8 @@
                   %label カテゴリー
                   %span 必須
                   = form_for "#", html: {class: "category"} do |f|
-                    = f.select :ancestry, ["---","レディース","メンズ","ベビー・キッズ"]
-                  = form_for "#", html: {class: "category1"} do |f|
+                    = f.collection_select :category_ids, @parents, :id, :name,{prompt: "---"}, class: "select-default", id: "parent-form", name: 'item[category_ids][]' 
+                  = form_for "#", html: {class: "category"} do |f|
                     = f.select :ancestry, ["---",1,2,3,4,5,6]
                   = form_for "#", html: {class: "category2"} do |f|
                     = f.select :ancestry, ["---",1,2,3,4,5,6]
@@ -52,7 +53,7 @@
                   %label サイズ
                   %span 必須
                   = form_for "#", html: {class: "size"} do |f|
-                    = f.select :size, ["---","aaa","ss","www","eeee",6]
+                    = f.select :size, Size.sizes.keys
                 .form-group
                   %label ブランド
                   %span.option 任意
@@ -62,7 +63,7 @@
                   %label 商品の状態
                   %span 必須
                   = form_for "#", html: {class: "detail"} do |f|
-                    = f.select :size, ["---","aaa","ss","www","eeee",6]
+                    = f.select :condition, Condition.conditions.keys
             
             .sell-delivery
               %h3.delivery-text 配送について
@@ -73,23 +74,22 @@
                   %label 配送料の負担
                   %span 必須
                   = form_for "#", html: {class: "postage"} do |f|
-                    = f.select :postage, ["---",1,2,3,4,5,6]
+                    = f.select :postage, Postage.postages.keys
                 .form-group
-                  .after-selected-postage
-                    %label 配送の方法
-                    %span 必須
-                    = form_for "#", html: {class: "delivery-method"} do |f|
-                      = f.select :method, ["---",1,2,3,4,5,6]
+                  %label 配送の方法
+                  %span 必須
+                  = form_for "#", html: {class: "delivery-method"} do |f|
+                    = f.select :method, DeliveryMethod.methods.keys
                 .form-group
                   %label 発送元の地域
                   %span 必須
                   = form_for "#", html: {class: "delivery-region"} do |f|
-                    = f.select :prefecture, ["---",1,2,3,4,5,6]
+                    = f.select :prefecture, User.prefectures.keys
                 .form-group
                   %label 発送までの日数
                   %span 必須
                   = form_for "#", html: {class: "delivery-days"} do |f|
-                    = f.select :days, ["---",1,2,3,4,5,6]
+                    = f.select :days, DeliveryDay.days.keys
             
             .sell-cost
               %h3.cost-text 販売価格(300〜9,999,999)
@@ -129,7 +129,8 @@
               .submit
                 %button.submit-btn 出品する
               .back
-                %button.back-btn もどる
+                = link_to root_path do
+                  %button.back-btn もどる
 
 
   .footer-okamoto
