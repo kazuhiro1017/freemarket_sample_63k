@@ -9,9 +9,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def address_add
+    @address = User.new
   end
 
   def card_add
+    @user = User.new
+  end
+
+  def create
     # params[:user][:birthday] = birthday_join
   end
 
@@ -20,6 +25,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # この辺のメソッドは、paramsにフォームの情報が入る、postの段階でないと働かない。
   private 
+    # def user_addresses
+      # params.require(:user).permit(addresses_attributes: [:post_number,...?])
+    # end
     def user_params
       params.require(:user).permit(:birthday)
     end
