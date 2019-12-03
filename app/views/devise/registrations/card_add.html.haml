@@ -4,7 +4,7 @@
   .main
     .main__header5
       支払い方法
-    = form_for @user, url: users_sign_up_complete_path, method: :get, html: {class: "main__card"} do |f|
+    = form_for @user, url: user_registration_path, method: :post, html: {class: "main__card"} do |f|
       = f.fields_for :card do |c|
         = c.label 'カード番号'
         %span 必須
