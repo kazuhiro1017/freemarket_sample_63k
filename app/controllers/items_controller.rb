@@ -8,8 +8,14 @@ class ItemsController < ApplicationController
   end
 
   def create
-    Item.create(item_params)
-    redirect_to root_path
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      flash.now[:alert] = "[必須]を入力してください。"
+      render "new"
+
+    end
   end
 
   def category_find
