@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_one :tran, dependent: :destroy
   has_many_attached :images
-  
+ 
   validates :name, presence: true
   validates :description, presence: true
   validates :category_id, presence: true
