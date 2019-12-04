@@ -21,7 +21,148 @@
     border-top: 2px solid $red;
     font-weight: bold;
   }
+  .wrapper{
+    background-color: rgb(245, 245, 245);
+    margin: 0 auto;
+    .hedder{
+      background-color: #fff;
+      position: relative;
+      z-index: 3;
+      &__menu{
+        margin-left: 100px;
+        padding: 8px 0px 0px;
+        &__top{
+          display: flex;
+          justify-content: space-between;
+          &__logo{
+            display: flex;
+            height: 40px;
+            margin-right: 45px;
+            &__link{
+              align-items: center;
+              &__do{
+              height: 36px;
+              width: 134px;
+              }
+            }
+          }
+          &__search{
+            width: 100vw;
+            position: relative;
+            &__input{
+              background-color: rgb(230, 230, 230);
+              height: 40px;
+              font-size: 16px;
+              padding: 0px 50px 0px 10px;
+              border-radius: 4px;
+              border-style: solid;
+              border-width: 1px;
+              border-color: rgb(204, 204, 204);
+              position: relative;
+            }
+            &__icon{
+              background:none;
+              height: 40px;
+              width: 40px;
+              top: 0px;
+              right: 0px;
+              cursor: pointer;
+              border-radius: 0px 4px 4px 0px;
+              border:none;
+              .fa-search{
+                font-size: 14px;
+                display: flex;
+                justify-content: center;
   
+              }
+            }
+          }
+        }
+        &__bottom{
+          height: 44px;
+          display: flex;
+          margin-top: 8px;
+          margin-left: 8px;
+          &__left{
+            display: flex;
+            &__category{
+              padding-right: 10px;
+              cursor: pointer;
+              height: 44px;
+              position: relative;
+              text-decoration: none;
+              .item-link-list{
+                display: block;
+                color: black;
+                opacity: 0.8;
+                font-size: 14px;
+                font-weight: 600;
+                line-height: 36px;
+                .item-link-logo{
+                  color: rgb(255, 81, 0);
+                }
+              }
+            }
+            &__brand{
+              padding-left: 10px;
+              display: block;
+              font-size: 14px;
+              font-weight: 600;
+              line-height: 36px;
+              cursor: pointer;
+              height: 44px;
+              position: relative;
+              .item-link-list{
+                display: block;
+                color: black;
+                opacity: 0.8;
+                font-size: 14px;
+                font-weight: 600;
+                line-height: 36px;
+                .item-link-logo{
+                  color: rgb(255, 81, 0);
+                }
+              }
+            }
+          }
+          &__right{
+            display: flex;
+            .hedder__menu__bottom__right__entry{
+              margin-left: 80px;
+              text-align: center;
+              .new-entry-link{
+                background-color: rgb(255, 81, 0);
+                color: rgb(255, 255, 255);
+                display: block;
+                font-size: 14px;
+                border-width: 1px;
+                border-style: solid;
+                text-decoration: none;
+                border-radius: 4px;
+                padding: 5px 10px;
+              }
+            }
+            &__login{
+              text-align: center;
+              margin-left: 11px;
+              .login-link{
+                background-color: rgb(255, 255, 255);
+                color: rgb(0, 149, 238);
+                display: block;
+                font-size: 14px;
+                border-radius: 4px;
+                border-width: 1px;
+                border-style: solid;
+                border-color: rgb(0, 149, 238);
+                padding: 5px 10px;
+                text-decoration: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
   
   
   .main {
@@ -141,7 +282,154 @@
   border-top: 2px solid $red;
   font-weight: bold;
 }
+.wrapper{
+  background-color: rgb(245, 245, 245);
+  .hedder{
+    background-color: #fff;
+    position: relative;
+    z-index: 3;
+    
+    &__menu{
+      width: 700px;
+      margin: 0px 210px;
+      margin-right: -210px;
+      padding: 8px 0px 0px;
+      &__top{
+        display: flex;
+        justify-content: space-between;
+        &__logo{
+          display: flex;
+          height: 40px;
+          margin-right: 45px;
+          &__link{
+            align-items: center;
+            &__do{
+            height: 36px;
+            width: 134px;
+            }
+          }
+        }
+        &__search{
+          width: 100%;
+          position: relative;
+          &__input{
+            background-color: rgb(230, 230, 230);
+            height: 40px;
+            width: 791px;
+            font-size: 16px;
+            padding: 0px 50px 0px 10px;
+            border-radius: 4px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: rgb(204, 204, 204);
+            position: relative;
+          }
+          &__icon{
+            background:none;
+            height: 40px;
+            width: 40px;
+            top: 0px;
+            right: 0px;
+            cursor: pointer;
+            border-radius: 0px 4px 4px 0px;
+            border:none;
+            position: absolute;
+            margin-right: -90px;
+            .fa-search{
+              font-size: 14px;
+              display: flex;
+              justify-content: center;
 
+            }
+          }
+        }
+      }
+      &__bottom{
+        height: 44px;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 8px;
+        margin-left: 8px;
+        &__left{
+          display: flex;
+          &__category{
+            padding-right: 10px;
+            cursor: pointer;
+            height: 44px;
+            position: relative;
+            text-decoration: none;
+            .item-link-list{
+              display: block;
+              color: black;
+              opacity: 0.8;
+              font-size: 14px;
+              font-weight: 600;
+              line-height: 36px;
+              .item-link-logo{
+                color: rgb(255, 81, 0);
+              }
+            }
+          }
+          &__brand{
+            padding-left: 10px;
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 36px;
+            cursor: pointer;
+            height: 44px;
+            position: relative;
+            .item-link-list{
+              display: block;
+              color: black;
+              opacity: 0.8;
+              font-size: 14px;
+              font-weight: 600;
+              line-height: 36px;
+              .item-link-logo{
+                color: rgb(255, 81, 0);
+              }
+            }
+          }
+        }
+        &__right{
+          display: flex;
+          margin-right: -270px;
+          .hedder__menu__bottom__right__entry{
+            text-align: center;
+            .new-entry-link{
+              background-color: rgb(255, 81, 0);
+              color: rgb(255, 255, 255);
+              display: block;
+              font-size: 14px;
+              border-width: 1px;
+              border-style: solid;
+              text-decoration: none;
+              border-radius: 4px;
+              padding: 5px 10px;
+            }
+          }
+          &__login{
+            text-align: center;
+            margin-left: 11px;
+            .login-link{
+              background-color: rgb(255, 255, 255);
+              color: rgb(0, 149, 238);
+              display: block;
+              font-size: 14px;
+              border-radius: 4px;
+              border-width: 1px;
+              border-style: solid;
+              border-color: rgb(0, 149, 238);
+              padding: 5px 10px;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
 
 
@@ -237,4 +525,107 @@
 
 }
 
+
+.footer{
+  background-color: rgb(34, 34, 34);
+  color: #fff;
+  padding: 0px 20px 10px;
+  z-index: 3;
+  &__top{
+    width: 100%;
+    margin: 0px auto;
+    &__menu{
+      display: inline-block;
+      margin-top: 18px;
+      vertical-align: top;
+      width: 50%;
+      padding: 0px 10px;
+      &__title{
+        font-size: 16px;
+        font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+        font-weight: 600;
+      }
+      &__list{
+        &__link{
+          margin: 16px 0px 0px;
+          &__do{
+            color: #fff;
+            font-size: 12px;
+            text-decoration: none;
+            opacity: 0.7;
+          }
+        }
+        &__link-icon{
+          text-decoration: none;
+          margin-right: 30px;
+          .sns-icon{
+            color: #fff;
+            font-size: 30px;
+            margin-top: 30px;
+          }
+        }
+      }
+    }
+    &__privacy{
+      margin-top: 35px;
+      width: 100%;
+      padding: 0px 10px;
+      &__title{
+        font-size: 16px;
+        font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+        font-weight: 600;
+      }
+      &__list{
+        width: 50%;
+        &__link{
+          margin: 16px 0px 0px;
+          &__do{
+            color: #fff;
+            font-size: 12px;
+            text-decoration: none;
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+    &__langage{
+      margin-top: 35px;
+      padding: 0px 10px;
+      width: 100%;
+      &__title{
+        font-size: 16px;
+        font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+        font-weight: 600;
+      }
+      &__list{
+        display: flex;
+        &__link{
+          margin: 16px 0px 0px;
+          &__do{
+            color: #fff;
+            font-size: 12px;
+            margin-right: 30px;
+            text-decoration: none;
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+  }
+
+  &__bottom{
+    width: 100%;
+    margin: 55px auto 10px;
+    display: flex;
+    &__logo{
+      &__link{
+        height: 36px;
+        width: 134px;
+      }
+    }
+    &__copyright{
+      font-size: 11px;
+    }
+  }
+}
 
