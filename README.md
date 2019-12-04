@@ -59,7 +59,7 @@ Things you may want to cover:
 |building|string|
 ### Association
 - belongs_to :user
-- belongs_to :prefecture
+
 
 ## Cardsテーブル
 |Column|Type|Options|
@@ -89,30 +89,25 @@ Things you may want to cover:
 |condition|integer|null: false|
 |user_id|references|null: false, foreign_key: true|
 |postage|integer|null: false|
-<!-- |delivery_method|integer|null: false|kkkkkkkkk -->
-|prefecture_id|references|null: false, foreign_key: true|
-|delivery_day_id|references|null: false, foreign_key: true|
+|delivery_method|integer|null: false|
+|from_prefecture|integer|null: false|
+|delivery_days|integer|null: false|
 |price|integer|null: false|
 |brand_sub_id|references|null: false, foreign_key: true|
 |likes_count|integer|default: 0|
 |category_id|references|null: false, foreign_key: true|
-|profit_id|references|null: false, foreign_key: true|
-|size_id|references|null: false, foreign_key: true|
+|size|integer|null: false|
 |brand|string||
 ### Association
 - belongs_to :brand_sub
-- belongs_to :postage
-- belongs_to :delivery_method
 - belongs_to :category, dependent: :destroy
-- belongs_to :prefecture
-- has_many :images, dependent: :destroy
+- has_many_attached :images
 - belongs_to :profit
 - belongs_to :delivery_day
 - belongs_to :user
 - belongs_to :size
-- has_many :likes, dependent: :destroy
-- has_one :transaction, dependent: :destroy
-- belongs_to :condition
+<!-- - has_one :tran, dependent: :destroy -->
+has_one :tran, class_name: ‘Transaction’, dependent: :destroy
 
 ## Categorysテーブル
 |Column|Type|Options|
@@ -143,20 +138,6 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :item
 
-## Delivery_methodsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|method|string|null: false, unique: true|
-### Association
-- has_many :items
-
-
-## Postagesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|postage|string|null: false|
-### Association
-- has_many :items
 
 ## Brand_mainsテーブル
 |Column|Type|Options|
@@ -174,43 +155,6 @@ Things you may want to cover:
 - belongs_to :brand_main
 - has_many :items
 
-## Imagesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|item_id|references|null: false, foreign_key: true|
-|image|string|null: false|
-### Association
-- belongs_to :item
-
-## Profitsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|profit|integer|null: false|
-|delivery_cost|integer|null: false|
-### Association
-- has_many :items
-
-## Delivery_daysテーブル
-|Column|Type|Options|
-|------|----|-------|
-|days|string|null: false, unique: true|
-### Association
-- has_many :items
-
-## Sizesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|size|string|null: false, unique: true|
-### Association
-- has_many :items
-
-## Prefecturesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|prefecture|string||
-### Association
-- has_many :addresses
-- has_many :items
 
 ## Transactionsテーブル
 |Column|Type|Options|
@@ -242,12 +186,7 @@ Things you may want to cover:
 - belongs_to :transactions
 - belongs_to :user
 
-## Conditionsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|condition|string|null: false|
-### Association
-- has_many :items
+
 
 
 

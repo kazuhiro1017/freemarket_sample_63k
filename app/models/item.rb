@@ -3,7 +3,8 @@ class Item < ApplicationRecord
   belongs_to :category, dependent: :destroy
   # belongs_to :user
   has_many :likes, dependent: :destroy
-  has_one :tran, dependent: :destroy
+  # has_one :tran, dependent: :destroy
+  has_one :tran, class_name: ‘Transaction’, dependent: :destroy
   has_many_attached :images
  
   validates :name, presence: true
