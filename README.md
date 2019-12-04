@@ -86,10 +86,10 @@ Things you may want to cover:
 |------|----|-------|
 |name|string|null: false|
 |description|text|null: false|
-|condition_id|references|null: false, foreign_key: true|
+|condition|integer|null: false|
 |user_id|references|null: false, foreign_key: true|
-|postage_id|references|null: false, foreign_key: true|
-|delivery_method_id|references|null: false, foreign_key: true|
+|postage|integer|null: false|
+<!-- |delivery_method|integer|null: false|kkkkkkkkk -->
 |prefecture_id|references|null: false, foreign_key: true|
 |delivery_day_id|references|null: false, foreign_key: true|
 |price|integer|null: false|

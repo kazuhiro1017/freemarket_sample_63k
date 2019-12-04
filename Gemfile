@@ -84,4 +84,4 @@ gem 'ancestry'
 
 gem "faker"
 gem "gimei"
-
+gem "pry-rails"
