@@ -1,10 +1,10 @@
 .container 
-  = render partial: 'devise/shared/header-with-progress'
+  = render partial: 'layouts/shared/header-with-progress'
 
   .main
     .main__header3
       電話番号の確認
-    = form_for @user, url: users_sign_up_address_info_path, method: :get, html: {class: "main__phone-form"} do |f|
+    = form_for @user, url: address_add_users_path, method: :get, html: {class: "main__phone-form"} do |f|
       = f.label '携帯電話の番号'
       = f.telephone_field :phone_number, class: 'main__phone-form__number', placeholder: '携帯電話の番号を入力'
       .main__phone-form__conf-notice
@@ -17,4 +17,4 @@
       .main__phone-form__reason-message
         電話番号の確認が必要な理由
         = fa_icon 'chevron-right'
-  = render partial: 'devise/shared/footer'
+  = render partial: 'layouts/shared/footer'

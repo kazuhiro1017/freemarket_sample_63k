@@ -76,13 +76,12 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
 gem 'haml-rails'
-gem 'devise'
 gem "font-awesome-rails"
 gem "jquery-rails"
 gem "active_hash"
 
 gem 'ancestry'
-
+gem 'devise'
 gem "faker"
 gem "gimei"
-
+gem 'bcrypt'

@@ -1,9 +1,9 @@
 .container
-  = render partial: 'devise/shared/header-with-progress'
+  = render partial: 'layouts/shared/header-with-progress'
   .main
     .main__header2
       会員情報入力
-    = form_for @user, url: users_sign_up_phone_info_path, method: :get, html: {class: "main__form"} do |f|
+    = form_for @user, url: phone_add_users_path, method: :get, html: {class: "main__form"} do |f|
       = f.label 'ニックネーム'
       %span 必須
       = f.text_field :nickname, class: 'main__form__nickname', placeholder: '例）メルカリ太郎'
@@ -48,4 +48,4 @@
         本人情報の登録について
         = fa_icon 'chevron-right'
 
-  = render partial: 'devise/shared/footer'
+  = render partial: 'layouts/shared/footer'

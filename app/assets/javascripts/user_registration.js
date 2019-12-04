@@ -2,17 +2,17 @@ $(function(){
 
   let path = location.pathname.split("/")
   let page = -1;
-  switch(path[3]) {
-    case "user_info":
+  switch(path[2]) {
+    case "user_add":
       page = 0;
       break;
-    case "phone_info":
+    case "phone_add":
       page = 1;
       break;
-    case "address_info":
+    case "address_add":
       page = 2;
       break;
-    case "card_info":
+    case "card_add":
       page = 3;
       break;
     case "complete":
@@ -24,7 +24,7 @@ $(function(){
     css('color', '#ea352d');
 
     for (var i = 0; i <= page; i++) {
-      $(".header-with-progress__nav__lists__li > .circle").eq(i).
+      $(".circle").eq(i).
       addClass("circle--red");
     }
   }

@@ -1,10 +1,10 @@
 .container
-  = render partial: 'devise/shared/header-with-progress'
+  = render partial: 'layouts/shared/header-with-progress'
 
   .main
     .main__header5
       支払い方法
-    = form_for @user, url: user_registration_path, method: :post, html: {class: "main__card"} do |f|
+    = form_for @user, url: users_path, method: :post, html: {class: "main__card"} do |f|
       = f.fields_for :card do |c|
         = c.label 'カード番号'
         %span 必須
@@ -22,4 +22,4 @@
         = c.text_field :security_code, class: 'main__card__security', placeholder: 'カード背面４桁もしくは３桁の番号'
       = f.submit '次へ進む', class: 'main__card__btn'
 
-  = render partial: 'devise/shared/footer'
+  = render partial: 'layouts/shared/footer'

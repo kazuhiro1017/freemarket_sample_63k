@@ -1,11 +1,11 @@
 .container
-  = render partial: 'devise/shared/header'
+  = render partial: 'layouts/shared/header'
 
   .main
     .main__no-account
       %p.main__no-account__text
         アカウントをお持ちでない方はこちら
-      = link_to new_user_registration_path, {data: {"turbolinks": false}} do
+      = link_to new_user_path, {data: {"turbolinks": false}} do
         .main__no-account__btn
           新規会員登録
     .main__sns-login
@@ -25,4 +25,4 @@
       .main__email-pass-form__forgot-password
         パスワードをお忘れの方
         
-  = render partial: 'devise/shared/footer'
+  = render partial: 'layouts/shared/footer'
