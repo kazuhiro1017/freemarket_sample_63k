@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     collection do
       get "category_find"
     end
+  end
 
   resources :items, only: [:index, :new, :show] do
     member do
