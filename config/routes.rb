@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   end
   root to: 'items#index'
 
+  resources :items, only: [:index, :new, :create] do
+    collection do
+      get "category_find"
+    end
+
   resources :items, only: [:index, :new, :show] do
     member do
       get "purchase"
