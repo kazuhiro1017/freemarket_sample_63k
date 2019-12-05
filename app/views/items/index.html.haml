@@ -38,10 +38,12 @@
             .middle__contents__new-items__category__top__link
               =link_to "", class: "middle__contents__new-items__category__top__link__submit" do
                 もっと見る　＞
-          .middle__contents__new-items__category__bottom
-            %ul.middle__contents__new-items__category__bottom__item
-              %li.middle__contents__new-items__category__bottom__item__link
-              %li.middle__contents__new-items__category__bottom__item__link
+          .pickup-contents__image
+            = render partial: 'item', collection: @items
+
+
+
+
       .middle__contents__famous
         %h2.middle__contents__famous__text
           人気のブランド
@@ -61,10 +63,8 @@
             .middle__contents__new-items__category__top__link
               =link_to "", class: "middle__contents__new-items__category__top__link__submit" do
                 もっと見る　＞
-          .middle__contents__new-items__category__bottom
-            %ul.middle__contents__new-items__category__bottom__item
-              %li.middle__contents__new-items__category__bottom__item__link
-              %li.middle__contents__new-items__category__bottom__item__link
+          .pickup-contents__image
+            = render partial: 'item', collection: @vuitton
 
   .footer
     = render 'footer'
