@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  before_action :card_is_valid, only: :create
-  
+  after_action :user_is_valid, only: :phone_add
+  after_action :address_is_valid, only: :address_add
+  after_action :card_is_valid, only: :card_add
+
   def login
     @user = User.new
   end
@@ -34,21 +36,13 @@ class UsersController < ApplicationController
   end
 
   def address_add
-    session[:phone_number] = user_params[:phone_number]
     @user = User.new
     @user.build_address
-    # user_is_valid
   end
 
   def card_add
-    session[:post_number] = address_params[:address_attributes][:post_number]
-    session[:prefecture] = address_params[:address_attributes][:prefecture]
-    session[:city] = address_params[:address_attributes][:city]
-    session[:address] = address_params[:address_attributes][:address]
-    session[:building] = address_params[:address_attributes][:building]
     @user = User.new
     @user.build_card
-    # address_is_valid
   end
 
   def create
@@ -71,7 +65,11 @@ class UsersController < ApplicationController
       building: session[:building]
     )
     
-    @user.build_card(card_params[:card_attributes])
+    @user.build_card(
+      card_number: card_params[:card_attributes][:card_number],
+      expiry_date: card_expiry_join,
+      security_code: card_params[:card_attributes][:security_code]
+    )
 
     if @user.save
       session.clear
@@ -102,10 +100,9 @@ class UsersController < ApplicationController
 
     def card_params
       params.require(:user).permit(
-        card_attributes: [:id, :card_number,
-         :security_code]).merge(expiry_date: card_expiry_join)
+        card_attributes: [:id, :card_number, "expiry_date(1i)",
+         "expiry_date(2i)", "expiry_date(3i)", :security_code])
     end
-
     
     def birthday_join
       date = params[:birthday]
@@ -124,6 +121,9 @@ class UsersController < ApplicationController
     end
 
     def user_is_valid
+
+      session[:phone_number] = user_params[:phone_number]
+
       @user = User.new(
       nickname: session[:nickname],
       email: session[:email],
@@ -143,6 +143,13 @@ class UsersController < ApplicationController
     end
 
     def address_is_valid
+
+      session[:post_number] = address_params[:address_attributes][:post_number]
+      session[:prefecture] = address_params[:address_attributes][:prefecture]
+      session[:city] = address_params[:address_attributes][:city]
+      session[:address] = address_params[:address_attributes][:address]
+      session[:building] = address_params[:address_attributes][:building]
+
       @address = Address.new(
         post_number: session[:post_number],
         prefecture: session[:prefecture],
@@ -160,7 +167,7 @@ class UsersController < ApplicationController
     def card_is_valid
       @card = Card.new(
         card_number: card_params[:card_attributes][:card_number],
-        expiry_date: card_params[:expiry_date],
+        expiry_date: card_expiry_join,
         security_code: card_params[:card_attributes][:security_code]
       )
       if @card.valid?
