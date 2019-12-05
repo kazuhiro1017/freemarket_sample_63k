@@ -13,7 +13,7 @@ before_action :address_is_valid, only: :create
       flash[:notice] = "ログインしました"
       redirect_to("/items")
     else
-      flash[:notice] = "メールアドレスまたはパスワードが間違っています"
+      flash[:alert] = "メールアドレスまたはパスワードが間違っています"
       redirect_to("/users/login")
     end
   end
