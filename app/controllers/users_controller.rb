@@ -3,6 +3,19 @@ before_action :user_is_valid, only: :card_add
 before_action :address_is_valid, only: :create
 
   def login
+    @user = User.new
+  end
+
+  def logging_in
+    @user = User.find_by(email: user_params[:email])
+    if @user
+      session[:user_id] = @user.id
+      flash[:notice] = "ログインしました"
+      redirect_to("/items")
+    else
+      flash[:notice] = "メールアドレスまたはパスワードが間違っています"
+      redirect_to("/users/login")
+    end
   end
 
   def user_add

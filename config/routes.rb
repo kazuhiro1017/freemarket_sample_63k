@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get 'login'
+      post 'logging_in'
       get 'user_add'
       get 'phone_add'
       get 'address_add'
