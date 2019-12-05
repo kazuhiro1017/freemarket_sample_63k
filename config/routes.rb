@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: :show do
-  collection do
-    get "profile"
+    collection do
+      get "profile"
+    end
   end
-end
 end
