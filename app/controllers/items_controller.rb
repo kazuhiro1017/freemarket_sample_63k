@@ -32,6 +32,7 @@ class ItemsController < ApplicationController
     @root = @item.category.root.name
     @parent = @item.category.parent.name
     @children = @item.category.name
+    # @price = @item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse （プライスの表示の仕方その２）
   end
 
   def purchase
