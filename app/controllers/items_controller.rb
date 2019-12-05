@@ -17,7 +17,6 @@ class ItemsController < ApplicationController
     else
       flash.now[:alert] = "[必須]を入力してください。"
       render "new"
-
     end
   end
 
