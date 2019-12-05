@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     collection do
       get "profile"
       get "signout"
+      get "card"
     end
   end
 end
