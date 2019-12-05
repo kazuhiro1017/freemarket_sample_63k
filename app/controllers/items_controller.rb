@@ -29,6 +29,9 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @root = @item.category.root.name
+    @parent = @item.category.parent.name
+    @children = @item.category.name
   end
 
   def purchase
