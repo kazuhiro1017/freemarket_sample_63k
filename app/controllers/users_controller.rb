@@ -1,14 +1,13 @@
 class UsersController < ApplicationController
-before_action :user_is_valid, only: :card_add
-before_action :address_is_valid, only: :create
-
+  before_action :card_is_valid, only: :create
+  
   def login
     @user = User.new
   end
 
   def logging_in
     @user = User.find_by(email: user_params[:email])
-    if @user
+    if @user && @user.authenticate(user_params[:password])
       session[:user_id] = @user.id
       flash[:notice] = "ログインしました"
       redirect_to("/items")
@@ -38,6 +37,7 @@ before_action :address_is_valid, only: :create
     session[:phone_number] = user_params[:phone_number]
     @user = User.new
     @user.build_address
+    # user_is_valid
   end
 
   def card_add
@@ -48,6 +48,7 @@ before_action :address_is_valid, only: :create
     session[:building] = address_params[:address_attributes][:building]
     @user = User.new
     @user.build_card
+    # address_is_valid
   end
 
   def create
@@ -101,8 +102,8 @@ before_action :address_is_valid, only: :create
 
     def card_params
       params.require(:user).permit(
-        card_attributes: [:id, :card_number, :expiry_date_month,
-          :expiry_date_year, :security_code])
+        card_attributes: [:id, :card_number,
+         :security_code]).merge(expiry_date: card_expiry_join)
     end
 
     
@@ -114,6 +115,12 @@ before_action :address_is_valid, only: :create
       end
 
       Date.new date["birthday(1i)"].to_i,date["birthday(2i)"].to_i,date["birthday(3i)"].to_i
+    end
+
+    def card_expiry_join
+      date = card_params[:card_attributes]
+
+      Date.new date["expiry_date(1i)"].to_i,date["expiry_date(2i)"].to_i,date["expiry_date(3i)"].to_i
     end
 
     def user_is_valid
@@ -128,8 +135,11 @@ before_action :address_is_valid, only: :create
       birthday: session[:birthday],
       phone_number: session[:phone_number]
       )
-
-      redirect_to action: 'user_add' unless @user.valid?
+      if @user.valid?
+      else
+        flash[:alert] = "お客様情報の入力が間違っています"
+        redirect_to action: 'user_add'
+      end
     end
 
     def address_is_valid
@@ -140,7 +150,24 @@ before_action :address_is_valid, only: :create
         address: session[:address],
         building: session[:building]
       )
-
-      redirect_to action: 'address_add' unless @address.valid?
+      if @address.valid?
+      else
+        flash[:alert] = "住所の入力が間違っています"
+        redirect_to action: 'address_add'
+      end
     end
+
+    def card_is_valid
+      @card = Card.new(
+        card_number: card_params[:card_attributes][:card_number],
+        expiry_date: card_params[:expiry_date],
+        security_code: card_params[:card_attributes][:security_code]
+      )
+      if @card.valid?
+      else
+        flash[:alert] = "カード情報の入力が間違っています"
+        redirect_to action: 'card_add'
+      end
+    end
+
 end
