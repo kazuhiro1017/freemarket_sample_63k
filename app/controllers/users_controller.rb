@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-before_action :save_to_session, only: :card_add
+before_action :user_is_valid, only: :card_add
+before_action :address_is_valid, only: :create
 
   def login
   end
@@ -27,11 +28,11 @@ before_action :save_to_session, only: :card_add
   end
 
   def card_add
-    session[:post_number] = params[:user][:address_attributes][:post_number]
-    session[:prefecture] = params[:user][:address_attributes][:prefecture]
-    session[:city] = params[:user][:address_attributes][:city]
-    session[:address] = params[:user][:address_attributes][:address]
-    session[:building] = params[:user][:address_attributes][:building]
+    session[:post_number] = address_params[:address_attributes][:post_number]
+    session[:prefecture] = address_params[:address_attributes][:prefecture]
+    session[:city] = address_params[:address_attributes][:city]
+    session[:address] = address_params[:address_attributes][:address]
+    session[:building] = address_params[:address_attributes][:building]
     @user = User.new
     @user.build_card
   end
@@ -50,29 +51,28 @@ before_action :save_to_session, only: :card_add
     )
     @user.build_address(
       post_number: session[:post_number],
-      # prefecture: session[:prefecture],
-      prefecture: 3,
+      prefecture: session[:prefecture],
       city: session[:city],
       address: session[:address],
       building: session[:building]
     )
     
     @user.build_card(card_params[:card_attributes])
-    # @user.card.save
-    # @user.address.save
 
     if @user.save
+      session.clear
       session[:user_id] = @user.id
       redirect_to action: 'complete'
     else
+      session.clear
       redirect_to action: 'user_add'
+      
     end
   end
 
   def complete
   end
 
-  # この辺のメソッドは、paramsにフォームの情報が入る、postの段階でないと働かない。
   private 
     def user_params
       params.require(:user).permit(
@@ -103,7 +103,7 @@ before_action :save_to_session, only: :card_add
       Date.new date["birthday(1i)"].to_i,date["birthday(2i)"].to_i,date["birthday(3i)"].to_i
     end
 
-    def save_to_session
+    def user_is_valid
       @user = User.new(
       nickname: session[:nickname],
       email: session[:email],
@@ -117,5 +117,17 @@ before_action :save_to_session, only: :card_add
       )
 
       redirect_to action: 'user_add' unless @user.valid?
+    end
+
+    def address_is_valid
+      @address = Address.new(
+        post_number: session[:post_number],
+        prefecture: session[:prefecture],
+        city: session[:city],
+        address: session[:address],
+        building: session[:building]
+      )
+
+      redirect_to action: 'address_add' unless @address.valid?
     end
 end

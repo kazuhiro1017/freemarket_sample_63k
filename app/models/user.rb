@@ -3,9 +3,9 @@ class User < ApplicationRecord
   has_secure_password
   has_many :likes
   has_many :items, dependent: :destroy
-  has_one :address
+  has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address
-  has_one :card
+  has_one :card, dependent: :destroy
   accepts_nested_attributes_for :card
 
   kanji = /\A[一-龥]+\z/

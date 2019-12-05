@@ -11,7 +11,7 @@
         = d.text_field :post_number, class: 'main__address__postal-code', placeholder: '例）123-4567'
         = d.label '都道府県'
         %span 必須
-        = d.select :prefecture, Address.prefectures
+        = d.select :prefecture, Address.prefectures.keys
         = d.label '市区町村'
         %span 必須
         = d.text_field :city, class: 'main__address__city', placeholder: '例）横浜市緑区'
