@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   
   def index
+    @items = Item.where(category: 1..199).order("created_at DESC").limit(10)
+    @vuitton = Item.where(brand: "louis vuitton").order("created_at DESC").limit(10)
   end
 
   def new

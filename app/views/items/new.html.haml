@@ -83,17 +83,17 @@
                   %label 配送の方法
                   %span 必須
                   .delivery-method
-                    = f.select :delivery_method, Item.methods
+                    = f.select :delivery_method, Item.delivery_methods.keys
                 .form-group
                   %label 発送元の地域
                   %span 必須
                   .delivery-region
-                    = f.select :from_prefecture, Item.prefectures
+                    = f.select :from_prefecture, Item.from_prefectures.keys
                 .form-group
                   %label 発送までの日数
                   %span 必須
                   .delivery-days
-                    = f.select :delivery_days, Item.days.keys
+                    = f.select :delivery_days, Item.delivery_days.keys
             
             .sell-cost
               %h3.cost-text 販売価格(300〜9,999,999)
