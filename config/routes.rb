@@ -22,11 +22,6 @@ Rails.application.routes.draw do
       get 'address_add'
       get 'card_add'
       get 'complete'
-  resources :users, only: :show do
-    collection do
-      get "profile"
-      get "signout"
-      get "card"
     end
   end
   resources :users, only: :show do
