@@ -1,10 +1,5 @@
 class UsersController < ApplicationController
 
-# after_action :user_is_valid, only: :phone_add
-# after_action :address_is_valid, only: :address_add
-# after_action :card_is_valid, only: :card_add
-
-
   def login
     @user = User.new
   end
@@ -38,25 +33,29 @@ class UsersController < ApplicationController
   end
 
   def address_add
-    session[:phone_number] = user_params[:phone_number]
-#    user_is_valid
+    if params[:user]
+      session[:phone_number] = user_params[:phone_number]
+    end
+    user_is_valid
     @user = User.new
     @user.build_address
   end
 
   def card_add
-    session[:post_number] = address_params[:address_attributes][:post_number]
-    session[:prefecture] = address_params[:address_attributes][:prefecture]
-    session[:city] = address_params[:address_attributes][:city]
-    session[:address] = address_params[:address_attributes][:address]
-    session[:building] = address_params[:address_attributes][:building]
-    # address_is_valid
+    if params[:user]
+      session[:post_number] = address_params[:address_attributes][:post_number]
+      session[:prefecture] = address_params[:address_attributes][:prefecture]
+      session[:city] = address_params[:address_attributes][:city]
+      session[:address] = address_params[:address_attributes][:address]
+      session[:building] = address_params[:address_attributes][:building]
+    end
+    address_is_valid
     @user = User.new
     @user.build_card
   end
 
   def create
-    # card_is_valid
+    card_is_valid and return
     @user = User.new(
       nickname: session[:nickname],
       email: session[:email],
@@ -88,8 +87,8 @@ class UsersController < ApplicationController
       redirect_to action: 'complete'
     else
       session.clear
+      flash[:alert] = "入力をもう一度やり直してください"
       redirect_to action: 'user_add'
-      
     end
   end
 
@@ -118,7 +117,7 @@ class UsersController < ApplicationController
     def birthday_join
       date = params[:birthday]
 
-      if date["birthday(1i)"].empty? && date["birthday(2i)"].empty? && date["birthday(3i)"].empty?
+      if date["birthday(1i)"].empty? || date["birthday(2i)"].empty? || date["birthday(3i)"].empty?
         return
       end
 
@@ -128,14 +127,14 @@ class UsersController < ApplicationController
     def card_expiry_join
       date = card_params[:card_attributes]
 
+      if date["expiry_date(1i)"].empty? || date["expiry_date(2i)"].empty? || date["expiry_date(3i)"].empty?
+        return
+      end
+
       Date.new date["expiry_date(1i)"].to_i,date["expiry_date(2i)"].to_i,date["expiry_date(3i)"].to_i
     end
 
     def user_is_valid
-
-      if @user
-        session[:phone_number] = user_params[:phone_number]
-      end
 
       @user = User.new(
       nickname: session[:nickname],
@@ -152,17 +151,10 @@ class UsersController < ApplicationController
       else
         flash[:alert] = "お客様情報の入力が間違っています"
         redirect_to action: "user_add"
-        
       end
     end
 
     def address_is_valid
-
-      session[:post_number] = address_params[:address_attributes][:post_number]
-      session[:prefecture] = address_params[:address_attributes][:prefecture]
-      session[:city] = address_params[:address_attributes][:city]
-      session[:address] = address_params[:address_attributes][:address]
-      session[:building] = address_params[:address_attributes][:building]
 
       @address = Address.new(
         post_number: session[:post_number],
@@ -185,9 +177,11 @@ class UsersController < ApplicationController
         security_code: card_params[:card_attributes][:security_code]
       )
       if @card.valid?
+        return false
       else
         flash[:alert] = "カード情報の入力が間違っています"
         redirect_to action: 'card_add'
+        return true
       end
     end
 
