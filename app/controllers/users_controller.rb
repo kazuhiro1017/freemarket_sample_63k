@@ -38,12 +38,18 @@ class UsersController < ApplicationController
   end
 
   def address_add
-    # user_is_valid
+    session[:phone_number] = user_params[:phone_number]
+#    user_is_valid
     @user = User.new
     @user.build_address
   end
 
   def card_add
+    session[:post_number] = address_params[:address_attributes][:post_number]
+    session[:prefecture] = address_params[:address_attributes][:prefecture]
+    session[:city] = address_params[:address_attributes][:city]
+    session[:address] = address_params[:address_attributes][:address]
+    session[:building] = address_params[:address_attributes][:building]
     # address_is_valid
     @user = User.new
     @user.build_card
