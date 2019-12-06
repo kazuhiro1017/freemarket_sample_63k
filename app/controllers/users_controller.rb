@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
+
 # after_action :user_is_valid, only: :phone_add
 # after_action :address_is_valid, only: :address_add
 # after_action :card_is_valid, only: :card_add
+
 
   def login
     @user = User.new
