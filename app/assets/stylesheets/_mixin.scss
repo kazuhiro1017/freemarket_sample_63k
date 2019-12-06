@@ -64,3 +64,9 @@
   left: 10px;
   font-size: 24px;
 }
+
+@mixin clearfix {
+  content: "";
+  clear: both;
+  display: block;
+}

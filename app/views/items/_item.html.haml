@@ -1,0 +1,13 @@
+.pickup-content
+  = link_to "#" do
+    %figure.content__box
+      - if item.images.attached?
+        = image_tag item.images.first, class:'item_image'
+        .image_title
+          %p.image_price
+            ="¥#{item.price}"
+      - else
+        = image_tag "", class:'item_image'
+      %figcaption.text__box 
+        %span 
+          = item.name
