@@ -5,11 +5,14 @@
       購入内容の確認
     .purchase__item
       %figure
-        = image_tag src="/assets/sample.jpg", size: "150x150"
+        - @item.images.each do |image|
+          = image_tag image , size: "200x200"
       .purchase__item-name
-        %p 【即納】 SENSE OF PLACE　ミモレ丈スカート　コクーンスカート36
+        %p 
+        = @item.name
       .price
-        %p ¥3480 
+        %p
+        = @item.price.to_s.gsub(/(\d)(?=(\d{3})+(?!\d))/, '\1,')
         %p (送料込み)
       .point
         %div 
