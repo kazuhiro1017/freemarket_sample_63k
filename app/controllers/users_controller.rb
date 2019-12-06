@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-# before_action :user_is_valid, only: :address_add
-# before_action :address_is_valid, only: :card_add
-  after_action :card_is_valid, only: :card_add
+# after_action :user_is_valid, only: :phone_add
+# after_action :address_is_valid, only: :address_add
+# after_action :card_is_valid, only: :card_add
 
   def login
     @user = User.new
@@ -36,26 +36,19 @@ class UsersController < ApplicationController
   end
 
   def address_add
-    session[:phone_number] = user_params[:phone_number] if params[:user]
-    user_is_valid
+    # user_is_valid
     @user = User.new
     @user.build_address
   end
 
   def card_add
-    if params[:user]
-      session[:post_number] = address_params[:address_attributes][:post_number]
-      session[:prefecture] = address_params[:address_attributes][:prefecture]
-      session[:city] = address_params[:address_attributes][:city]
-      session[:address] = address_params[:address_attributes][:address]
-      session[:building] = address_params[:address_attributes][:building]
-    end
-    address_is_valid
+    # address_is_valid
     @user = User.new
     @user.build_card
   end
 
   def create
+    # card_is_valid
     @user = User.new(
       nickname: session[:nickname],
       email: session[:email],
@@ -87,7 +80,6 @@ class UsersController < ApplicationController
       redirect_to action: 'complete'
     else
       session.clear
-      flash[:alert] = "もう一度やり直してください"
       redirect_to action: 'user_add'
       
     end
@@ -133,6 +125,10 @@ class UsersController < ApplicationController
 
     def user_is_valid
 
+      if @user
+        session[:phone_number] = user_params[:phone_number]
+      end
+
       @user = User.new(
       nickname: session[:nickname],
       email: session[:email],
@@ -147,12 +143,18 @@ class UsersController < ApplicationController
       if @user.valid?
       else
         flash[:alert] = "お客様情報の入力が間違っています"
-        redirect_to action: 'user_add'
+        redirect_to action: "user_add"
         
       end
     end
 
     def address_is_valid
+
+      session[:post_number] = address_params[:address_attributes][:post_number]
+      session[:prefecture] = address_params[:address_attributes][:prefecture]
+      session[:city] = address_params[:address_attributes][:city]
+      session[:address] = address_params[:address_attributes][:address]
+      session[:building] = address_params[:address_attributes][:building]
 
       @address = Address.new(
         post_number: session[:post_number],
