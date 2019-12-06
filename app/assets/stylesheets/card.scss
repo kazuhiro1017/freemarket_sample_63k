@@ -1,0 +1,65 @@
+.pay-info{
+  float: right;
+  width: 700px;
+  background: white;
+  &__text{
+    font-size: 24px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: bold;
+    padding: 8px 24px;
+    border-bottom: 2px solid #f5f5f5;
+    text-align: center;
+    p{
+      font-weight: bolder;
+    }
+  }
+  &__cards-info{
+    padding: 64px;
+    .bottom-border{
+      border-bottom: 1px solid #eee;
+      .cards-list{
+        margin: 0 auto;
+        max-width: 320px;
+        &__text{
+          font-size: 15px;
+          font-family: 'Source Sans Pro', sans-serif;
+          p{
+            font-weight: bolder;
+          }
+        }
+        &__info{
+          position: relative;
+          padding: 24px 0;
+          &__num{
+            margin: 8px 0 0;
+            font-size: 16px;
+            font-family: 'Source Sans Pro', sans-serif;
+          }
+          &__day{
+            margin: 8px 0 0;
+            font-size: 16px;
+            font-family: 'Source Sans Pro', sans-serif;
+          }
+          button.remove{
+            position: absolute;
+            top: 21px;
+            right: 0;
+            padding: 2px 6px;
+            background: #fff;
+            border-radius: 3px;
+            border: 1px solid #ea352d;
+            color: #ea352d;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    .about-pay{
+      display: block;
+      margin: 40px 0 0;
+      text-align: right;
+      color: #0099e8;
+      font-size: 15px;
+    }
+  }
+}
