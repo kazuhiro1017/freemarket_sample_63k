@@ -18,4 +18,11 @@ Rails.application.routes.draw do
       get 'complete'
     end
   end
+  resources :users, only: :show do
+    collection do
+      get "profile"
+      get "signout"
+      get "card"
+    end
+  end
 end
