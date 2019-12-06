@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  after_action :user_is_valid, only: :phone_add
-  after_action :address_is_valid, only: :address_add
-  after_action :card_is_valid, only: :card_add
+# after_action :user_is_valid, only: :phone_add
+# after_action :address_is_valid, only: :address_add
+# after_action :card_is_valid, only: :card_add
 
   def login
     @user = User.new
@@ -36,16 +36,19 @@ class UsersController < ApplicationController
   end
 
   def address_add
+    # user_is_valid
     @user = User.new
     @user.build_address
   end
 
   def card_add
+    # address_is_valid
     @user = User.new
     @user.build_card
   end
 
   def create
+    # card_is_valid
     @user = User.new(
       nickname: session[:nickname],
       email: session[:email],
@@ -122,7 +125,9 @@ class UsersController < ApplicationController
 
     def user_is_valid
 
-      session[:phone_number] = user_params[:phone_number]
+      if @user
+        session[:phone_number] = user_params[:phone_number]
+      end
 
       @user = User.new(
       nickname: session[:nickname],
@@ -138,7 +143,8 @@ class UsersController < ApplicationController
       if @user.valid?
       else
         flash[:alert] = "お客様情報の入力が間違っています"
-        redirect_to action: 'user_add'
+        redirect_to action: "user_add"
+        
       end
     end
 
