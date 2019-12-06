@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
 # before_action :user_is_valid, only: :address_add
 # before_action :address_is_valid, only: :card_add
   after_action :card_is_valid, only: :card_add
