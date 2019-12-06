@@ -93,4 +93,35 @@ $(document).on('turbolinks:load', function (){
       $(".hyphen-bold").html("-");
     };
   });
+
+
+
+  function buildimage(picture){
+    html = `<li>
+              <div id = "result">
+                <img src = "${picture}">
+                <div class = "image_text">
+                  <a href class = "img_edit">編集</a>
+                  <span>|</span>
+                  <a href class = "img_destroy">削除</a>
+              </div>
+            </li>`
+    $(".sell_image").append(html)
+  }
+
+  $(function(){
+    $('#item_images').change(function(){
+        //$('img').remove();
+        var file = $(this).prop('files')[0];
+        if(!file.type.match('image.*')){
+          return;
+        }
+        var fileReader = new FileReader();
+        fileReader.onloadend = function() {
+          buildimage(fileReader.result)
+            // $('#result').html('<img src="' + fileReader.result + '"/>');
+        }
+        fileReader.readAsDataURL(file);
+    });
+  });
 });
