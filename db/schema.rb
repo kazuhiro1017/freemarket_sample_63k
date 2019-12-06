@@ -46,14 +46,6 @@ ActiveRecord::Schema.define(version: 2019_12_03_122254) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "cards", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "customer_id", null: false
-    t.bigint "card_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -62,38 +54,12 @@ ActiveRecord::Schema.define(version: 2019_12_03_122254) do
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
-  create_table "conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "condition", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "delivery_days", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "days", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "delivery_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "method", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "description", null: false
-    t.bigint "condition_id", null: false
-    t.bigint "user_id", null: false
-    t.bigint "postage_id", null: false
-    t.bigint "delivery_method_id", null: false
-    t.bigint "prefecture_id", null: false
-    t.bigint "delivery_day_id", null: false
     t.integer "price", null: false
     t.integer "like_count", default: 0
     t.bigint "category_id", null: false
-    t.bigint "profit_id", null: false
-    t.bigint "size_id", null: false
     t.string "brand"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -104,14 +70,6 @@ ActiveRecord::Schema.define(version: 2019_12_03_122254) do
     t.integer "postage"
     t.integer "from_prefecture"
     t.index ["category_id"], name: "index_items_on_category_id"
-    t.index ["condition_id"], name: "index_items_on_condition_id"
-    t.index ["delivery_day_id"], name: "index_items_on_delivery_day_id"
-    t.index ["delivery_method_id"], name: "index_items_on_delivery_method_id"
-    t.index ["postage_id"], name: "index_items_on_postage_id"
-    t.index ["prefecture_id"], name: "index_items_on_prefecture_id"
-    t.index ["profit_id"], name: "index_items_on_profit_id"
-    t.index ["size_id"], name: "index_items_on_size_id"
-    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -123,27 +81,8 @@ ActiveRecord::Schema.define(version: 2019_12_03_122254) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "postages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "postage", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "profits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "profit", null: false
-    t.integer "delivery_cost", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "sizes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "size", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -164,7 +103,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_122254) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "nickname", default: "", null: false
+    t.string "nickname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "first_name", null: false
@@ -184,14 +123,6 @@ ActiveRecord::Schema.define(version: 2019_12_03_122254) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "items", "categories"
-  add_foreign_key "items", "conditions"
-  add_foreign_key "items", "delivery_days"
-  add_foreign_key "items", "delivery_methods"
-  add_foreign_key "items", "postages"
-  add_foreign_key "items", "prefectures"
-  add_foreign_key "items", "profits"
-  add_foreign_key "items", "sizes"
-  add_foreign_key "items", "users"
   add_foreign_key "likes", "items"
   add_foreign_key "likes", "users"
 end
