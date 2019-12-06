@@ -1,11 +1,11 @@
 .container
-  = render partial: 'devise/shared/header'
+  = render partial: 'layouts/shared/header'
 
   .main
     .main__no-account
       %p.main__no-account__text
         アカウントをお持ちでない方はこちら
-      = link_to '#', {data: {"turbolinks": false}} do
+      = link_to new_user_path, {data: {"turbolinks": false}} do
         .main__no-account__btn
           新規会員登録
     .main__sns-login
@@ -17,7 +17,7 @@
         .main__sns-login__google
           = fa_icon 'google'
           Googleでログイン
-    = form_for "#", {html: {class: "main__email-pass-form"}} do |f|
+    = form_for @user, url: logging_in_users_path, method: :post, html: {class: "main__email-pass-form"} do |f|
       = f.email_field :email, class: 'main__email-pass-form__email', placeholder: 'メールアドレス'
       = f.password_field :password, class: 'main__email-pass-form__password', placeholder: 'パスワード'
       .g-recaptcha{data: {sitekey: "6Lcl18QUAAAAAEvLZDKaF45DAa_dBjcAUjkJDI2l"}}
@@ -25,4 +25,4 @@
       .main__email-pass-form__forgot-password
         パスワードをお忘れの方
         
-  = render partial: 'devise/shared/footer'
+  = render partial: 'layouts/shared/footer'
