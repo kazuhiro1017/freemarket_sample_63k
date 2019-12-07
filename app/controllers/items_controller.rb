@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show]
+  before_action :set_item, only: [:show, :purchase]
 
   def index
     @items = Item.where(category: 1..199).order("created_at DESC").limit(10)
@@ -36,7 +36,6 @@ class ItemsController < ApplicationController
   end
 
   def purchase
-    @item = Item.find(params[:id]) 
   end
 
   private
