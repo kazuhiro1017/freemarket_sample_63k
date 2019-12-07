@@ -52,9 +52,4 @@ class Item < ApplicationRecord
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47,未定:48
   }, _suffix: true
 
-  # def user
-  #   #インスタンスメソッドないで、selfはインスタンス自身を表す
-  #   return User.find_by(id: self.user_id)
-  # end
-
 end
