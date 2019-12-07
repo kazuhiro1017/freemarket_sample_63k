@@ -1,12 +1,12 @@
 class ItemsController < ApplicationController
-  
+  before_action :set_item, only: [:show]
+
   def index
   end
 
   def new
     @item = Item.new
   end
-
 
   def create
     @item = Item.new(item_params)
@@ -15,7 +15,6 @@ class ItemsController < ApplicationController
     else
       flash.now[:alert] = "[必須]を入力してください。"
       render "new"
-
     end
   end
 
@@ -28,7 +27,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     @root = @item.category.root.name
     @parent = @item.category.parent.name
     @children = @item.category.name
@@ -41,6 +39,10 @@ class ItemsController < ApplicationController
   private
   def item_params
     params.require(:item).permit(:name, :description, :category_id, :size, :brand, :condition, :postage, :delivery_method, :from_prefecture, :delivery_days, :price, images: [])     # .merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
 end
