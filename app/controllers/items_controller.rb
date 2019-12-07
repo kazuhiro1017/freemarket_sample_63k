@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   
   def index
+    @items = Item.where(category: 1..199).order("created_at DESC").limit(10)
+    @vuitton = Item.where(brand: "louis vuitton").order("created_at DESC").limit(10)
   end
 
   def new
@@ -15,7 +17,6 @@ class ItemsController < ApplicationController
     else
       flash.now[:alert] = "[必須]を入力してください。"
       render "new"
-
     end
   end
 
@@ -36,6 +37,7 @@ class ItemsController < ApplicationController
   end
 
   def purchase
+    @item = Item.find(params[:id]) 
   end
 
   private
