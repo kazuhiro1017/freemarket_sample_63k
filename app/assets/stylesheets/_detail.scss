@@ -33,15 +33,32 @@ body{
     @include clearfix();
     margin-top: 16px;
     .item-photo{
-      min-width: 300px;
       max-width: 300px;
-      min-height: 375px;
       float: left;
-      margin: 0 auto;
-      .item-main-slider{
-      }
-      .item-sub-slider{
-        .slide{
+    }
+    img{
+      width: 100%;
+      height:300px;
+      vertical-align: bottom;
+    }
+    %item{
+      background-color: #fff;
+      max-width: 20%;
+      cursor: pointer;
+    }
+    .thumblist{
+      display: flex;
+      flex-wrap: wrap;
+      &-item{
+        @extend %item;
+        img{
+          height: 60px;
+          opacity: .5;
+        }
+        &.current{
+          img{
+            opacity: 1;
+          }
         }
       }
     }
