@@ -97,11 +97,8 @@
       &__birthday-label {
         margin-top: 14px;
       }
-      select {
-        margin-top: 8px;
-        width: 76px;
-        height: 48px;
-        box-sizing: border-box;
+      .year, .month, .day {
+        @include select_form; 
       }
       &__be-collect-info {
         margin-top: 8px;
