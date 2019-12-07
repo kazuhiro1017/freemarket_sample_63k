@@ -3,13 +3,13 @@
     = @item.name
   .item-content
     .item-photo
-      %ul.item-main-slider
-        %li#slide-1.slide
-          = image_tag src="/assets/m17912265477_1.jpg", size: "300x300"
-      %ul.item-sub-slider{role: "navigation"}
-        %li.slide
-          =link_to "#slide-1", class: "" do
-            = image_tag src="/assets/m17912265477_2.jpg", size: "60x60"
+      .swiper-container
+        .swiper-wrapper
+          - if @item.images.attached?
+            - @item.images.each do |image|
+              .swiper-slide
+                = image_tag image, class: "item-image"
+        .thumblist
     .item-detail
       .tbody
         .tr
