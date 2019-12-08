@@ -20,9 +20,9 @@ RSpec.describe Address, type: :model do
       end
 
       it 'is invalid without prefecture' do
-        address = build(:address, prefecture: nil)
+        address = build(:address, prefecture: "---")
         address.valid?
-        expect(address.errors[:prefecture]).to include("can't be blank")
+        expect(address.errors[:prefecture]).to include("is reserved")
       end
 
       it 'is invalid without city' do
