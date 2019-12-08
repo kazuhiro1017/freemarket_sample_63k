@@ -6,7 +6,7 @@
       電話番号の確認
     = form_for @user, url: address_add_users_path, method: :get, html: {class: "main-k__phone-form"} do |f|
       = f.label '携帯電話の番号'
-      = f.telephone_field :phone_number, class: 'main-k__phone-form__number', placeholder: '携帯電話の番号を入力'
+      = f.telephone_field :phone_number, class: 'main-k__phone-form__number', placeholder: '例）09012345678'
       .main-k__phone-form__conf-notice
         本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して
         認証を行う事があります。
