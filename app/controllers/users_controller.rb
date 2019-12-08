@@ -151,7 +151,13 @@ class UsersController < ApplicationController
       )
       if @user.valid?
       else
-        flash[:alert] = "お客様情報の入力が間違っています"
+        i = 0
+        @user.errors.full_messages.each do |message|
+          key_st = "alert" + "#{i}"
+          key = key_st.to_sym
+          flash[key] = message
+          i += 1
+        end
         redirect_to action: "user_add"
       end
     end
@@ -167,7 +173,13 @@ class UsersController < ApplicationController
       )
       if @address.valid?
       else
-        flash[:alert] = "住所の入力が間違っています"
+        i = 0
+        @address.errors.full_messages.each do |message|
+          key_st = "alert" + "#{i}"
+          key = key_st.to_sym
+          flash[key] = message
+          i += 1
+        end
         redirect_to action: 'address_add'
       end
     end
@@ -181,7 +193,13 @@ class UsersController < ApplicationController
       if @card.valid?
         return false
       else
-        flash[:alert] = "カード情報の入力が間違っています"
+        i = 0
+        @card.errors.full_messages.each do |message|
+          key_st = "alert" + "#{i}"
+          key = key_st.to_sym
+          flash[key] = message
+          i += 1
+        end
         redirect_to action: 'card_add'
         return true
       end

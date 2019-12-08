@@ -5,10 +5,11 @@
     text-align: center;
   }
 
-  .alert {
-    background-color: orange;
-    color: white;
-    text-align: center;
+  @for $i from 0 through 20 {
+    .alert#{$i} {
+      background-color: orange;
+      color: white;
+      text-align: center;
+    }
   }
-
 }
