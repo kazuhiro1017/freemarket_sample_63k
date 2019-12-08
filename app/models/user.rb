@@ -8,13 +8,11 @@ class User < ApplicationRecord
   has_one :card, dependent: :destroy
   accepts_nested_attributes_for :card
 
-#  kanji = /\A[一-龥]+\z/
   zenkaku = /\A[ぁ-んァ-ン一-龥]+\z/
   kana = /\A([ァ-ン]|ー)+\z/
   pass = /\A[a-z\d]{7,100}\z/i
-#  email = /\A([^@\s]+)@[^@\s]+\z/
   email = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-  phone = /\d{,11}/
+  phone = /\A\d{10,11}\z/
 
 
   validates :nickname, presence: true, length: { maximum: 20 }
