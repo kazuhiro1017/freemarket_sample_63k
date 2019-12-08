@@ -1,14 +1,14 @@
-.container
+.container-k
   = render partial: 'layouts/shared/header-with-progress'
 
-  .main
-    .main__header6
+  .main-k
+    .main-k__header6
       会員登録完了
-    .main__body
-      .main__body__finish-message
+    .main-k__body
+      .main-k__body__finish-message
         ありがとうございます。会員登録が完了しました。
       = link_to root_path, {data: {"turbolinks": false}} do
-        .main__body__start-btn
+        .main-k__body__start-btn
           メルカリをはじめる
 
   = render partial: 'layouts/shared/footer'

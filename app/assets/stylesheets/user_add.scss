@@ -1,6 +1,6 @@
-.container {
+.container-k {
 
-  .main {
+  .main-k {
 
     &__header2 {
       @include mainheader;
@@ -50,12 +50,15 @@
       
       &__nickname {
         @include formfield;
+        margin-bottom: 14px;
       }
       &__email {
         @include formfield;
+        margin-bottom: 14px;
       }
       &__password {
         @include formfield;
+        margin-bottom: 14px;
       }
       &__kanji-label {
         margin-top: 14px;
@@ -102,6 +105,7 @@
       }
       &__be-collect-info {
         margin-top: 8px;
+        margin-bottom: 14px;
         font-size: 14px;
         color: #888888;
       }
