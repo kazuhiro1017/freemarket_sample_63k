@@ -22,5 +22,5 @@
         =link_to new_user_path, class: "new-entry-link" do
           新規会員登録
       .hedder__menu__bottom__right__login
-        =link_to login_users_path, class: "login-link" do
+        =link_to login_users_path, data: {"turbolinks": false}, class: "login-link" do
           ログイン
