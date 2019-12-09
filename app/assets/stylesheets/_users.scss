@@ -1,4 +1,3 @@
-
 @media screen and (max-width: 1060px) {
   .tabcontent{
     display: none;
@@ -26,7 +25,6 @@
     margin: 0 auto;
     .main {
       overflow: hidden;
-
       background: $hexWhite;
       .content {
         margin: 0 auto;
@@ -61,9 +59,6 @@
             font-weight: bold;
             font-size: 16px;
           }
-        }
-    
-    
         &__right {
           margin:0 auto;
           margin-bottom: 100px;
@@ -124,7 +119,6 @@
   .tabcontent{
     display: none;
   }
-
   .is-active{
     background : #fff;
   }
@@ -135,7 +129,6 @@
     border-top: 2px solid $red;
     font-weight: bold;
   }
-
   .mypagetabs2{
     background :#eee;
     line-height: 73px;
