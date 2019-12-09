@@ -23,23 +23,23 @@ $(function(){
     $(".header-with-progress__nav__lists__li").eq(page).
     css('color', '#ea352d');
 
-    for (var i = 0; i <= page; i++) {
+    for (let i = 0; i <= page; i++) {
       $(".circle").eq(i).
       addClass("circle--red");
     }
   }
 
-  $(".main__form__password").on("keyup", function() {
+  $(".main-k__form__password").on("keyup", function() {
     let pass = $(this).val();
-    $(".main__form__reveal-pass").text(pass);
+    $(".main-k__form__reveal-pass").text(pass);
   });
 
-  $("#main__form__checkbox").change(function() {
-    let r = $(this).prop('checked');
-    if (r) {
-      $(".main__form__reveal-pass").show();
+  $("#main-k__form__checkbox").change(function() {
+    let is = $(this).prop('checked');
+    if (is) {
+      $(".main-k__form__reveal-pass").show();
     } else {
-      $(".main__form__reveal-pass").hide();
+      $(".main-k__form__reveal-pass").hide();
     }
   })
 });

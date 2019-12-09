@@ -1,24 +1,24 @@
-.container
+.container-k
   = render partial: 'layouts/shared/header-with-progress'
 
-  .main
-    .main__header5
+  .main-k
+    .main-k__header5
       支払い方法
-    = form_for @user, url: users_path, method: :post, html: {class: "main__card"} do |f|
+    = form_for @user, url: users_path, method: :post, html: {class: "main-k__card"} do |f|
       = f.fields_for :card do |c|
         = c.label 'カード番号'
         %span 必須
-        = c.text_field :card_number, class: 'main__card__number', placeholder: '半角数字のみ'
-        .main__card__expiry-label
+        = c.text_field :card_number, class: 'main-k__card__number', placeholder: '半角数字のみ'
+        .main-k__card__expiry-label
           = c.label '有効期限'
           %span 必須
         != sprintf(c.date_select(:expiry_date,with_css_classes:'test',
         order:[:month,:year,:day], use_month_numbers:true, discard_day:true,
         start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
-        .main__card__security-label
+        .main-k__card__security-label
           = c.label 'セキュリティコード'
           %span 必須
-        = c.text_field :security_code, class: 'main__card__security', placeholder: 'カード背面４桁もしくは３桁の番号'
-      = f.submit '次へ進む', class: 'main__card__btn'
+        = c.text_field :security_code, class: 'main-k__card__security', placeholder: 'カード背面４桁もしくは３桁の番号'
+      = f.submit '次へ進む', class: 'main-k__card__btn'
 
   = render partial: 'layouts/shared/footer'
