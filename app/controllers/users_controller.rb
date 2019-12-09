@@ -4,6 +4,23 @@ class UsersController < ApplicationController
 # after_action :address_is_valid, only: :address_add
 # after_action :card_is_valid, only: :card_add
 
+  def show
+  end
+
+  def profile
+  end
+
+  def signout
+  end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_path
+  end
+
+  def card
+  end
+  
 
   def login
     @user = User.new
