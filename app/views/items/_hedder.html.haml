@@ -17,10 +17,11 @@
         =link_to "", class: "item-link-list" do
           = fa_icon 'shopping-bag', class: "item-link-logo"
           ブランドから探す
-    .hedder__menu__bottom__right
-      .hedder__menu__bottom__right__entry
-        =link_to new_user_path, class: "new-entry-link" do
-          新規会員登録
-      .hedder__menu__bottom__right__login
-        =link_to login_users_path, data: {"turbolinks": false}, class: "login-link" do
-          ログイン
+    - unless session[:user_id]
+      .hedder__menu__bottom__right
+        .hedder__menu__bottom__right__entry
+          =link_to new_user_path, class: "new-entry-link" do
+            新規会員登録
+        .hedder__menu__bottom__right__login
+          =link_to login_users_path, data: {"turbolinks": false}, class: "login-link" do
+            ログイン

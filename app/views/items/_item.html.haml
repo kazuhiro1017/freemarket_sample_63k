@@ -1,11 +1,11 @@
 .pickup-content
-  = link_to "#" do
+  = link_to item_path(item), {data: {"turbolinks": false}} do
     %figure.content__box
       - if item.images.attached?
         = image_tag item.images.first, class:'item_image'
         .image_title
           %p.image_price
-            ="¥#{item.price}"
+            ="¥#{item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse}"
       - else
         = image_tag "", class:'item_image'
       %figcaption.text__box 

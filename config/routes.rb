@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
   
   root to: 'items#index'
-  resources :items, only: [:index, :new, :create] do
+  
+  resources :items do
     collection do
       get "category_find"
     end
-  end
-
-  resources :items, only: [:index, :new, :show] do
     member do
       get "purchase"
     end
@@ -23,12 +21,11 @@ Rails.application.routes.draw do
       get 'card_add'
       get 'complete'
     end
-  end
-  resources :users, only: :show do
-    collection do
+    member do
+      get "card"
       get "profile"
       get "signout"
-      get "card"
+      post "destroy"
     end
   end
 end
