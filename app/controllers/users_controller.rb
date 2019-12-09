@@ -98,6 +98,9 @@ class UsersController < ApplicationController
   end
 
   def identification
+    @current_user = User.find_by(id: session[:user_id])
+    @user = User.new
+    @user.build_address
   end
 
   private 
