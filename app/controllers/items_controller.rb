@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :purchase]
+  before_action :set_item, only: [:show, :purchase, :edit, :update, :destroy]
 
   def index
     @items = Item.where(category: 1..199).order("created_at DESC").limit(10)
@@ -12,7 +12,8 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save
+    if @item.images.attached?
+      @item.save
       redirect_to root_path
     else
       flash.now[:alert] = "[必須]を入力してください。"
@@ -33,6 +34,25 @@ class ItemsController < ApplicationController
     @parent = @item.category.parent.name
     @children = @item.category.name
     # @price = @item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse （プライスの表示の仕方その２）
+  end
+
+  def edit
+  end
+
+  def update
+    @update_item = @item.update(item_params)
+    if @update_item.images.attached?
+      @update_item.save
+      redirect_to root_path
+    else
+      flash.now[:alert] = "[必須]を入力してください。"
+      render "edit"
+    end
+  end
+
+  def destroy
+    @item.destroy
+    redirect_to root_path
   end
 
   def purchase

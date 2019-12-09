@@ -1,60 +1,60 @@
 .wrapper
   .hedder
     = render "items/hedder" 
-
-  .main
-    .content
-      .content__right
-        .content__right--top
-          .mypageicon
-            = link_to "#" do
-              %figure
-                = image_tag("https://static.mercdn.net/images/member_photo_noimage_thumb.png", size: "60x60")
-              %h2 name
-            %ul.mypageicon__num
-              %li
-                評価
-                0
-              %li
-                出品数
-                0
-          %ul.mypagetabs
-            %li.mypagetab お知らせ
-            %li.mypagetab やることリスト
-          .panel-group
-          .tabcontent
-            %ul
-              %li
-              %li
-              %li
-              %li
-                = link_to "一覧を見る", "#", class: "mypageBtn"
-          .tabcontent
-            %ul
-              %li
-              %li
-              %li
-              %li
-                = link_to "一覧を見る", "#", class: "mypageBtn"
-        .content__right--bottom
-          %h4 購入した商品
-          %ul.mypagetabs2  
-            %li.mypagetab2 お知らせ
-            %li.mypagetab2 やることリスト
-          .tabcontent2
-            %ul
-              %li
-              %li
-              %li
-              %li
-                = link_to "一覧を見る", "#", class: "mypageBtn"
-          .tabcontent2
-            %ul
-              %li
-              %li
-              %li
-              %li
-                = link_to "一覧を見る", "#", class: "mypageBtn"
-      = render "l-side"   
+  - if session[:user_id]
+    .main
+      .content
+        .content__right
+          .content__right--top
+            .mypageicon
+              = link_to "#" do
+                %figure
+                  = image_tag("https://static.mercdn.net/images/member_photo_noimage_thumb.png", size: "60x60")
+                %h2 name
+              %ul.mypageicon__num
+                %li
+                  評価
+                  0
+                %li
+                  出品数
+                  0
+            %ul.mypagetabs
+              %li.mypagetab お知らせ
+              %li.mypagetab やることリスト
+            .panel-group
+            .tabcontent
+              %ul
+                %li
+                %li
+                %li
+                %li
+                  = link_to "一覧を見る", "#", class: "mypageBtn"
+            .tabcontent
+              %ul
+                %li
+                %li
+                %li
+                %li
+                  = link_to "一覧を見る", "#", class: "mypageBtn"
+          .content__right--bottom
+            %h4 購入した商品
+            %ul.mypagetabs2  
+              %li.mypagetab2 お知らせ
+              %li.mypagetab2 やることリスト
+            .tabcontent2
+              %ul
+                %li
+                %li
+                %li
+                %li
+                  = link_to "一覧を見る", "#", class: "mypageBtn"
+            .tabcontent2
+              %ul
+                %li
+                %li
+                %li
+                %li
+                  = link_to "一覧を見る", "#", class: "mypageBtn"
+        = render "l-side"   
   .footer
     = render 'items/footer'

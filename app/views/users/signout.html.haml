@@ -1,11 +1,12 @@
-= render "items/hedder"  
-.main
-  .content2
-    .signout
-      .signout__container
-        .signout__container__back
-          = link_to "#" do
-            %button.back-btn ログアウト
-    = render "l-side"  
-.footer
-  = render 'items/footer'           
+- if session[:user_id]
+  = render "items/hedder"  
+  .main
+    .content2
+      .signout
+        .signout__container
+          .signout__container__back
+            = link_to user_path, method: :post do
+              %button.back-btn ログアウト
+      = render "l-side"  
+  .footer
+    = render 'items/footer'
