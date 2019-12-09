@@ -114,6 +114,18 @@
           %i.fas.fa-lock
           %span
             あんしん・あんぜんへの取り組み
+  
+  - if session[:user_id] && session[:user_id] == @item.user_id
+    .three_button_box
+      = link_to edit_item_path(@item.id), class: "edit_red_button" do
+        商品の編集 
+      %p.text_center or
+      = link_to "#", class: "stop_sell" do
+        出品を一旦停止する
+      = link_to item_path(@item.id), method: :delete, class: "delete_item" do
+        この商品を削除する
+
+
 
   .item-detail-message
     .message-container
