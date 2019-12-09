@@ -96,6 +96,9 @@ class UsersController < ApplicationController
   def complete
   end
 
+  def identification
+  end
+
   private 
     def user_params
       params.require(:user).permit(
