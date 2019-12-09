@@ -404,7 +404,7 @@
           }
           &__right{
             display: flex;
-            .hedder__menu__bottom__right__entry{
+            &__entry{
               text-align: center;
               .new-entry-link{
                 background-color: rgb(255, 81, 0);
@@ -433,6 +433,26 @@
                 border-color: rgb(0, 149, 238);
                 padding: 8px 10px;
                 text-decoration: none;
+              }
+            }
+            .hedder__menu__bottom__right__link{
+              padding: 0px 14px;
+              height: 44px;
+              line-height: 36px;
+              position: relative;
+              .logined{
+                align-items: center;
+                display: flex;
+                font-size: 14px;
+                height: 32px;
+                .icon{
+                  max-width: 100%;
+                  max-height: 100%;
+                  color: rgb(204, 204, 204);
+                  font-size: 20px;
+                  margin-right: 10px;
+                  width: 19px;
+                }
               }
             }
           }
