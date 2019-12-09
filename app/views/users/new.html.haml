@@ -1,20 +1,20 @@
-.container
+.container-k
   = render partial: 'layouts/shared/header'
 
-  .main
-    .main__header
+  .main-k
+    .main-k__header
       新規会員登録
-    .main__how-to-register
+    .main-k__how-to-register
       = link_to user_add_users_path, {data: {"turbolinks": false}} do
-        .main__how-to-register__email
+        .main-k__how-to-register__email
           = fa_icon 'envelope'
           メールアドレスで登録する
       = link_to 'facebook', {data: {"turbolinks": false}} do
-        .main__how-to-register__facebook
+        .main-k__how-to-register__facebook
           = fa_icon 'facebook-square'
           facebookで登録する
       = link_to 'google', {data: {"turbolinks": false}} do
-        .main__how-to-register__google
+        .main-k__how-to-register__google
           = fa_icon 'google'
           googleで登録する
 

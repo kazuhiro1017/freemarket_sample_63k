@@ -1,5 +1,5 @@
 .pickup-content
-  = link_to "#" do
+  = link_to item_path(item), {data: {"turbolinks": false}} do
     %figure.content__box
       - if item.images.attached?
         = image_tag item.images.first, class:'item_image'

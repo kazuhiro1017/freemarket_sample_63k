@@ -1,5 +1,5 @@
-.container {
-  .main {
+.container-k {
+  .main-k {
     &__header5 {
       @include mainheader;
     }
@@ -35,6 +35,7 @@
       }
       &__security {
         @include formfield;
+        margin-bottom: 20px;
       }
       &__btn {
         @include sub_btn;

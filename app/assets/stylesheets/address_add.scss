@@ -1,11 +1,11 @@
-.container {
-  .main {
+.container-k {
+  .main-k {
     &__header4 {
       @include mainheader;
     }
     &__address {
       width: 700px;
-      height: 550px;
+      height: 600px;
       border-top: 1px solid #f5f5f5;
       box-sizing: border-box;
       padding: 24px 178.5px 40px;
@@ -30,18 +30,23 @@
         width: 343px;
         height: 48px;
         box-sizing: border-box;
+        margin-bottom: 14px;
       }
       &__postal-code {
         @include formfield;
+        margin-bottom: 14px;
       }
       &__city {
         @include formfield;
+        margin-bottom: 14px;
       }
       &__banchi {
         @include formfield;
+        margin-bottom: 14px;
       }
       &__building {
         @include formfield;
+        margin-bottom: 30px;
       }
       &__btn {
         @include sub_btn;

@@ -1,7 +1,7 @@
 @mixin formfield {
   width: 343px;
   height: 48px;
-  margin-top: 8px;
+  margin-top: 14px;
   box-sizing: border-box;
   padding: 10px 16px 8px;
 }
@@ -33,6 +33,7 @@
   margin: 0 auto;
   padding: 32px;
   font-size: 22px;
+  line-height: 33px;
   font-weight: bold;
   text-align: center;
 }
