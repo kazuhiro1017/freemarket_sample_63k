@@ -1,15 +1,15 @@
 %section.item-box
   %h1.item-name
-    商品の名前
+    = @item.name
   .item-content
     .item-photo
-      %ul.item-main-slider
-        %li#slide-1.slide
-          = image_tag src="/assets/m17912265477_1.jpg", size: "300x300"
-      %ul.item-sub-slider{role: "navigation"}
-        %li.slide
-          =link_to "#slide-1", class: "" do
-            = image_tag src="/assets/m17912265477_2.jpg", size: "60x60"
+      .swiper-container
+        .swiper-wrapper
+          - if @item.images.attached?
+            - @item.images.each do |image|
+              .swiper-slide
+                = image_tag image, class: "item-image"
+        .thumblist
     .item-detail
       .tbody
         .tr
@@ -36,13 +36,13 @@
             カテゴリー
           .td
             =link_to "", class: "" do
-              レディース
+              = @root
             =link_to "", class: "item-detail-sub-category" do
               %i.fas.fa-chevron-right
-              トップス
+              = @parent
             =link_to "", class: "item-detail-sub-sub-category" do
               %i.fas.fa-chevron-right
-              シャツ
+              = @children
         .tr
           .th
             ブランド
@@ -53,36 +53,38 @@
           .th
             商品のサイズ
           .td
-            M
+            = @item.size
         .tr
           .th
             商品の状態
           .td
-            目立った汚れや傷なし
+            = @item.condition
         .tr
           .th
             配送料の負担
           .td
-            送料込み（出品者負担）
+            = @item.postage
         .tr
           .th
             配送の方法
           .td
-            ゆうゆうエフマケビン
+            = @item.delivery_method
         .tr
           .th
             配送元地域
           .td
             =link_to "", class: "" do
-              愛知県
+              = @item.from_prefecture
         .tr
           .th
             発送日の目安
           .td
-            2~3日で発送
+            = @item.delivery_days
   .item-price-box
     %span.item-price
-      ¥9,999
+      -# ¥
+      -# = @price
+      = number_to_currency (@item.price)
     %span.item-tax
       (税込)
     %span.item-shipping-fee
@@ -91,9 +93,7 @@
     購入画面に進む
   .item-description
     %p.item-description-inner
-      タオルハンカチ　2枚セット
-      19.5cm×19.5cm
-      新品未使用
+      = @item.description
   .item-btn-container
     .item-btn-left
       %button.item-btn-left__like{type: "submit"}
@@ -101,7 +101,7 @@
         %span
           いいね！
         %span.like-number
-          5
+          = @item.like_count
       %button.item-btn-left__report{type: "submit"}
         %i.far.fa-flag
         %span
