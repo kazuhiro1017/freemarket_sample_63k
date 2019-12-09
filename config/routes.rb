@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       get 'address_add'
       get 'card_add'
       get 'complete'
+      get 'identification'
     end
     member do
       get "card"
