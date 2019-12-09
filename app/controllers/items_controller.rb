@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  
+  before_action :set_item, only: [:show, :purchase, :edit, :update, :destroy]
+
   def index
     @items = Item.where(category: 1..199).order("created_at DESC").limit(10)
     @vuitton = Item.where(brand: "louis vuitton").order("created_at DESC").limit(10)
@@ -8,7 +9,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
   end
-
 
   def create
     @item = Item.new(item_params)
@@ -30,14 +30,16 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @root = @item.category.root.name
+    @parent = @item.category.parent.name
+    @children = @item.category.name
+    # @price = @item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse （プライスの表示の仕方その２）
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
     @update_item = @item.update(item_params)
     if @update_item.images.attached?
       @update_item.save
@@ -49,18 +51,20 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
     @item.destroy
     redirect_to root_path
   end
 
   def purchase
-    @item = Item.find(params[:id]) 
   end
 
   private
   def item_params
     params.require(:item).permit(:name, :description, :category_id, :size, :brand, :condition, :postage, :delivery_method, :from_prefecture, :delivery_days, :price, images: []).merge(user_id: session[:user_id])
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
 end

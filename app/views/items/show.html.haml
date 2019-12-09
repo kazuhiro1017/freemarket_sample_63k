@@ -1,229 +1,235 @@
-%section.item-box
-  %h1.item-name
-    商品の名前
-  .item-content
-    .item-photo
-      %ul.item-main-slider
-        %li#slide-1.slide
-          = image_tag src="/assets/m17912265477_1.jpg", size: "300x300"
-      %ul.item-sub-slider{role: "navigation"}
-        %li.slide
-          =link_to "#slide-1", class: "" do
-            = image_tag src="/assets/m17912265477_2.jpg", size: "60x60"
-    .item-detail
-      .tbody
-        .tr
-          .th
-            出品者
-          .td
-            =link_to "", class: "" do
-              なまえ
-            .ratings
-              .item-user-rating
-                %i.fas.fa-laugh
-                %span
-                  2
-              .item-user-rating
-                %i.fas.fa-meh
-                %span
-                  4
-              .item-user-rating
-                %i.fas.fa-frown
-                %span
-                  6
-        .tr
-          .th
-            カテゴリー
-          .td
-            =link_to "", class: "" do
-              レディース
-            =link_to "", class: "item-detail-sub-category" do
-              %i.fas.fa-chevron-right
-              トップス
-            =link_to "", class: "item-detail-sub-sub-category" do
-              %i.fas.fa-chevron-right
-              シャツ
-        .tr
-          .th
-            ブランド
-          .td
-            =link_to "", class: "" do
-              シャネル
-        .tr
-          .th
-            商品のサイズ
-          .td
-            M
-        .tr
-          .th
-            商品の状態
-          .td
-            目立った汚れや傷なし
-        .tr
-          .th
-            配送料の負担
-          .td
-            送料込み（出品者負担）
-        .tr
-          .th
-            配送の方法
-          .td
-            ゆうゆうエフマケビン
-        .tr
-          .th
-            配送元地域
-          .td
-            =link_to "", class: "" do
-              愛知県
-        .tr
-          .th
-            発送日の目安
-          .td
-            2~3日で発送
-  .item-price-box
-    %span.item-price
-      ¥9,999
-    %span.item-tax
-      (税込)
-    %span.item-shipping-fee
-      送料込み
-  =link_to "", class: "item-buy-btn" do
-    購入画面に進む
-  .item-description
-    %p.item-description-inner
-      タオルハンカチ　2枚セット
-      19.5cm×19.5cm
-      新品未使用
-  .item-btn-container
-    .item-btn-left
-      %button.item-btn-left__like{type: "submit"}
-        %i.far.fa-heart
-        %span
-          いいね！
-        %span.like-number
-          5
-      %button.item-btn-left__report{type: "submit"}
-        %i.far.fa-flag
-        %span
-          不適切な商品の報告
-    .item-btn-right
-      =link_to "", class: "torikumi" do
-        %i.fas.fa-lock
-        %span
-          あんしん・あんぜんへの取り組み
+.wrapper
+  .hedder
+    = render 'hedder'
+  %section.item-box
+    %h1.item-name
+      = @item.name
+    .item-content
+      .item-photo
+        .swiper-container
+          .swiper-wrapper
+            - if @item.images.attached?
+              - @item.images.each do |image|
+                .swiper-slide
+                  = image_tag image, class: "item-image"
+          .thumblist
+      .item-detail
+        .tbody
+          .tr
+            .th
+              出品者
+            .td
+              =link_to "", class: "" do
+                なまえ
+              .ratings
+                .item-user-rating
+                  %i.fas.fa-laugh
+                  %span
+                    2
+                .item-user-rating
+                  %i.fas.fa-meh
+                  %span
+                    4
+                .item-user-rating
+                  %i.fas.fa-frown
+                  %span
+                    6
+          .tr
+            .th
+              カテゴリー
+            .td
+              =link_to "", class: "" do
+                = @root
+              =link_to "", class: "item-detail-sub-category" do
+                %i.fas.fa-chevron-right
+                = @parent
+              =link_to "", class: "item-detail-sub-sub-category" do
+                %i.fas.fa-chevron-right
+                = @children
+          .tr
+            .th
+              ブランド
+            .td
+              =link_to "", class: "" do
+                シャネル
+          .tr
+            .th
+              商品のサイズ
+            .td
+              = @item.size
+          .tr
+            .th
+              商品の状態
+            .td
+              = @item.condition
+          .tr
+            .th
+              配送料の負担
+            .td
+              = @item.postage
+          .tr
+            .th
+              配送の方法
+            .td
+              = @item.delivery_method
+          .tr
+            .th
+              配送元地域
+            .td
+              =link_to "", class: "" do
+                = @item.from_prefecture
+          .tr
+            .th
+              発送日の目安
+            .td
+              = @item.delivery_days
+    .item-price-box
+      %span.item-price
+        -# ¥
+        -# = @price
+        = number_to_currency (@item.price)
+      %span.item-tax
+        (税込)
+      %span.item-shipping-fee
+        送料込み
+    =link_to "", class: "item-buy-btn" do
+      購入画面に進む
+    .item-description
+      %p.item-description-inner
+        = @item.description
+    .item-btn-container
+      .item-btn-left
+        %button.item-btn-left__like{type: "submit"}
+          %i.far.fa-heart
+          %span
+            いいね！
+          %span.like-number
+            = @item.like_count
+        %button.item-btn-left__report{type: "submit"}
+          %i.far.fa-flag
+          %span
+            不適切な商品の報告
+      .item-btn-right
+        =link_to "", class: "torikumi" do
+          %i.fas.fa-lock
+          %span
+            あんしん・あんぜんへの取り組み
 
-.item-detail-message
-  .message-container
-    .message-content
-      %form.message-form{action: "", method: "post"}
-        %p
-          相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      %textarea.message-text{name: "", type: "text"}
-      %button.message-submit{type: "submit"}
-        コメントする
+  .item-detail-message
+    .message-container
+      .message-content
+        %form.message-form{action: "", method: "post"}
+          %p
+            相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %textarea.message-text{name: "", type: "text"}
+        %button.message-submit{type: "submit"}
+          コメントする
 
-.item-sns-box
-  %ul.sns
-    %li.share-facebook
-      =link_to "", class: "share-btn" do
-        %i.fab.fa-facebook-square
-    %li.share-twitter
-      =link_to "", class: "share-btn" do
-        %i.fab.fa-twitter
-    %li.share-line
-      =link_to "", class: "share-btn" do
-        %i.fab.fa-line
-    %li.share-pinterest
-      =link_to "", class: "share-btn" do
-        %i.fab.fa-pinterest
+  .item-sns-box
+    %ul.sns
+      %li.share-facebook
+        =link_to "", class: "share-btn" do
+          %i.fab.fa-facebook-square
+      %li.share-twitter
+        =link_to "", class: "share-btn" do
+          %i.fab.fa-twitter
+      %li.share-line
+        =link_to "", class: "share-btn" do
+          %i.fab.fa-line
+      %li.share-pinterest
+        =link_to "", class: "share-btn" do
+          %i.fab.fa-pinterest
 
-.items-another
-  .items-container
-    %h2.items-top
-      =link_to "", class: "" do
-        なまえさんのその他の出品
-    .items-content
-      .items-box
-        =link_to "", class: "items-box-link" do
-          .items-box-photo
-            = image_tag src="/assets/m72139907054_1.jpg", size: "220x220"
-          .items-box-text
-            %h3.items-box-name
-              モバイルバッテリー
-            .items-box-num
-              .items-box-price
-                ¥1,999
-              .items-box-likes
-                %i.far.fa-heart
-                %span
-                  34
-      .items-box
-        =link_to "", class: "items-box-link" do
-          .items-box-photo
-            = image_tag src="/assets/m72139907054_1.jpg", size: "220x220"
-          .items-box-text
-            %h3.items-box-name
-              モバイルバッテリー
-            .items-box-num
-              .items-box-price
-                ¥1,999
-              .items-box-likes
-                %i.far.fa-heart
-                %span
-                  34
-      .items-box
-        =link_to "", class: "items-box-link" do
-          .items-box-photo
-            = image_tag src="/assets/m72139907054_1.jpg", size: "220x220"
-          .items-box-text
-            %h3.items-box-name
-              モバイルバッテリー
-            .items-box-num
-              .items-box-price
-                ¥1,999
-              .items-box-likes
-                %i.far.fa-heart
-                %span
-                  34
-      .items-box
-        =link_to "", class: "items-box-link" do
-          .items-box-photo
-            = image_tag src="/assets/m72139907054_1.jpg", size: "220x220"
-          .items-box-text
-            %h3.items-box-name
-              モバイルバッテリー
-            .items-box-num
-              .items-box-price
-                ¥1,999
-              .items-box-likes
-                %i.far.fa-heart
-                %span
-                  34
-      .items-box
-        =link_to "", class: "items-box-link" do
-          .items-box-photo
-            = image_tag src="/assets/m72139907054_1.jpg", size: "220x220"
-          .items-box-text
-            %h3.items-box-name
-              モバイルバッテリー
-            .items-box-num
-              .items-box-price
-                ¥1,999
-              .items-box-likes
-                %i.far.fa-heart
-                %span
-                  34
-      .items-box
-        =link_to "", class: "items-box-link" do
-          .items-box-photo
-            = image_tag src="/assets/m72139907054_1.jpg", size: "220x220"
-          .items-box-text
-            %h3.items-box-name
-              モバイルバッテリー
-            .items-box-num
-              .items-box-price
-                ¥1,999
-              .items-box-likes
-                %i.far.fa-heart
-                %span
-                  34
+  .items-another
+    .items-container
+      %h2.items-top
+        =link_to "", class: "" do
+          なまえさんのその他の出品
+      .items-content
+        .items-box
+          =link_to "", class: "items-box-link" do
+            .items-box-photo
+              = image_tag src="/assets/m72139907054_1.jpg", size: "220x220"
+            .items-box-text
+              %h3.items-box-name
+                モバイルバッテリー
+              .items-box-num
+                .items-box-price
+                  ¥1,999
+                .items-box-likes
+                  %i.far.fa-heart
+                  %span
+                    34
+        .items-box
+          =link_to "", class: "items-box-link" do
+            .items-box-photo
+              = image_tag src="/assets/m72139907054_1.jpg", size: "220x220"
+            .items-box-text
+              %h3.items-box-name
+                モバイルバッテリー
+              .items-box-num
+                .items-box-price
+                  ¥1,999
+                .items-box-likes
+                  %i.far.fa-heart
+                  %span
+                    34
+        .items-box
+          =link_to "", class: "items-box-link" do
+            .items-box-photo
+              = image_tag src="/assets/m72139907054_1.jpg", size: "220x220"
+            .items-box-text
+              %h3.items-box-name
+                モバイルバッテリー
+              .items-box-num
+                .items-box-price
+                  ¥1,999
+                .items-box-likes
+                  %i.far.fa-heart
+                  %span
+                    34
+        .items-box
+          =link_to "", class: "items-box-link" do
+            .items-box-photo
+              = image_tag src="/assets/m72139907054_1.jpg", size: "220x220"
+            .items-box-text
+              %h3.items-box-name
+                モバイルバッテリー
+              .items-box-num
+                .items-box-price
+                  ¥1,999
+                .items-box-likes
+                  %i.far.fa-heart
+                  %span
+                    34
+        .items-box
+          =link_to "", class: "items-box-link" do
+            .items-box-photo
+              = image_tag src="/assets/m72139907054_1.jpg", size: "220x220"
+            .items-box-text
+              %h3.items-box-name
+                モバイルバッテリー
+              .items-box-num
+                .items-box-price
+                  ¥1,999
+                .items-box-likes
+                  %i.far.fa-heart
+                  %span
+                    34
+        .items-box
+          =link_to "", class: "items-box-link" do
+            .items-box-photo
+              = image_tag src="/assets/m72139907054_1.jpg", size: "220x220"
+            .items-box-text
+              %h3.items-box-name
+                モバイルバッテリー
+              .items-box-num
+                .items-box-price
+                  ¥1,999
+                .items-box-likes
+                  %i.far.fa-heart
+                  %span
+                    34
+
+  .footer
+    = render 'footer'
