@@ -1,21 +1,23 @@
 - if session[:user_id]
-  = render "items/hedder"  
-  .main
-    .content2
-      .content2__right
-        .title
-          プロフィール
-        = form_with url: items_path, method: :post, id: 'form', html: { name: "inputForm" } do |f|
-          .form2
-            %figure
-              = image_tag("https://static.mercdn.net/images/member_photo_noimage_thumb.png", size: "60x60")
-              = f.text_field :name, type: 'text', class: 'namechange', maxlength: "16"
-          .form3
-            = f.text_area  :profile, type: 'text', class: 'profilechange', placeholder: '例）こんにちは☆ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心出品しています。服のサイズは主に９号です。気持ちよく取引できるように心がけていますので、商品や発送方法どご質問がありましたらお気軽にどうぞ♪'
-          .form4
-            = f.submit '変更する',  class: 'submit'
-      = render "l-side"  
-  .footer
-    = render 'items/footer'           
+  .wrapper
+    .hedder
+      = render "items/hedder"  
+    .main
+      .content2
+        .content2__right
+          .title
+            プロフィール
+          = form_with url: items_path, method: :post, id: 'form', html: { name: "inputForm" } do |f|
+            .form2
+              %figure
+                = image_tag("https://static.mercdn.net/images/member_photo_noimage_thumb.png", size: "60x60")
+                = f.text_field :name, type: 'text', class: 'namechange', maxlength: "16"
+            .form3
+              = f.text_area  :profile, type: 'text', class: 'profilechange', placeholder: '例）こんにちは☆ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心出品しています。服のサイズは主に９号です。気持ちよく取引できるように心がけていますので、商品や発送方法どご質問がありましたらお気軽にどうぞ♪'
+            .form4
+              = f.submit '変更する',  class: 'submit'
+        = render "l-side"  
+    .footer
+      = render 'items/footer'           
 
 
