@@ -1,0 +1,10 @@
+.pankuzu
+  - case params.values_at :controller, :action
+
+  - when ['users', 'show']
+    - breadcrumb :users_show
+
+  - when ['users', 'profile']
+    - breadcrumb :users_profile
+
+  = breadcrumbs separator: " &nbsp;&nbsp;&#12297;&nbsp; "

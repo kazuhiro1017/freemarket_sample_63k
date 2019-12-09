@@ -86,3 +86,4 @@ gem 'devise'
 gem "faker"
 gem "gimei"
 gem 'bcrypt'
+gem 'gretel'
