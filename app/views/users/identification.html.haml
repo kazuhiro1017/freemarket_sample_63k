@@ -1,55 +1,63 @@
-= render "items/hedder"  
+.wrapper
+  .hedder
+    = render "items/hedder"  
 
-.main
-  .content
-    .content__right
-      .title
-        本人情報の登録
-      .form
-        %div
-          %p
-            お客さまの本人情報をご登録ください。
-            %br
-              登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
-          %p.about-upload
-            =link_to "", class: "" do
+  .main
+    .content
+      .content__right
+        .title
+          本人情報の登録
+        .form
+          .text-box
+            .form-text
+              お客さまの本人情報をご登録ください。
+              %br
+                登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+            .about
+              =link_to "", class: "about-link" do
+                本人確認書類のアップロードについて
+                %i.fas.fa-chevron-right
+          .form-group
+            %label
+              お名前
+            %p
+              = @current_user.last_name
+              = @current_user.first_name
+          .form-group
+            %label
+              お名前カナ
+            %p
+              = @current_user.last_name_kana
+              = @current_user.first_name_kana
+          .form-group
+            %label
+              生年月日
+            %p
+              = @current_user.birthday
+          = form_for @user, url: card_add_users_path, method: :get, html: {class: "form-group"} do |f|
+            = f.fields_for :address do |d|
+              = d.label '郵便番号'
+              %span.form-arbitrary 任意
+              = d.text_field :post_number, class: 'postal-code', placeholder: '例）123-4567'
+              = d.label '都道府県'
+              %span.form-arbitrary 任意
+              = d.select :prefecture, Address.prefectures.keys
+              = d.label '市区町村'
+              %span.form-arbitrary 任意
+              = d.text_field :city, class: 'city', placeholder: '例）横浜市緑区'
+              = d.label '番地'
+              %span.form-arbitrary 任意              
+              = d.text_field :address, class: 'banchi', placeholder: '例）青山1-1-1'
+              = d.label '建物名'
+              %span.form-arbitrary 任意
+              = d.text_field :building, class: 'building', placeholder: '例）柳ビル103'
+            = f.submit '次へ進む', class: 'btn'
+          .about
+            =link_to "", class: "about-link" do
               本人確認書類のアップロードについて
               %i.fas.fa-chevron-right
-        .form-group
-          %label
-            お名前
-            %p
-              なまえ
-        .form-group
-          %label
-            お名前カナ
-            %p
-              ナマエ
-        .form-group
-          %label
-            生年月日
-            %p
-              1996/04/02
-        = form_for @user, url: card_add_users_path, method: :get, html: {class: "form-group"} do |f|
-          = f.fields_for :address do |d|
-            = d.label '郵便番号'
-            %span.form-arbitrary 任意
-            = d.text_field :post_number, class: 'main__address__postal-code', placeholder: '例）123-4567'
-            = d.label '都道府県'
-            %span.form-arbitrary 任意
-            = d.select :prefecture, Address.prefectures.keys
-            = d.label '市区町村'
-            %span.form-arbitrary 任意
-            = d.text_field :city, class: 'main__address__city', placeholder: '例）横浜市緑区'
-            = d.label '番地'
-            %span.form-arbitrary 任意              
-            = d.text_field :address, class: 'main__address__banchi', placeholder: '例）青山1-1-1'
-            = d.label '建物名'
-            %span.form-arbitrary 任意
-            = d.text_field :building, class: 'main__address__building', placeholder: '例）柳ビル103'
-          = f.submit '次へ進む', class: 'main__address__btn'
 
-    = render "l-side"   
+      = render "l-side"   
 
-.footer
-  = render 'items/footer'   
+  .footer
+    = render 'items/footer'   
