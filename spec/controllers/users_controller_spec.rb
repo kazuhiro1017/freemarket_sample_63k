@@ -1,3 +1,6 @@
+# まだ未完成なので、このファイルについてコードレビューは必要ありませんので、
+# コメントアウトしておきます。
+
 # require 'rails_helper'
 
 # RSpec.describe UsersController, type: :controller do
