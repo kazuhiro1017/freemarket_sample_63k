@@ -17,6 +17,8 @@
         =link_to "", class: "item-link-list" do
           = fa_icon 'shopping-bag', class: "item-link-logo"
           ブランドから探す
+    
+    -# ログインしてない時
     - unless session[:user_id]
       .hedder__menu__bottom__right
         .hedder__menu__bottom__right__entry
@@ -25,3 +27,22 @@
         .hedder__menu__bottom__right__login
           =link_to login_users_path, data: {"turbolinks": false}, class: "login-link" do
             ログイン
+    
+    -# ログインしている時
+    .hedder__menu__bottom__right
+      .hedder__menu__bottom__right__link
+        =link_to new_user_path, class: "logined" do
+          %i.far.fa-heart.icon
+          %p いいね！一覧
+      .hedder__menu__bottom__right__link
+        =link_to new_user_path, class: "logined" do
+          %i.far.fa-bell.icon
+          %p お知らせ
+      .hedder__menu__bottom__right__link
+        =link_to new_user_path, class: "logined" do
+          %i.fas.fa-check.icon
+          %p やることリスト
+      .hedder__menu__bottom__right__link
+        =link_to new_user_path, class: "logined" do
+          %i.fas.fa-user.icon
+          %p マイページ
