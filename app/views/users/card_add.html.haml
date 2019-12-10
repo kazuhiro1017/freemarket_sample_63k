@@ -4,7 +4,7 @@
     .main__header5
       支払い方法
     = form_tag(pay_creditcard_index_path, method: :post, id: 'charge-form',  name: "inputForm",class: "main__card") do
-      %label{:for => "inputCardNumber"} カード番号
+      %label{for: "inputCardNumber"} カード番号
       %span 必須
       = text_field_tag "number", "", class: 'main__card__number', placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
       = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?1855818912",width: "49",alt:"visa",height:"15")
@@ -15,7 +15,7 @@
       = image_tag("https://www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?2356214421",width: "49",alt:"visa",height:"15")
       = image_tag("https://www-mercari-jp.akamaized.net/assets/img/card/discover.svg?2356214421",width: "49",alt:"visa",height:"15")
       .deadline
-        %label{:for => "inputExp"} 有効期限
+        %label{for: "inputExp"} 有効期限
         %span 必須
       %select#exp_month{name: "exp_month", type: "text"}
         %option{value: ""} --

@@ -64,7 +64,7 @@
             = exp_month + " / " + exp_year
             %section
               .cards-list__info
-                <img src="//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?1855818912" width="49" height="15" alt="visa">
+                = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?1855818912",width: "49",alt:"visa",height:"15")
             %li
               = link_to card_creditcard_path(@current_user.id) do
                 変更する

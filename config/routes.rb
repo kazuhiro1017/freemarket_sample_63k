@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
   
-  # get 'purchase/index'
-  # get 'purchase/done'
-  # get 'creditcard/new'
-  # get 'creditcard/show'
+
   root to: 'items#index'
   
   resources :items do
@@ -11,7 +8,7 @@ Rails.application.routes.draw do
       get "category_find"
     end
     member do
-      get "purchase1"
+      get "purchase"
       post 'pay'
     end
   end

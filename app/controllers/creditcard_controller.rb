@@ -1,6 +1,7 @@
 class CreditcardController < ApplicationController
 
   require "payjp"
+  before_action :set_card, only: [:card, :delete,:delete2]
 
   def pay #payjpとCardのデータベース作成を実施します。
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
@@ -41,7 +42,6 @@ class CreditcardController < ApplicationController
 
 
   def delete #PayjpとCardデータベースを削除します
-    card = Creditcard.where(user_id: @current_user.id).first
     if card.blank?
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
@@ -53,7 +53,6 @@ class CreditcardController < ApplicationController
   end
 
   def delete2 #PayjpとCardデータベースを削除します
-    card = Creditcard.where(user_id: @current_user.id).first
     if card.blank?
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
@@ -66,9 +65,8 @@ class CreditcardController < ApplicationController
 
 
   def card
-    card = Creditcard.where(user_id: @current_user.id).first
     if card.blank?
-
+      redirect_to root_path
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
@@ -76,6 +74,8 @@ class CreditcardController < ApplicationController
     end
   end
  
-
+  def set_card
+    card = Creditcard.where(user_id: @current_user.id).first
+  end
  
 end
