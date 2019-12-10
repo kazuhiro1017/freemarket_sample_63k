@@ -1,0 +1,173 @@
+- if session[:user_id]
+  .container-o
+    .header-o
+      %h1
+        = link_to root_path do
+          .header__logo <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 281.19 84.08"><defs><style>.cls-1{fill:#dc4912;stroke:#fff;stroke-miterlimit:10;}.cls-2{font-size:48px;fill:#231815;font-family:YuGo-Bold-83pv-RKSJ-H, YuGothic;}</style></defs><title>アセット 3</title><g id="レイヤー_2" data-name="レイヤー 2"><g id="レイヤー_1-2" data-name="レイヤー 1"><polygon class="cls-1" points="36.41 83.5 0.5 62.77 0.5 21.31 36.41 0.58 72.32 21.31 72.32 62.77 36.41 83.5"/><polyline class="cls-1" points="0.5 21.31 36.41 42.04 72.32 21.31"/><polyline class="cls-1" points="36.41 83.5 36.41 49.36 36.41 42.04"/><line class="cls-1" x1="36.41" y1="52.41" x2="0.5" y2="31.67"/><line class="cls-1" x1="72.32" y1="33.2" x2="36.41" y2="50.88"/><text class="cls-2" transform="translate(86.41 62.77)">Fmarket</text></g></g></svg>
+    =form_for @item, class: "main" do |f|
+      %section.main__container
+        #sell-container
+          .data-reactroot
+            .sell-container
+              %h2.sell-container__text 商品の情報を入力
+              .sell-form
+                .sell-upload-box
+                  %span.sell-upload-head 出品画像 
+                  %span.form-require 必須
+                  %p 最大10枚までアップロードできます
+                  .sell-dropbox-container-number10
+                    .sell-upload-items-container
+                      .items-have-item-0
+                      .image_box
+                        %ul.sell_image
+                          - if @item.images.attached?
+                            - @item.images.each do |image|
+                              %li
+                                #result
+                                  = image_tag image
+                                  .image_text
+                                    %a.img_edit 編集
+                                    %span 
+                                      |
+                                    %a.img_destroy 削除
+
+                  .sellpage_image_form
+                    = f.label :images, multiple: true, class: "dropbox-have-item-0" do
+                      = f.file_field :images, multiple: true, class: "hidden"
+                      %p.visible-pc ドラッグアンドドロップ  
+                      %p.also-visible-pc またはクリックしてファイルファイルをアップロード
+                      %i.icon-camera
+                
+              .sell-content
+                .form-group
+                  %label 商品名
+                  %span 必須
+                  .form-name
+                    = f.text_field :name, class: "field-name", placeholder: "商品名(必須 40文字まで)"
+                .form-group
+                  %label 商品の説明
+                  %span 必須
+                  .form-description
+                    = f.text_area :description, class: "field-description", row: "5", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+              
+              .sell-details
+                %h3.detail-text 商品の詳細
+                .sell-form-box
+                  .form-group
+                    %label カテゴリー
+                    %span 必須
+                    .category
+                      = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: "---"}, class: "select-default", id: "category-select"
+                    .select-wrap#child-wrap
+                      .category1
+                        =f.select :category_id, {}, {}, class: "select-default", id: "child-select" do
+                          - if @item.category.present?
+                            %option{value: "#{@item.category.parent.id}", class: "child-option"}
+                              = @item.category.parent.name
+                    .select-wrap#grandchild-wrap
+                      .category2
+                        =f.select :category_id, {}, {}, class: "select-default", id: "grandchild-select" do
+                          - if @item.category.present?
+                            %option{value: "#{@item.category.id}", class: "grandchild-option"}
+                              = @item.category.name
+                  .form-group-size
+                    %label サイズ
+                    %span 必須
+                    .size
+                      = f.select :size, Item.sizes.keys
+                  .form-group-brand
+                    %label ブランド
+                    %span.option 任意
+                    .brand
+                      = f.text_field :brand, placeholder: "例） シャネル", class: "brand-form"
+                  .form-group
+                    %label 商品の状態
+                    %span 必須
+                    .detail
+                      = f.select :condition, Item.conditions.keys
+              
+              .sell-delivery
+                %h3.delivery-text 配送について
+                = link_to "#", class: "question" do
+                  = fa_icon "question-circle", class: "icon"
+                .delivery-form-box
+                  .form-group
+                    %label 配送料の負担
+                    %span 必須
+                    .postage
+                      = f.select :postage, Item.postages.keys
+                  .after-selected-postage
+                    %label 配送の方法
+                    %span 必須
+                    .delivery-method
+                      = f.select :delivery_method, Item.delivery_methods.keys
+                  .form-group
+                    %label 発送元の地域
+                    %span 必須
+                    .delivery-region
+                      = f.select :from_prefecture, Item.from_prefectures.keys
+                  .form-group
+                    %label 発送までの日数
+                    %span 必須
+                    .delivery-days
+                      = f.select :delivery_days, Item.delivery_days.keys
+              
+              .sell-cost
+                %h3.cost-text 販売価格(300〜9,999,999)
+                = link_to "#", class: "question" do
+                  = fa_icon "question-circle", class: "icon"
+                .cost-form-box
+                  %ul.sell-price
+                    %li.form-group
+                      .cost-text
+                        %label 価格
+                        %span 必須
+                        .cost 
+                          %p ¥
+                          .form-cost
+                            = f.text_field :price, class: "field-cost", placeholder: "例）300"
+                    %li.form-group
+                      %p.fee-text 販売手数料(10%)
+                      %span.hyphen -
+                    %li.form-group
+                      %p.profit-text 販売利益
+                      %span.hyphen-bold -
+              
+              .sell-btn
+                %p.row
+                  %span.blue 禁止されている出品
+                  %span 、
+                  %span.blue 行為
+                  %span を必ずご確認ください。
+                %p.row
+                  %span またブランド品でシリアルナンバー等がある場合はご記載ください。
+                  %span.blue 偽ブランドの販売
+                  %span は犯罪であり処罰される可能性があります。
+                %p.row
+                  %span また、出品をもちまして
+                  %span.blue 加盟店規約
+                  %span に同意したことになります。
+                .submit
+                  = f.submit "出品する", class: "submit-btn"
+                .back
+                  = link_to root_path do
+                    %button.back-btn もどる
+
+
+    .footer-o
+      %nav
+        %ul.crearfix
+          %li
+            = link_to "#" do
+              プライバシーポリシー
+          %li
+            = link_to "#" do
+              メルカリ利用規約
+          %li
+            = link_to "#" do
+              特定商取引に関する表記
+      = link_to "#", class: "footer__logo" do
+        .footer--img <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 147.09 129.96"><defs><style>.cls-1,.cls-2{fill:#231815;stroke-miterlimit:10;opacity:0.19;}.cls-1{stroke:#fff;}.cls-2{font-size:36px;stroke:#231815;font-family:YuGo-Bold-83pv-RKSJ-H, YuGothic;}</style></defs><title>アセット 13</title><g id="レイヤー_2" data-name="レイヤー 2"><g id="レイヤー_1-2" data-name="レイヤー 1"><polygon class="cls-1" points="71.54 83.5 35.63 62.77 35.63 21.31 71.54 0.58 107.45 21.31 107.45 62.77 71.54 83.5"/><polyline class="cls-1" points="35.63 21.31 71.54 42.04 107.45 21.31"/><polyline class="cls-1" points="71.54 83.5 71.54 49.36 71.54 42.04"/><line class="cls-1" x1="71.54" y1="52.41" x2="35.63" y2="31.67"/><line class="cls-1" x1="107.45" y1="33.2" x2="71.54" y2="50.88"/><text class="cls-2" transform="translate(0.5 117.04)">Fmarket</text></g></g></svg>
+      %p
+        %small © 2019 Mercari
+        

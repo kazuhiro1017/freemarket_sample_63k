@@ -40,9 +40,8 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @update_item = @item.update(item_params)
-    if @update_item.images.attached?
-      @update_item.save
+    if @item.images.attached?
+      @item.update(item_params)
       redirect_to root_path
     else
       flash.now[:alert] = "[必須]を入力してください。"
@@ -53,7 +52,6 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     redirect_to root_path
-    
   end
 
   def purchase
