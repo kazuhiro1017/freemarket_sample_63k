@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   
-  get 'purchase/index'
-  get 'purchase/done'
-  get 'creditcard/new'
-  get 'creditcard/show'
+  # get 'purchase/index'
+  # get 'purchase/done'
+  # get 'creditcard/new'
+  # get 'creditcard/show'
   root to: 'items#index'
   
   resources :items do
@@ -40,8 +40,8 @@ Rails.application.routes.draw do
     collection do
       post 'show', to: 'creditcard#show'
       post 'pay', to: 'creditcard#pay'
-      post 'pay2', to: 'creditcard#pay2'
-      post 'pay3', to: 'creditcard#pay3'
+      post 'pay_second', to: 'creditcard#pay_second'
+      post 'pay_third', to: 'creditcard#pay_third'
       post 'delete', to: 'creditcard#delete'
     end
     member do

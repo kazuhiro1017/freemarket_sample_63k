@@ -37,6 +37,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id]) 
     card = Creditcard.where(user_id: @current_user.id).first
     if card.blank?
+      root_path
     else
       Payjp.api_key = "sk_test_5dc292a9b6684847081b4730"
       customer = Payjp::Customer.retrieve(card.customer_id)
