@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 # after_action :card_is_valid, only: :card_add
 
   def show
+    @user = User.find_by(id: session[:user_id])
   end
 
   def profile
@@ -13,7 +14,7 @@ class UsersController < ApplicationController
   def signout
   end
 
-  def destroy
+  def logging_off
     session[:user_id] = nil
     redirect_to root_path
   end
