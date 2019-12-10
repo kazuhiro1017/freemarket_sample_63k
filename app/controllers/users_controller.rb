@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def signout
   end
 
-  def destro
+  def logging_off
     session[:user_id] = nil
     redirect_to root_path
   end

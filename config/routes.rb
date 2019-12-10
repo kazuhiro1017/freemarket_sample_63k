@@ -26,7 +26,7 @@ Rails.application.routes.draw do
       get "card"
       get "profile"
       get "signout"
-      post "destro"
+      post "logging_off"
     end
   end
 end
