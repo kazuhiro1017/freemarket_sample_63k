@@ -38,7 +38,7 @@ class ItemsController < ApplicationController
     if card.blank?
       root_path
     else
-      Payjp.api_key = "sk_test_5dc292a9b6684847081b4730"
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
     end
@@ -48,7 +48,7 @@ class ItemsController < ApplicationController
 
   def pay
     Payjp.api_key = 
-    "sk_test_5dc292a9b6684847081b4730"
+    ENV["PAYJP_PRIVATE_KEY"]
     Payjp::Charge.create(
     :amount => @item.price, #支払金額を入力（itemテーブル等に紐づけても良い）
     :customer => card.customer_id, #顧客ID

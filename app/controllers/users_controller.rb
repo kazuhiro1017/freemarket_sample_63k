@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 # after_action :user_is_valid, only: :phone_add
 # after_action :address_is_valid, only: :address_add
 # after_action :card_is_valid, only: :card_add
-before_action:aaa,only: :create
+before_action:set_session,only: :create
 
   def show
   end
@@ -93,11 +93,6 @@ before_action:aaa,only: :create
       building: session[:building]
     )
     
-    # @user.build_card(
-    #   card_number: card_params[:card_attributes][:card_number],
-    #   expiry_date: card_expiry_join,
-    #   security_code: card_params[:card_attributes][:security_code]
-    # )
 
  
     if @user.save
@@ -228,7 +223,7 @@ before_action:aaa,only: :create
       end
     end
 
-    def aaa
+    def set_session
       session[:post_number] = address_params[:address_attributes][:post_number]
       session[:prefecture] = address_params[:address_attributes][:prefecture]
       session[:city] = address_params[:address_attributes][:city]
@@ -243,7 +238,7 @@ before_action:aaa,only: :create
       if card.blank?
         redirect_to root_path
       else
-        Payjp.api_key = "sk_test_5dc292a9b6684847081b4730"
+        Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
         customer = Payjp::Customer.retrieve(card.customer_id)
         @default_card_information = customer.cards.retrieve(card.card_id)
         redirect_to root_path
