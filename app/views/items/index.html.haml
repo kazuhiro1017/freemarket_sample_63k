@@ -1,21 +1,4 @@
-- if session[:user_id]
-  .exhibit
-    =link_to new_item_path, class: "exhibit__link" do
-      .exhibit__link__obj
-        .exhibit__link__obj__text
-          出品
-        .exhibit__link__obj__icon
-          = fa_icon 'camera', class: "camera-icon"
-
-- else 
-  .exhibit
-    =link_to new_user_path, class: "exhibit__link" do
-      .exhibit__link__obj
-        .exhibit__link__obj__text
-          出品
-        .exhibit__link__obj__icon
-          = fa_icon 'camera', class: "camera-icon"
-
+= render 'exhibit'
 
 .wrapper
   .hedder
