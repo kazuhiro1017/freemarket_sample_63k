@@ -43,6 +43,7 @@ class CreditcardController < ApplicationController
 
   def delete #PayjpとCardデータベースを削除します
     if card.blank?
+      redirect_to root_path
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
@@ -54,6 +55,7 @@ class CreditcardController < ApplicationController
 
   def delete2 #PayjpとCardデータベースを削除します
     if card.blank?
+      redirect_to root_path
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
