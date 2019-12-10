@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
   
   require 'payjp'
-  before_action :set_item, only: [:show, :purchase, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :purchase1, :edit, :update, :destroy,:pay]
+  before_action :set_card, only: [:purchase1, :pay]
 
   def index
     @items = Item.where(category: 1..199).order("created_at DESC").limit(10)
@@ -34,8 +35,6 @@ class ItemsController < ApplicationController
 
 
   def purchase1
-    @item = Item.find(params[:id]) 
-    card = Creditcard.where(user_id: @current_user.id).first
     if card.blank?
       root_path
     else
@@ -48,8 +47,6 @@ class ItemsController < ApplicationController
 
 
   def pay
-    @item = Item.find(params[:id]) 
-    card = Creditcard.where(user_id: @current_user.id).first
     Payjp.api_key = 
     "sk_test_5dc292a9b6684847081b4730"
     Payjp::Charge.create(
@@ -84,8 +81,6 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
-  def purchase
-  end
 
 
  
@@ -98,5 +93,10 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+
+  def set_card
+    card = Creditcard.where(user_id: @current_user.id).first
+  end
+
 
 end
