@@ -131,4 +131,14 @@ $(document).on('turbolinks:load', function (){
       fileReader.readAsDataURL(file);
     });
   });
+
+  
+  if (document.URL.match(/\/items\/\d+\/edit/)){
+    $('.category1').show();
+    $('.category2').show();
+    $(".form-group-size").show();
+    $(".form-group-brand").show();
+    $(".after-selected-postage").show();
+  };
+  
 });
