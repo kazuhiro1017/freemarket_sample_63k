@@ -3,13 +3,15 @@
   %head
     %meta{content: "text/html; charset=UTF-8", "htt-equiv": "Content-Type"}/
     %title FreemarketSample63k
+    %script{src: "https://js.pay.jp/", type: "text/javascript"}
     = csrf_meta_tags
     = csp_meta_tag
     %link{crossorigin: "anonymous", href: "https://use.fontawesome.com/releases/v5.7.2/css/all.css", integrity: "sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr", rel: "stylesheet"}/
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    %script{ type: 'text/javascript', src: 'https://www.google.com/recaptcha/api.js'}
+    -# %script{ type: 'text/javascript', src: 'https://www.google.com/recaptcha/api.js'}
+    
     %meta{content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0", name: "viewport"}
   %body
     = render 'layouts/notifications'

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  get 'purchase/index'
+  get 'purchase/done'
+  get 'creditcard/new'
+  get 'creditcard/show'
   root to: 'items#index'
   resources :items, only: [:index, :new, :create] do
     collection do
@@ -9,7 +13,8 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :new, :show] do
     member do
-      get "purchase"
+      get "purchase1"
+      post 'pay'
     end
   end
 
@@ -25,10 +30,32 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: :show do
-    collection do
+    member do
       get "profile"
       get "signout"
-      get "card"
     end
   end
+  resources :creditcard, only: [:new, :show] do
+    collection do
+      post 'show', to: 'creditcard#show'
+      post 'pay', to: 'creditcard#pay'
+      post 'pay2', to: 'creditcard#pay2'
+      post 'pay3', to: 'creditcard#pay3'
+      post 'delete', to: 'creditcard#delete'
+    end
+    member do
+      get "card"
+      get "registrationcard"
+    end
+  end
+
+  resources :purchase, only: [:index] do
+    collection do
+      get 'index', to: 'purchase#index'
+    end
+    member do
+      get 'done', to: 'purchase#done'
+    end
+  end
+
 end

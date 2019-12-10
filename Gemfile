@@ -46,6 +46,7 @@ group :development, :test do
   gem 'capistrano3-unicorn'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
   gem 'pry-rails'
 end
 
@@ -85,3 +86,5 @@ gem 'devise'
 gem "faker"
 gem "gimei"
 gem 'bcrypt'
+gem 'payjp'
+gem 'jquery-turbolinks'

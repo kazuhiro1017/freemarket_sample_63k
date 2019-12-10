@@ -1,0 +1,19 @@
+= form_tag( pay_creditcard_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
+  .form-group
+    %label{:for => "inputCardNumber"} カード番号
+    %input#card_number.form-control{:placeholder => "カード番号", :type => "text"}/
+  .form-group
+    %label{:for => "inputCVC"} CVC/セキュリティコード
+    %input#cvc.form-control{:placeholder => "CVC", :type => "text"}/
+  .form-group
+    %label{:for => "inputExp"} 有効期限
+    .row
+      .col-md-6
+        %input#exp_year.form-control{name:"exp_year",:placeholder => "年", :type => "text"}/
+      .col-md-6
+        %input#exp_month.form-control{name:"exp_month",:placeholder => "月", :type => "text"}/
+  = submit_tag "追加する", id: "token"
+
+
+
+

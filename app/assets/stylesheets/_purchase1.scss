@@ -86,8 +86,9 @@
         color: red;
         text-align: center;
         font-size: 14px;
+        margin-bottom: 20px;
       }
-      .point{
+      .point2{
         background: #ccc;
         width: 320px;
         height: 48px;
@@ -180,13 +181,73 @@ a{
 
 
 
+      .cards-list{
+        // margin: 0 auto;
+        max-width: 320px;
+        &__text{
+          font-size: 15px;
+          font-family: 'Source Sans Pro', sans-serif;
+          p{
+            font-weight: bolder;
+          }
+        }
+        &__info{
+          position: relative;
+          padding: 24px 0;
+          &__num{
+            margin: 8px 0 0;
+            font-size: 16px;
+            font-family: 'Source Sans Pro', sans-serif;
+          }
+          &__day{
+            margin: 8px 0 0;
+            font-size: 16px;
+            font-family: 'Source Sans Pro', sans-serif;
+          }
+          button.remove{
+            position: absolute;
+            top: 21px;
+            right: 0;
+            padding: 2px 6px;
+            background: #fff;
+            border-radius: 3px;
+            border: 1px solid #ea352d;
+            color: #ea352d;
+            font-size: 14px;
+          }
+        }
+      }
+    .about-pay{
+      display: block;
+      margin: 40px 0 0;
+      text-align: right;
+      color: #0099e8;
+      font-size: 15px;
+    }
 
 
 
 
+ button{
+  width: 325px;
+  height: 50px;
+  box-sizing: border-box;
+  margin-top: 24px;
+  background-color: #ea352d;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 20px;
+}
  
+.point3{
+  margin-left: 200px;
+}
 
-
-
-  
- 
+.delivery__box{
+  ul{
+    li{
+      line-height: 30px;
+    }
+  }
+}
