@@ -24,12 +24,17 @@ class UsersController < ApplicationController
 
   def logging_in
     @user = User.find_by(email: user_params[:email])
-    if @user && @user.authenticate(user_params[:password])
-      session[:user_id] = @user.id
-      flash[:notice] = "ログインしました"
-      redirect_to("/items")
+    if verify_recaptcha(model: @user)
+      if @user && @user.authenticate(user_params[:password])
+        session[:user_id] = @user.id
+        flash[:notice] = "ログインしました"
+        redirect_to("/items")
+      else
+        flash[:alert] = "メールアドレスまたはパスワードが間違っています"
+        redirect_to("/users/login")
+      end
     else
-      flash[:alert] = "メールアドレスまたはパスワードが間違っています"
+      flash[:alert] = "「私はロボットではありません」にチェックを入れてください"
       redirect_to("/users/login")
     end
   end
@@ -50,6 +55,10 @@ class UsersController < ApplicationController
       session[:birthday] = birthday_join
     end
     @user = User.new
+    if verify_recaptcha(model: @user) == false && params[:user]
+      redirect_to action: "user_add"
+      flash[:alert] = "「私はロボットではありません」にチェックを入れてください"
+    end
   end
 
   def address_add

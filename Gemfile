@@ -87,3 +87,5 @@ gem "faker"
 gem "gimei"
 gem 'bcrypt'
 gem 'gretel'
+gem 'dotenv-rails', groups: [:development, :test], require: 'dotenv/rails-now'
+gem 'recaptcha'
