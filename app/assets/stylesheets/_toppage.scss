@@ -2,37 +2,6 @@
   text-decoration: none;
 }
 
-.exhibit{
-  bottom: 32px;
-  right: 32px;
-  z-index: 2;
-  position: fixed;
-  .exhibit__link{
-    display: block;
-    text-decoration: none;
-    .exhibit__link__obj{
-      background-color: rgb(255, 81, 0);
-      height: 160px;
-      width: 160px;
-      padding-top: 28px;
-      text-align: center;
-      border-radius: 50%;
-      .exhibit__link__obj__text{
-        color: #fff;
-        font-size: 22px;
-      }
-      .exhibit__link__obj__icon{
-        margin-top: 8px;
-        margin: 5px auto 0px;
-        .camera-icon{
-          color: #fff;
-          font-size: 54px;
-        }
-      }
-    }
-  }
-}
-
 .wrapper{
   background-color: rgb(245, 245, 245);
   .middle{
