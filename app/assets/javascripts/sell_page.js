@@ -97,31 +97,48 @@ $(document).on('turbolinks:load', function (){
 
 
   function buildimage(picture){
-    html = `<li>
-              <div id = "result">
-                <img src = "${picture}">
-                <div class = "image_text">
-                  <a href class = "img_edit">編集</a>
-                  <span>|</span>
-                  <a href class = "img_destroy">削除</a>
-              </div>
-            </li>`
+    var html = `<li>
+                  <div id = "result">
+                    <img src = "${picture}">
+                    <div class = "image_text">
+                      <a href class = "img_edit">編集</a>
+                      <span>|</span>
+                      <a href class = "img_destroy">削除</a>
+                  </div>
+                </li>`
+
     $(".sell_image").append(html)
+  }
+
+  function buildform(){
+    var html = `<input multiple="multiple" class="hidden_second" type="file" name="item[images][]" id="item_second" style="display: none;">`
+    
+    $(".dropbox-have-item-0").prepend(html)
   }
 
   $(function(){
     $('#item_images').change(function(){
-        //$('img').remove();
-        var file = $(this).prop('files')[0];
-        if(!file.type.match('image.*')){
-          return;
-        }
-        var fileReader = new FileReader();
-        fileReader.onloadend = function() {
-          buildimage(fileReader.result)
-            // $('#result').html('<img src="' + fileReader.result + '"/>');
-        }
-        fileReader.readAsDataURL(file);
+      var file = $(this).prop('files')[0];
+      if(!file.type.match('image.*')){
+        return;
+      }
+      var fileReader = new FileReader();
+      fileReader.onloadend = function() {
+        buildimage(fileReader.result)
+        buildform()
+        // $('#result').html('<img src="' + fileReader.result + '"/>');
+      }
+      fileReader.readAsDataURL(file);
     });
   });
+
+  
+  if (document.URL.match(/\/items\/\d+\/edit/)){
+    $('.category1').show();
+    $('.category2').show();
+    $(".form-group-size").show();
+    $(".form-group-brand").show();
+    $(".after-selected-postage").show();
+  };
+  
 });

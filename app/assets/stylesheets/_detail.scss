@@ -33,15 +33,32 @@ body{
     @include clearfix();
     margin-top: 16px;
     .item-photo{
-      min-width: 300px;
       max-width: 300px;
-      min-height: 375px;
       float: left;
-      margin: 0 auto;
-      .item-main-slider{
-      }
-      .item-sub-slider{
-        .slide{
+    }
+    img{
+      width: 100%;
+      height:300px;
+      vertical-align: bottom;
+    }
+    %item{
+      background-color: #fff;
+      max-width: 20%;
+      cursor: pointer;
+    }
+    .thumblist{
+      display: flex;
+      flex-wrap: wrap;
+      &-item{
+        @extend %item;
+        img{
+          height: 60px;
+          opacity: .5;
+        }
+        &.current{
+          img{
+            opacity: 1;
+          }
         }
       }
     }
@@ -338,5 +355,58 @@ body{
         }
       }
     }
+  }
+}
+
+.three_button_box{
+  width: 700px;
+  height: 264px;
+  margin: 24px auto;
+  background: #fff;
+  padding: 8px 16px 8px 16px;
+  .edit_red_button{
+    width: 664px;
+    height: 48px;
+    background: #ea352d;
+    border: 1px solid #ea352d;
+    text-align: center;
+    color: #fff;
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    margin: 16px 0 16px 0;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .text_center{
+    font-size: 16px;
+    text-align: center;
+  }
+  .stop_sell{
+    margin: 16px 0 16px 0;
+    background: #aaa;
+    border: 1px solid #aaa;
+    color: #fff;
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+  }
+  .delete_item{
+    margin: 16px 0 16px 0;
+    background: #aaa;
+    border: 1px solid #aaa;
+    color: #fff;
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
   }
 }

@@ -1,26 +1,26 @@
-.container
+.container-k
   = render partial: 'layouts/shared/header-with-progress'
 
-  .main
-    .main__header4
+  .main-k
+    .main-k__header4
       発送元・お届け先住所入力
     = form_for @user, url: users_path, method: :post, html: {class: "main__address"} do |f|
       = f.fields_for :address do |d|
         = d.label '郵便番号'
         %span 必須
-        = d.text_field :post_number, class: 'main__address__postal-code', placeholder: '例）123-4567'
+        = d.text_field :post_number, class: 'main-k__address__postal-code', placeholder: '例）123-4567'
         = d.label '都道府県'
         %span 必須
         = d.select :prefecture, Address.prefectures.keys
         = d.label '市区町村'
         %span 必須
-        = d.text_field :city, class: 'main__address__city', placeholder: '例）横浜市緑区'
+        = d.text_field :city, class: 'main-k__address__city', placeholder: '例）横浜市緑区'
         = d.label '番地'
         %span 必須
-        = d.text_field :address, class: 'main__address__banchi', placeholder: '例）青山1-1-1'
+        = d.text_field :address, class: 'main-k__address__banchi', placeholder: '例）青山1-1-1'
         = d.label '建物名'
         %span.gray 任意
-        = d.text_field :building, class: 'main__address__building', placeholder: '例）柳ビル103'
-      = f.submit '次へ進む', class: 'main__address__btn'
+        = d.text_field :building, class: 'main-k__address__building', placeholder: '例）柳ビル103'
+      = f.submit '次へ進む', class: 'main-k__address__btn'
 
   = render partial: 'layouts/shared/footer'

@@ -1,7 +1,7 @@
 class Address < ApplicationRecord
   belongs_to :user, optional: true
 
-  validates :post_number, presence: true
+  validates :post_number, format: { with: /\d{3}-\d{4}/}, presence: true
   validates :prefecture, presence: true, exclusion: { in: ["---"] }
   validates :city, presence: true
   validates :address, presence: true

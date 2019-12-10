@@ -1,4 +1,3 @@
-
 @media screen and (max-width: 1060px) {
   .tabcontent{
     display: none;
@@ -24,608 +23,206 @@
   .wrapper{
     background-color: rgb(245, 245, 245);
     margin: 0 auto;
-    .hedder{
-      background-color: #fff;
-      position: relative;
-      z-index: 3;
-      &__menu{
-        margin-left: 100px;
-        padding: 8px 0px 0px;
-        &__top{
-          display: flex;
-          justify-content: space-between;
-          &__logo{
-            display: flex;
-            height: 40px;
-            margin-right: 45px;
-            &__link{
-              align-items: center;
-              &__do{
-              height: 36px;
-              width: 134px;
-              }
-            }
-          }
-          &__search{
-            width: 100vw;
-            position: relative;
-            &__input{
-              background-color: rgb(230, 230, 230);
-              height: 40px;
-              font-size: 16px;
-              padding: 0px 50px 0px 10px;
-              border-radius: 4px;
-              border-style: solid;
-              border-width: 1px;
-              border-color: rgb(204, 204, 204);
-              position: relative;
-            }
-            &__icon{
-              background:none;
-              height: 40px;
-              width: 40px;
-              top: 0px;
-              right: 0px;
-              cursor: pointer;
-              border-radius: 0px 4px 4px 0px;
-              border:none;
-              .fa-search{
-                font-size: 14px;
-                display: flex;
-                justify-content: center;
-  
-              }
-            }
-          }
-        }
-        &__bottom{
-          height: 44px;
-          display: flex;
-          margin-top: 8px;
-          margin-left: 8px;
-          &__left{
-            display: flex;
-            &__category{
-              padding-right: 10px;
-              cursor: pointer;
-              height: 44px;
-              position: relative;
-              text-decoration: none;
-              .item-link-list{
-                display: block;
-                color: black;
-                opacity: 0.8;
-                font-size: 14px;
-                font-weight: 600;
-                line-height: 36px;
-                .item-link-logo{
-                  color: rgb(255, 81, 0);
-                }
-              }
-            }
-            &__brand{
-              padding-left: 10px;
-              display: block;
-              font-size: 14px;
-              font-weight: 600;
-              line-height: 36px;
-              cursor: pointer;
-              height: 44px;
-              position: relative;
-              .item-link-list{
-                display: block;
-                color: black;
-                opacity: 0.8;
-                font-size: 14px;
-                font-weight: 600;
-                line-height: 36px;
-                .item-link-logo{
-                  color: rgb(255, 81, 0);
-                }
-              }
-            }
-          }
-          &__right{
-            display: flex;
-            .hedder__menu__bottom__right__entry{
-              margin-left: 80px;
-              text-align: center;
-              .new-entry-link{
-                background-color: rgb(255, 81, 0);
-                color: rgb(255, 255, 255);
-                display: block;
-                font-size: 14px;
-                border-width: 1px;
-                border-style: solid;
-                text-decoration: none;
-                border-radius: 4px;
-                padding: 5px 10px;
-              }
-            }
-            &__login{
-              text-align: center;
-              margin-left: 11px;
-              .login-link{
-                background-color: rgb(255, 255, 255);
-                color: rgb(0, 149, 238);
-                display: block;
-                font-size: 14px;
-                border-radius: 4px;
-                border-width: 1px;
-                border-style: solid;
-                border-color: rgb(0, 149, 238);
-                padding: 5px 10px;
-                text-decoration: none;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  
-  main {
-    overflow: hidden;
-    background: $hexWhite;
-    .content {
-      margin: 0 auto;
-      padding: 40px 0 0;
-      @include clearfix();
-      &__left {
-        // float: left;
-        width: 700px;
+    .main {
+      overflow: hidden;
+      background: $hexWhite;
+      .content {
         margin: 0 auto;
-        margin-bottom: 100px;
-        ul {
-          li {
-            border-top: 1px solid $hex;
-            &:hover {
-              opacity: 0.5;
-            }
-            a {
-              display: block;
-              padding: 16px;
-              background: $white;
-              color: $hexGray20;
-              text-decoration: none;
-              font-size: 14px;
-              i {
-                float: right;
+        padding: 40px 0 0;
+        @include clearfix();
+        &__left {
+          // float: left;
+          width: 700px;
+          margin: 0 auto;
+          margin-bottom: 100px;
+          ul {
+            li {
+              border-top: 1px solid $hex;
+              &:hover {
+                opacity: 0.5;
               }
-            }
-          }
-        }
-        h3 {
-          margin: 40px 0 0;
-          font-weight: bold;
-          font-size: 16px;
-        }
-      }
-  
-  
-      &__right {
-        margin:0 auto;
-        margin-bottom: 100px;
-        width: 700px;
-        @include list();
-        &--top {
-          background-color: $white;
-          .mypageicon {
-            background: url(https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?37328315);
-            height: 200px;
-            a {
-              padding: 30px 0 0;
-              display: block;
-              text-align: center;
-              text-decoration: none;
-              color: $hexGray20;
-              figure {
-                margin: 0 auto;
-                text-align: center;
-                img {
-                  border-radius: 50%;
+              a {
+                display: block;
+                padding: 16px;
+                background: $white;
+                color: $hexGray20;
+                text-decoration: none;
+                font-size: 14px;
+                i {
+                  float: right;
                 }
               }
-              h2 {
-                font-weight: bold;
-                padding: 5px 0 0;
-              }
-            }          
-            &__num {
-              padding: 20px 240px 0;
-              li {
-                float: left;
-                width: calc(100% / 2);
+            }
+          }
+          h3 {
+            margin: 40px 0 0;
+            font-weight: bold;
+            font-size: 16px;
+          }
+        }
+        &__right {
+          margin:0 auto;
+          margin-bottom: 100px;
+          width: 700px;
+          @include list();
+          &--top {
+            background-color: $white;
+            .mypageicon {
+              background: url("https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?37328315");
+              height: 200px;
+              a {
+                padding: 30px 0 0;
+                display: block;
                 text-align: center;
-                font-size: 14px;
+                text-decoration: none;
+                color: $hexGray20;
+                figure {
+                  margin: 0 auto;
+                  text-align: center;
+                  img {
+                    border-radius: 50%;
+                  }
+                }
+                h2 {
+                  font-weight: bold;
+                  padding: 5px 0 0;
+                }
+              }          
+              &__num {
+                padding: 20px 240px 0;
+                li {
+                  float: left;
+                  width: calc(100% / 2);
+                  text-align: center;
+                  font-size: 14px;
+                }
               }
             }
           }
+          &--bottom{
+            margin: 30px 0 0;
+            background-color: $white;
+            padding-top: 20px;
+            h4 {
+              line-height: 74px;
+              font-size: 16px;
+              font-weight: bold;
+              padding-left: 10px; 
+            }
+          } 
         }
-        &--bottom{
-          margin: 30px 0 0;
-          background-color: $white;
-          padding-top: 20px;
-          h4 {
-            line-height: 74px;
-            font-size: 16px;
-            font-weight: bold;
-            padding-left: 10px; 
-          }
-        } 
-      }
-    }  
+      }  
+    }
   }
 }
 
 @media screen and (min-width:1060px) {
-.tabcontent{
-  display: none;
-}
-
-.is-active{
-  background : #fff;
-}
-
-.mypagetabs{
-  background :#eee;
-  line-height: 73px;
-  border-top: 2px solid $red;
-  font-weight: bold;
-}
-
-.mypagetabs2{
-  background :#eee;
-  line-height: 73px;
-  border-top: 2px solid $red;
-  font-weight: bold;
-}
-.wrapper{
-  background-color: rgb(245, 245, 245);
-  .hedder{
-    background-color: #fff;
-    position: relative;
-    z-index: 3;
-    
-    &__menu{
-      width: 700px;
-      margin: 0px 210px;
-      margin-right: -210px;
-      padding: 8px 0px 0px;
-      &__top{
-        display: flex;
-        justify-content: space-between;
-        &__logo{
-          display: flex;
-          height: 40px;
-          margin-right: 45px;
-          &__link{
-            align-items: center;
-            &__do{
-            height: 36px;
-            width: 134px;
-            }
-          }
-        }
-        &__search{
-          width: 100%;
-          position: relative;
-          &__input{
-            background-color: rgb(230, 230, 230);
-            height: 40px;
-            width: 791px;
-            font-size: 16px;
-            padding: 0px 50px 0px 10px;
-            border-radius: 4px;
-            border-style: solid;
-            border-width: 1px;
-            border-color: rgb(204, 204, 204);
-            position: relative;
-          }
-          &__icon{
-            background:none;
-            height: 40px;
-            width: 40px;
-            top: 0px;
-            right: 0px;
-            cursor: pointer;
-            border-radius: 0px 4px 4px 0px;
-            border:none;
-            position: absolute;
-            margin-right: -90px;
-            .fa-search{
-              font-size: 14px;
-              display: flex;
-              justify-content: center;
-
-            }
-          }
-        }
-      }
-      &__bottom{
-        height: 44px;
-        display: flex;
-        justify-content: space-between;
-        margin-top: 8px;
-        margin-left: 8px;
-        &__left{
-          display: flex;
-          &__category{
-            padding-right: 10px;
-            cursor: pointer;
-            height: 44px;
-            position: relative;
-            text-decoration: none;
-            .item-link-list{
-              display: block;
-              color: black;
-              opacity: 0.8;
-              font-size: 14px;
-              font-weight: 600;
-              line-height: 36px;
-              .item-link-logo{
-                color: rgb(255, 81, 0);
-              }
-            }
-          }
-          &__brand{
-            padding-left: 10px;
-            display: block;
-            font-size: 14px;
-            font-weight: 600;
-            line-height: 36px;
-            cursor: pointer;
-            height: 44px;
-            position: relative;
-            .item-link-list{
-              display: block;
-              color: black;
-              opacity: 0.8;
-              font-size: 14px;
-              font-weight: 600;
-              line-height: 36px;
-              .item-link-logo{
-                color: rgb(255, 81, 0);
-              }
-            }
-          }
-        }
-        &__right{
-          display: flex;
-          margin-right: -270px;
-          .hedder__menu__bottom__right__entry{
-            text-align: center;
-            .new-entry-link{
-              background-color: rgb(255, 81, 0);
-              color: rgb(255, 255, 255);
-              display: block;
-              font-size: 14px;
-              border-width: 1px;
-              border-style: solid;
-              text-decoration: none;
-              border-radius: 4px;
-              padding: 5px 10px;
-            }
-          }
-          &__login{
-            text-align: center;
-            margin-left: 11px;
-            .login-link{
-              background-color: rgb(255, 255, 255);
-              color: rgb(0, 149, 238);
-              display: block;
-              font-size: 14px;
-              border-radius: 4px;
-              border-width: 1px;
-              border-style: solid;
-              border-color: rgb(0, 149, 238);
-              padding: 5px 10px;
-              text-decoration: none;
-            }
-          }
-        }
-      }
-    }
+  .tabcontent{
+    display: none;
   }
-}
+  .is-active{
+    background : #fff;
+  }
 
-
-
-.main {
-
-  background: $hexWhite;
-  .content {
-    width: 1020px;
-    margin: 0 auto;
-    padding: 40px 0 0;
-    @include clearfix();
-    &__left {
-      float: left;
-      ul {
-        li {
-          border-top: 1px solid $hex;
-          &:hover {
-            opacity: 0.5;
-          }
-          a {
-            display: block;
-            padding: 16px;
-            background: $white;
-            color: $hexGray20;
-            text-decoration: none;
-            font-size: 14px;
-            i {
-              float: right;
-            }
-          }
-        }
-      }
-      h3 {
-        margin: 40px 0 0;
-        font-weight: bold;
-        font-size: 16px;
-      }
-    }
-
-
-    &__right {
-      float: right;
-      width: 700px;
-      @include list();
-      &--top {
-        background-color: $white;
-        .mypageicon {
-          background: url(https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?37328315);
-          height: 200px;
-          a {
-            padding: 30px 0 0;
-            display: block;
-            text-align: center;
-            text-decoration: none;
-            color: $hexGray20;
-            figure {
-              margin: 0 auto;
-              text-align: center;
-              img {
-                border-radius: 50%;
-              }
-            }
-            h2 {
-              font-weight: bold;
-              padding: 5px 0 0;
-            }
-          }          
-          &__num {
-            padding: 20px 240px 0;
+  .mypagetabs{
+    background :#eee;
+    line-height: 73px;
+    border-top: 2px solid $red;
+    font-weight: bold;
+  }
+  .mypagetabs2{
+    background :#eee;
+    line-height: 73px;
+    border-top: 2px solid $red;
+    font-weight: bold;
+  }
+  .wrapper{
+    background-color: rgb(245, 245, 245);
+    .main {
+      background: $hexWhite;
+      .content {
+        width: 1020px;
+        margin: 0 auto;
+        padding: 40px 0 0;
+        @include clearfix();
+        &__left {
+          float: left;
+          ul {
             li {
-              float: left;
-              width: calc(100% / 2);
-              text-align: center;
-              font-size: 14px;
+              border-top: 1px solid $hex;
+              &:hover {
+                opacity: 0.5;
+              }
+              a {
+                display: block;
+                padding: 16px;
+                background: $white;
+                color: $hexGray20;
+                text-decoration: none;
+                font-size: 14px;
+                i {
+                  float: right;
+                }
+              }
             }
           }
-        }
-      }
-      &--bottom{
-        margin: 30px 0 0;
-        background-color: $white;
-        padding-top: 20px;
-        h4 {
-          line-height: 74px;
-          font-size: 16px;
-          font-weight: bold;
-          padding-left: 10px; 
-        }
-      } 
-    }
-  }  
-}
-
-}
-
-
-.footer{
-  background-color: rgb(34, 34, 34);
-  color: #fff;
-  padding: 0px 20px 10px;
-  z-index: 3;
-  &__top{
-    width: 100%;
-    margin: 0px auto;
-    &__menu{
-      display: inline-block;
-      margin-top: 18px;
-      vertical-align: top;
-      width: 50%;
-      padding: 0px 10px;
-      &__title{
-        font-size: 16px;
-        font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-        font-weight: 600;
-      }
-      &__list{
-        &__link{
-          margin: 16px 0px 0px;
-          &__do{
-            color: #fff;
-            font-size: 12px;
-            text-decoration: none;
-            opacity: 0.7;
+          h3 {
+            margin: 40px 0 0;
+            font-weight: bold;
+            font-size: 16px;
           }
         }
-        &__link-icon{
-          text-decoration: none;
-          margin-right: 30px;
-          .sns-icon{
-            color: #fff;
-            font-size: 30px;
-            margin-top: 30px;
+        &__right {
+          float: right;
+          width: 700px;
+          @include list();
+          &--top {
+            background-color: $white;
+            .mypageicon {
+              background: url("https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?37328315");
+              height: 200px;
+              a {
+                padding: 30px 0 0;
+                display: block;
+                text-align: center;
+                text-decoration: none;
+                color: $hexGray20;
+                figure {
+                  margin: 0 auto;
+                  text-align: center;
+                  img {
+                    border-radius: 50%;
+                  }
+                }
+                h2 {
+                  font-weight: bold;
+                  padding: 5px 0 0;
+                }
+              }          
+              &__num {
+                padding: 20px 240px 0;
+                li {
+                  float: left;
+                  width: calc(100% / 2);
+                  text-align: center;
+                  font-size: 14px;
+                }
+              }
+            }
           }
+          &--bottom{
+            margin: 30px 0 0;
+            background-color: $white;
+            padding-top: 20px;
+            h4 {
+              line-height: 74px;
+              font-size: 16px;
+              font-weight: bold;
+              padding-left: 10px; 
+            }
+          } 
         }
-      }
-    }
-    &__privacy{
-      margin-top: 35px;
-      width: 100%;
-      padding: 0px 10px;
-      &__title{
-        font-size: 16px;
-        font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-        font-weight: 600;
-      }
-      &__list{
-        width: 50%;
-        &__link{
-          margin: 16px 0px 0px;
-          &__do{
-            color: #fff;
-            font-size: 12px;
-            text-decoration: none;
-            opacity: 0.7;
-          }
-        }
-      }
-    }
-    &__langage{
-      margin-top: 35px;
-      padding: 0px 10px;
-      width: 100%;
-      &__title{
-        font-size: 16px;
-        font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-        font-weight: 600;
-      }
-      &__list{
-        display: flex;
-        &__link{
-          margin: 16px 0px 0px;
-          &__do{
-            color: #fff;
-            font-size: 12px;
-            margin-right: 30px;
-            text-decoration: none;
-            opacity: 0.7;
-          }
-        }
-      }
-    }
-  }
-
-  &__bottom{
-    width: 100%;
-    margin: 55px auto 10px;
-    display: flex;
-    &__logo{
-      &__link{
-        height: 36px;
-        width: 134px;
-      }
-    }
-    &__copyright{
-      font-size: 11px;
+      }  
     }
   }
 }
-
-

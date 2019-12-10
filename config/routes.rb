@@ -5,13 +5,11 @@ Rails.application.routes.draw do
   get 'creditcard/new'
   get 'creditcard/show'
   root to: 'items#index'
-  resources :items, only: [:index, :new, :create] do
+  
+  resources :items do
     collection do
       get "category_find"
     end
-  end
-
-  resources :items, only: [:index, :new, :show] do
     member do
       get "purchase1"
       post 'pay'
@@ -28,13 +26,16 @@ Rails.application.routes.draw do
       get 'card_add'
       get 'complete'
     end
-  end
-  resources :users, only: :show do
     member do
+      get "signout"
+      get "card"
       get "profile"
       get "signout"
+      post "logging_off"
+      get 'identification'
     end
   end
+
   resources :creditcard, only: [:new, :show] do
     collection do
       post 'show', to: 'creditcard#show'

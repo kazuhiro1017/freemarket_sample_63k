@@ -20,6 +20,17 @@
                       .items-have-item-0
                       .image_box
                         %ul.sell_image
+                          - if @item.images.attached?
+                            - @item.images.each do |image|
+                              %li
+                                #result
+                                  = image_tag image
+                                  .image_text
+                                    %a.img_edit 編集
+                                    %span 
+                                      |
+                                    %a.img_destroy 削除
+
                   .sellpage_image_form
                     = f.label :images, multiple: true, class: "dropbox-have-item-0" do
                       = f.file_field :images, multiple: true, class: "hidden"
@@ -50,11 +61,15 @@
                     .select-wrap#child-wrap
                       .category1
                         =f.select :category_id, {}, {}, class: "select-default", id: "child-select" do
-                          %option{value: "0"} ---
+                          - if @item.category.present?
+                            %option{value: "#{@item.category.parent.id}", class: "child-option"}
+                              = @item.category.parent.name
                     .select-wrap#grandchild-wrap
                       .category2
                         =f.select :category_id, {}, {}, class: "select-default", id: "grandchild-select" do
-                          %option{value: "0"} ---
+                          - if @item.category.present?
+                            %option{value: "#{@item.category.id}", class: "grandchild-option"}
+                              = @item.category.name
                   .form-group-size
                     %label サイズ
                     %span 必須
