@@ -3,7 +3,7 @@ class CreditcardController < ApplicationController
   require "payjp"
 
   def pay #payjpとCardのデータベース作成を実施します。
-    Payjp.api_key = "sk_test_5dc292a9b6684847081b4730"
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.create(
       card: params['payjp-token']
       ) #念の為metadataにuser_idを入れましたがなくてもOK
@@ -16,7 +16,7 @@ class CreditcardController < ApplicationController
   end
 
   def pay2 #payjpとCardのデータベース作成を実施します。
-    Payjp.api_key = "sk_test_5dc292a9b6684847081b4730"
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.create(
       card: params['payjp-token']
       ) #念の為metadataにuser_idを入れましたがなくてもOK
@@ -28,7 +28,7 @@ class CreditcardController < ApplicationController
   end
 
   def pay3 #payjpとCardのデータベース作成を実施します。
-    Payjp.api_key = "sk_test_5dc292a9b6684847081b4730"
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.create(
       card: params['payjp-token']
       ) #念の為metadataにuser_idを入れましたがなくてもOK
@@ -44,7 +44,7 @@ class CreditcardController < ApplicationController
     card = Creditcard.where(user_id: @current_user.id).first
     if card.blank?
     else
-      Payjp.api_key = "sk_test_5dc292a9b6684847081b4730"
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
       customer.delete
       card.delete
@@ -56,7 +56,7 @@ class CreditcardController < ApplicationController
     card = Creditcard.where(user_id: @current_user.id).first
     if card.blank?
     else
-      Payjp.api_key = "sk_test_5dc292a9b6684847081b4730"
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
       customer.delete
       card.delete
@@ -70,7 +70,7 @@ class CreditcardController < ApplicationController
     if card.blank?
 
     else
-      Payjp.api_key = "sk_test_5dc292a9b6684847081b4730"
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
     end

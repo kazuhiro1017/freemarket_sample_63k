@@ -89,3 +89,4 @@ gem "gimei"
 gem 'bcrypt'
 gem 'payjp'
 gem 'jquery-turbolinks'
+gem 'dotenv-rails'

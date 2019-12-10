@@ -20,7 +20,7 @@
               = exp_month + " / " + exp_year
               %section
                 .cards-list__info
-                  <img src="//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?1855818912" width="49" height="15" alt="visa"> 
+                = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?1855818912",width: "49",alt:"visa",height:"15")
                 = form_tag(delete_creditcard_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
                   %button.remove 削除する           
         .about-pay
