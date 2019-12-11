@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2019_12_06_090623) do
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "description", null: false
+    t.bigint "user_id", null: false
     t.integer "price", null: false
     t.integer "like_count", default: 0
     t.bigint "category_id", null: false
@@ -100,6 +101,16 @@ ActiveRecord::Schema.define(version: 2019_12_06_090623) do
     t.integer "postage"
     t.integer "from_prefecture"
     t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_likes_on_item_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "transaction_states", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -135,4 +146,7 @@ ActiveRecord::Schema.define(version: 2019_12_06_090623) do
   add_foreign_key "addresses", "users"
   add_foreign_key "cards", "users"
   add_foreign_key "items", "categories"
+  add_foreign_key "items", "users"
+  add_foreign_key "likes", "items"
+  add_foreign_key "likes", "users"
 end
