@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-before_action:set_session,only: :create
+before_action:set_session, only: :create
 
   def show
     @user = User.find_by(id: session[:user_id])
@@ -79,7 +79,7 @@ before_action:set_session,only: :create
   end
 
   def create
-    card_is_valid and return
+    address_is_valid and return
     @user = User.new(
       nickname: session[:nickname],
       email: session[:email],
@@ -100,8 +100,6 @@ before_action:set_session,only: :create
       building: session[:building]
     )
     
-
- 
     if @user.save
       session.clear
       session[:user_id] = @user.id
@@ -197,6 +195,7 @@ before_action:set_session,only: :create
         building: session[:building]
       )
       if @address.valid?
+        return false
       else
         i = 0
         @address.errors.full_messages.each do |message|
@@ -206,26 +205,6 @@ before_action:set_session,only: :create
           i += 1
         end
         redirect_to action: 'address_add'
-      end
-    end
-
-    def card_is_valid
-      @card = Card.new(
-        card_number: card_params[:card_attributes][:card_number],
-        expiry_date: card_expiry_join,
-        security_code: card_params[:card_attributes][:security_code]
-      )
-      if @card.valid?
-        return false
-      else
-        i = 0
-        @card.errors.full_messages.each do |message|
-          key_st = "alert" + "#{i}"
-          key = key_st.to_sym
-          flash[key] = message
-          i += 1
-        end
-        redirect_to action: 'card_add'
         return true
       end
     end
