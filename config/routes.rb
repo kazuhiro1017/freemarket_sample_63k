@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       get "profile"
       post "logging_off"
       get 'identification'
+      get "my_selling_items"
     end
   end
 
