@@ -92,7 +92,7 @@
         (税込)
       %span.item-shipping-fee
         送料込み
-    =link_to "", class: "item-buy-btn" do
+    =link_to purchase1_item_path, class: "item-buy-btn" do
       購入画面に進む
     .item-description
       %p.item-description-inner
@@ -243,5 +243,6 @@
                   %span
                     34
 
+  = render 'layouts/pankuzu'
   .footer
     = render 'footer'

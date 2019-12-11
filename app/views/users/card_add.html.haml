@@ -49,6 +49,7 @@
       %br
       .main__card__security-label
       %label{:for => "inputCVC"} CVC/セキュリティコード
+      %span 必須
       = text_field_tag "cvc", "", class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
       #card_token
       = submit_tag "追加する", id: "token", class: 'main__card__btn'
