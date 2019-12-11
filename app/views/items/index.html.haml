@@ -4,15 +4,39 @@
   .hedder
     = render 'hedder'
 
+  .advertisement
+    .swiper-container
+      .swiper-wrapper
+        .swiper-slide
+          =link_to "", class: "" do
+            %img{alt: "", src: "/assets/KZ190105004_TP_V.jpg"}/
+        .swiper-slide
+          =link_to "", class: "" do
+            %img{alt: "", src: "/assets/KZ190105004_TP_V.jpg"}/
+        .swiper-slide
+          =link_to "", class: "" do
+            %img{alt: "", src: "/assets/KZ190105004_TP_V.jpg"}/
+      .swiper-pagination
+      .swiper-button-prev.swiper-button-white
+      .swiper-button-next.swiper-button-white
+      :javascript
+        var mySwiper = new Swiper ('.swiper-container', {
+
+          loop: true,
+          pagination: {
+            el: '.swiper-pagination',
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+          scrollbar: {
+            el: '.swiper-scrollbar',
+          },
+        }) 
+        
   .middle 
-    .middle__contents
-      .middle__contents__advertisement
-        .middle__contents__advertisement__image
-          = image_tag src="/assets/KZ190105004_TP_V.jpg", size: "1440x390"
-        .middle__contents__advertisement__slide-left
-          .middle__contents__advertisement__slide-left__do
-        .middle__contents__advertisement__slide-right
-          .middle__contents__advertisement__slide-right__do
+    .middle__contents 
       .middle__contents__famous
         %h2.middle__contents__famous__text
           人気のカテゴリー
@@ -34,9 +58,6 @@
                 もっと見る　＞
           .pickup-contents__item
             = render partial: 'item', collection: @items
-
-
-
 
       .middle__contents__famous
         %h2.middle__contents__famous__text

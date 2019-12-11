@@ -1,7 +1,7 @@
 .content__left
   %ul
     %li
-      = link_to "#" do
+      = link_to user_path(@current_user.id) do
         マイページ
         = fa_icon 'angle-right'
     %li
@@ -65,7 +65,7 @@
   %h3 設定
   %ul
     %li
-      = link_to profile_user_path do
+      = link_to  "#"  do
         プロフィール
         = fa_icon 'angle-right'
     %li
@@ -73,7 +73,7 @@
         住所変更
         = fa_icon 'angle-right'
     %li
-      = link_to "#" do
+      = link_to  card_creditcard_path(@current_user.id) do
         支払い方法
         = fa_icon 'angle-right'
     %li
