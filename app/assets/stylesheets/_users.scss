@@ -147,6 +147,7 @@
         @include clearfix();
         &__left {
           float: left;
+          width: 280px;
           ul {
             li {
               border-top: 1px solid $hex;
