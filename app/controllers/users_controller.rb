@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 # after_action :user_is_valid, only: :phone_add
 # after_action :address_is_valid, only: :address_add
 # after_action :card_is_valid, only: :card_add
+before_action:set_session,only: :create
 
   def show
   end
@@ -66,16 +67,8 @@ class UsersController < ApplicationController
   end
 
   def card_add
-    if params[:user]
-      session[:post_number] = address_params[:address_attributes][:post_number]
-      session[:prefecture] = address_params[:address_attributes][:prefecture]
-      session[:city] = address_params[:address_attributes][:city]
-      session[:address] = address_params[:address_attributes][:address]
-      session[:building] = address_params[:address_attributes][:building]
-    end
-    address_is_valid
     @user = User.new
-    @user.build_card
+    card = User.where(user_id: @current_user.id)
   end
 
   def create
@@ -90,6 +83,7 @@ class UsersController < ApplicationController
       first_name_kana: session[:first_name_kana],
       birthday: session[:birthday],
       phone_number: session[:phone_number]
+      
     )
     @user.build_address(
       post_number: session[:post_number],
@@ -99,16 +93,12 @@ class UsersController < ApplicationController
       building: session[:building]
     )
     
-    @user.build_card(
-      card_number: card_params[:card_attributes][:card_number],
-      expiry_date: card_expiry_join,
-      security_code: card_params[:card_attributes][:security_code]
-    )
 
+ 
     if @user.save
       session.clear
       session[:user_id] = @user.id
-      redirect_to action: 'complete'
+      redirect_to action: 'card_add'
     else
       session.clear
       flash[:alert] = "入力をもう一度やり直してください"
@@ -233,4 +223,28 @@ class UsersController < ApplicationController
       end
     end
 
+    def set_session
+      session[:post_number] = address_params[:address_attributes][:post_number]
+      session[:prefecture] = address_params[:address_attributes][:prefecture]
+      session[:city] = address_params[:address_attributes][:city]
+      session[:address] = address_params[:address_attributes][:address]
+      session[:building] = address_params[:address_attributes][:building]
+    end
+
+
+    def card
+      @item = Item.find(params[:id]) 
+      card = Creditcard.where(user_id: @current_user.id).first
+      if card.blank?
+        redirect_to root_path
+      else
+        Payjp.api_key = "sk_test_5dc292a9b6684847081b4730"
+        customer = Payjp::Customer.retrieve(card.customer_id)
+        @default_card_information = customer.cards.retrieve(card.card_id)
+        redirect_to root_path
+      end
+    end
+
+
+  
 end
