@@ -21,7 +21,7 @@
                       .image_box
                         %ul.sell_image
                           - if @item.images.attached?
-                            - @item.images.each do |image|
+                            - @item.images.reverse.each do |image|
                               %li
                                 #result
                                   = image_tag image
