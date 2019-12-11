@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
   
   require 'payjp'
   before_action :set_item, only: [:show, :purchase1, :edit, :update, :destroy,:pay]
-  before_action :set_card, only: [:purchase1, :pay]
 
   def index
     @items = Item.where(category: 1..199).order("created_at DESC").limit(10)
@@ -34,27 +33,40 @@ class ItemsController < ApplicationController
 
 
 
+  # def purchase1
+  #   if card.blank?
+  #     redirect_to root_path
+  #   else
+  #     Payjp.api_key = "sk_test_5dc292a9b6684847081b4730"
+  #     customer = Payjp::Customer.retrieve(card.customer_id)
+  #     @default_card_information = customer.cards.retrieve(card.card_id)
+  #   end
+  # end
+
   def purchase1
+    @item = Item.find(params[:id]) 
+    card = Creditcard.where(user_id: @current_user.id).first
     if card.blank?
-      root_path
     else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = "sk_test_5dc292a9b6684847081b4730"
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
     end
   end
 
 
-
   def pay
+    @item = Item.find(params[:id]) 
+    card = Creditcard.where(user_id: @current_user.id).first
     Payjp.api_key = 
-    ENV["PAYJP_PRIVATE_KEY"]
+    "sk_test_5dc292a9b6684847081b4730"
     Payjp::Charge.create(
     :amount => @item.price, #支払金額を入力（itemテーブル等に紐づけても良い）
     :customer => card.customer_id, #顧客ID
     :currency => 'jpy', #日本円
   )
   redirect_to done_purchase_path(@current_user.id)
+  end
 
   def show
     @root = @item.category.root.name
@@ -94,9 +106,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def set_card
-    card = Creditcard.where(user_id: @current_user.id).first
-  end
 
 
 end
+

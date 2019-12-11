@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       get "category_find"
     end
     member do
-      get "purchase"
+      get "purchase1"
       post 'pay'
     end
   end

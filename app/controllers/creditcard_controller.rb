@@ -1,10 +1,9 @@
 class CreditcardController < ApplicationController
 
   require "payjp"
-  before_action :set_card, only: [:card, :delete,:delete2]
 
   def pay #payjpとCardのデータベース作成を実施します。
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    Payjp.api_key = "sk_test_5dc292a9b6684847081b4730"
       customer = Payjp::Customer.create(
       card: params['payjp-token']
       ) #念の為metadataにuser_idを入れましたがなくてもOK
@@ -17,7 +16,7 @@ class CreditcardController < ApplicationController
   end
 
   def pay2 #payjpとCardのデータベース作成を実施します。
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    Payjp.api_key = "sk_test_5dc292a9b6684847081b4730"
       customer = Payjp::Customer.create(
       card: params['payjp-token']
       ) #念の為metadataにuser_idを入れましたがなくてもOK
@@ -29,7 +28,7 @@ class CreditcardController < ApplicationController
   end
 
   def pay3 #payjpとCardのデータベース作成を実施します。
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    Payjp.api_key = "sk_test_5dc292a9b6684847081b4730"
       customer = Payjp::Customer.create(
       card: params['payjp-token']
       ) #念の為metadataにuser_idを入れましたがなくてもOK
@@ -42,10 +41,11 @@ class CreditcardController < ApplicationController
 
 
   def delete #PayjpとCardデータベースを削除します
+    card = Creditcard.where(user_id: @current_user.id).first
     if card.blank?
       redirect_to root_path
     else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = "sk_test_5dc292a9b6684847081b4730"
       customer = Payjp::Customer.retrieve(card.customer_id)
       customer.delete
       card.delete
@@ -54,10 +54,11 @@ class CreditcardController < ApplicationController
   end
 
   def delete2 #PayjpとCardデータベースを削除します
+    card = Creditcard.where(user_id: @current_user.id).first
     if card.blank?
       redirect_to root_path
     else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = "sk_test_5dc292a9b6684847081b4730"
       customer = Payjp::Customer.retrieve(card.customer_id)
       customer.delete
       card.delete
@@ -67,17 +68,14 @@ class CreditcardController < ApplicationController
 
 
   def card
+    card = Creditcard.where(user_id: @current_user.id).first
     if card.blank?
       redirect_to root_path
     else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = "sk_test_5dc292a9b6684847081b4730"
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
     end
-  end
- 
-  def set_card
-    card = Creditcard.where(user_id: @current_user.id).first
   end
  
 end
