@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       get "signout"
       post "logging_off"
       get 'identification'
+      get "my_selling_items"
     end
   end
 

@@ -1,0 +1,86 @@
+.mypage-tab-head{
+  padding: 0 16px;
+  background: #fafafa;
+  font-size: 16px;
+  line-height: 72px;
+  font-weight: bold;
+}
+ul.listing-tabs{
+  border: 0;
+  background: #eee;
+  font-size: 0;
+  list-style: none;
+  li.three_boxes_first{
+    background: #fff;
+    width: 33.3%;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    h3{
+      font-size: 22px;
+      a.selling_now{
+        border-top: 2px solid #ea352d;
+        position: relative;
+        display: block;
+        color: #333;
+        font-size: 16px;
+        line-height: 72px;
+        text-decoration: none;
+      }
+    }
+  }
+  li.three_boxes{
+    width: 33.3%;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    h3{
+      font-size: 22px;
+      a{
+        position: relative;
+        display: block;
+        color: #333;
+        font-size: 16px;
+        line-height: 72px;
+      }
+    }
+  }
+}
+
+.one_item{
+  width: 700px;
+  height: 84px;
+  display: block;
+  border-bottom: 1px solid  #eee;
+  position: relative;
+  .item_image{
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    width: 48px;
+    height: 48px;
+  }
+  .one_item_title{
+    padding-top: 21px;
+    padding-left: 100px;
+    font-size: 15px;
+  }
+  .selling_now{
+    margin-left: 100px;
+    margin-top: 15px;
+    width: 40px;
+    height: 15px;
+    line-height: 15px;
+    text-align: center;
+    border-radius: 2px;
+    font-size: 12px;
+    color: #fff;
+    background: #0099e8;
+  }
+  .fa-chevron-right{
+    float: right;
+    margin-right: 20px;
+    font-size: 20px;
+    margin-top: -30px;
+  }
+}

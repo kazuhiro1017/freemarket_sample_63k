@@ -5,6 +5,12 @@ class UsersController < ApplicationController
 # after_action :card_is_valid, only: :card_add
 before_action:set_session,only: :create
 
+  def my_selling_items
+    
+    user = User.find_by(id: session[:user_id])
+    @my_items = user.items.order("created_at DESC")
+  end
+
   def show
     @user = User.find_by(id: session[:user_id])
   end
