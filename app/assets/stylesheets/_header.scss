@@ -80,6 +80,9 @@
                 font-size: 15px;
                 font-weight: 600;
                 line-height: 36px;
+                &.item-link-list:hover{
+                  color: rgb(0, 149, 238);
+                }
                 .item-link-logo{
                   color: rgb(255, 81, 0);
                 }
@@ -101,6 +104,9 @@
                 font-size: 14px;
                 font-weight: 600;
                 line-height: 36px;
+                &.item-link-list:hover{
+                  color: rgb(0, 149, 238);
+                }
                 .item-link-logo{
                   color: rgb(255, 81, 0);
                 }
@@ -161,6 +167,12 @@
                   font-size: 20px;
                   margin-right: 10px;
                   width: 19px;
+                }
+                &.logined:hover{
+                  color: rgb(0, 149, 238);
+                  .icon{
+                    color: rgb(0, 149, 238);
+                  }
                 }
                 p{
                   display: none;
@@ -256,6 +268,9 @@
                 font-size: 15px;
                 font-weight: 600;
                 line-height: 36px;
+                &.item-link-list:hover{
+                  color: rgb(0, 149, 238);
+                }
                 .item-link-logo{
                   color: rgb(255, 81, 0);
                 }
@@ -277,6 +292,9 @@
                 font-size: 14px;
                 font-weight: 600;
                 line-height: 36px;
+                &.item-link-list:hover{
+                  color: rgb(0, 149, 238);
+                }
                 .item-link-logo{
                   color: rgb(255, 81, 0);
                 }
@@ -334,6 +352,12 @@
                   font-size: 20px;
                   margin-right: 10px;
                   width: 19px;
+                }
+                &.logined:hover{
+                  color: rgb(0, 149, 238);
+                  .icon{
+                    color: rgb(0, 149, 238);
+                  }
                 }
               }
             }
@@ -401,7 +425,6 @@
                 justify-content: center;
                 margin-top: -30px;
                 color: black;
-
               }
             }
           }
@@ -421,11 +444,13 @@
               text-decoration: none;
               .item-link-list{
                 display: block;
-                color: black;
                 opacity: 0.8;
                 font-size: 14px;
                 font-weight: 600;
                 line-height: 36px;
+                &.item-link-list:hover{
+                  color: rgb(0, 149, 238);
+                }
                 .item-link-logo{
                   color: rgb(255, 81, 0);
                 }
@@ -442,11 +467,13 @@
               position: relative;
               .item-link-list{
                 display: block;
-                color: black;
                 opacity: 0.8;
                 font-size: 14px;
                 font-weight: 600;
                 line-height: 36px;
+                &.item-link-list:hover{
+                  color: rgb(0, 149, 238);
+                }
                 .item-link-logo{
                   color: rgb(255, 81, 0);
                 }
@@ -503,6 +530,12 @@
                   font-size: 20px;
                   margin-right: 10px;
                   width: 19px;
+                }
+                &.logined:hover{
+                  color: rgb(0, 149, 238);
+                  .icon{
+                    color: rgb(0, 149, 238);
+                  }
                 }
               }
             }
