@@ -19,8 +19,8 @@
             .th
               出品者
             .td
-              =link_to "", class: "" do
-                なまえ
+              =link_to "", class: "blue-link" do
+                = @item.user.nickname
               .ratings
                 .item-user-rating
                   %i.fas.fa-laugh
@@ -38,19 +38,19 @@
             .th
               カテゴリー
             .td
-              =link_to "", class: "" do
+              =link_to "", class: "blue-link" do
                 = @root
-              =link_to "", class: "item-detail-sub-category" do
+              =link_to "", class: "blue-link" do
                 %i.fas.fa-chevron-right
                 = @parent
-              =link_to "", class: "item-detail-sub-sub-category" do
+              =link_to "", class: "blue-link" do
                 %i.fas.fa-chevron-right
                 = @children
           .tr
             .th
               ブランド
             .td
-              =link_to "", class: "" do
+              =link_to "", class: "blue-link" do
                 シャネル
           .tr
             .th
@@ -76,7 +76,7 @@
             .th
               配送元地域
             .td
-              =link_to "", class: "" do
+              =link_to "", class: "blue-link" do
                 = @item.from_prefecture
           .tr
             .th
@@ -110,7 +110,7 @@
           %span
             不適切な商品の報告
       .item-btn-right
-        =link_to "", class: "torikumi" do
+        =link_to "", class: "blue-link" do
           %i.fas.fa-lock
           %span
             あんしん・あんぜんへの取り組み
@@ -155,7 +155,7 @@
   .items-another
     .items-container
       %h2.items-top
-        =link_to "", class: "" do
+        =link_to "", class: "blue-link" do
           なまえさんのその他の出品
       .items-content
         .items-box
