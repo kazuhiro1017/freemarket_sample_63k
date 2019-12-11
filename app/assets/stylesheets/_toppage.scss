@@ -1,234 +1,274 @@
-.item-link-list{
-  text-decoration: none;
-}
-
-.exhibit{
-  bottom: 32px;
-  right: 32px;
-  z-index: 2;
-  position: fixed;
-  .exhibit__link{
-    display: block;
+@media screen and (max-width: 759px) {
+  .item-link-list{
     text-decoration: none;
-    .exhibit__link__obj{
-      background-color: rgb(255, 81, 0);
-      height: 160px;
-      width: 160px;
-      padding-top: 28px;
-      text-align: center;
-      border-radius: 50%;
-      .exhibit__link__obj__text{
-        color: #fff;
-        font-size: 22px;
-      }
-      .exhibit__link__obj__icon{
-        margin-top: 8px;
-        margin: 5px auto 0px;
-        .camera-icon{
-          color: #fff;
-          font-size: 54px;
-        }
-      }
-    }
   }
-}
 
-.wrapper{
-  background-color: rgb(245, 245, 245);
-  .middle{
-    max-width: 1020px;
-    width: 100%;
-    margin: 0px auto;
-    &__contents{
-      position: relative;
-      &__advertisement{
-        left: 50%;
-        margin-left: -50vw;
-        position: relative;
-        top: 0px;
-        width: 100vw;
-        &__image{
-          height: 390px;
-          width: 100%;
-        }
-        &__slide-left{
-        }
-        &__slide-right{
-        }
-      }
-      &__famous{
-        background-color: #ffffff;
-        left: 50%;
-        margin-left: -50vw;
-        position: relative;
-        top: 0px;
-        width: 100vw;
-        padding: 40px 20px 20px;
-        .middle__contents__famous__text{
-          margin-bottom: 16px;
-          text-align: center;
-          font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-          font-size: 20px;
-          font-weight: 600;
-        }
-        &__tags{
-          text-align: center;
-          &__list{
-            display: inline-block;
-            &__tag{
-              display: inline-block;
-              .categorys__tag{
-                background-color: rgb(239, 239, 239);
-                cursor: pointer;
-                display: inline-block;
-                color: black;
-                font-size: 14px;
-                font-weight: 600;
-                border-radius: 15px;
-                padding: 8px 16px;
-                text-decoration: none;
-              }
-            }
-          } 
-        }
-      }
+  .advertisement{
+    img{
+      width: 100%;
+      height:100%;
+      vertical-align: bottom;
+    }        
+    .swiper-container {
+      width: 100vw;
+      height:170px;
+    }
+  }
 
-      &__new-items{
-        padding: 30px 0px 60px;
-        &__category{
-          &__top{
-            display: flex;
-            justify-content: space-between;
-            &__text{
-              font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-              font-size: 17px;
-              font-weight: 600;
-            }
-            &__link{
-              &__submit{
-                color: rgb(0, 149, 238);
-                display: block;
-                font-size: 12px;
-                font-weight: 600;
-                position: relative;
-                padding: 5px 14px 5px 5px;
-                text-decoration: none;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  .exhibit{
-    &__link{
-      &__obj{
-        &__text{
-        }
-        &__icon{
-        }
-      }
-    }
-  }
-  .footer{
-    background-color: rgb(34, 34, 34);
-    color: #fff;
-    padding: 0px 20px 10px;
-    z-index: 3;
-    &__top{
+  .wrapper{
+    background-color: rgb(245, 245, 245);
+    .middle{
+      max-width: 1020px;
       width: 100%;
       margin: 0px auto;
-      &__menu{
-        display: inline-block;
-        margin-top: 18px;
-        vertical-align: top;
-        width: 50%;
-        padding: 0px 10px;
-        &__title{
-          font-size: 16px;
-          font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-          font-weight: 600;
-        }
-        &__list{
-          &__link{
-            margin: 16px 0px 0px;
-            &__do{
-              color: #fff;
-              font-size: 12px;
-              text-decoration: none;
-              opacity: 0.7;
-            }
+      &__contents{
+        position: relative;
+        &__famous{
+          background-color: #ffffff;
+          left: 50%;
+          margin-left: -50vw;
+          position: relative;
+          top: 0px;
+          width: 100vw;
+          padding: 40px 20px 20px;
+          .middle__contents__famous__text{
+            margin-bottom: 16px;
+            text-align: center;
+            font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+            font-size: 20px;
+            font-weight: 600;
           }
-          &__link-icon{
-            text-decoration: none;
-            margin-right: 30px;
-            .sns-icon{
-              color: #fff;
-              font-size: 30px;
-              margin-top: 30px;
-            }
-          }
-        }
-      }
-      &__privacy{
-        margin-top: 35px;
-        width: 100%;
-        padding: 0px 10px;
-        &__title{
-          font-size: 16px;
-          font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-          font-weight: 600;
-        }
-        &__list{
-          width: 50%;
-          &__link{
-            margin: 16px 0px 0px;
-            &__do{
-              color: #fff;
-              font-size: 12px;
-              text-decoration: none;
-              opacity: 0.7;
-            }
+          &__tags{
+            text-align: center;
+            &__list{
+              display: inline-block;
+              &__tag{
+                display: inline-block;
+                .categorys__tag{
+                  background-color: rgb(239, 239, 239);
+                  cursor: pointer;
+                  display: inline-block;
+                  color: black;
+                  font-size: 14px;
+                  font-weight: 600;
+                  border-radius: 15px;
+                  padding: 8px 16px;
+                  text-decoration: none;
+                }
+              }
+            } 
           }
         }
-      }
-      &__langage{
-        margin-top: 35px;
-        padding: 0px 10px;
-        width: 100%;
-        &__title{
-          font-size: 16px;
-          font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-          font-weight: 600;
-        }
-        &__list{
-          display: flex;
-          &__link{
-            margin: 16px 0px 0px;
-            &__do{
-              color: #fff;
-              font-size: 12px;
-              margin-right: 30px;
-              text-decoration: none;
-              opacity: 0.7;
+
+        &__new-items{
+          padding: 30px 0px 60px;
+          &__category{
+            &__top{
+              display: flex;
+              justify-content: space-between;
+              &__text{
+                font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+                font-size: 17px;
+                font-weight: 600;
+              }
+              &__link{
+                &__submit{
+                  color: rgb(0, 149, 238);
+                  display: block;
+                  font-size: 12px;
+                  font-weight: 600;
+                  position: relative;
+                  padding: 5px 14px 5px 5px;
+                  text-decoration: none;
+                }
+              }
             }
           }
         }
       }
     }
+  }
+}
 
-    &__bottom{
+@media screen and (min-width: 760px) and (max-width: 1059px) {
+  .item-link-list{
+    text-decoration: none;
+  }
+
+  .advertisement{
+    img{
       width: 100%;
-      margin: 55px auto 10px;
-      display: flex;
-      &__logo{
-        &__link{
-          height: 36px;
-          width: 134px;
+      height:100%;
+      vertical-align: bottom;
+    }        
+    .swiper-container {
+      width: 100vw;
+      height:290px;
+    }
+  }
+
+  .wrapper{
+    background-color: rgb(245, 245, 245);
+    .middle{
+      max-width: 1020px;
+      width: 100%;
+      margin: 0px auto;
+      &__contents{
+        position: relative;
+        &__famous{
+          background-color: #ffffff;
+          left: 50%;
+          margin-left: -50vw;
+          position: relative;
+          top: 0px;
+          width: 100vw;
+          padding: 40px 20px 20px;
+          .middle__contents__famous__text{
+            margin-bottom: 16px;
+            text-align: center;
+            font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+          }
+          &__tags{
+            text-align: center;
+            &__list{
+              display: inline-block;
+              &__tag{
+                display: inline-block;
+                .categorys__tag{
+                  background-color: rgb(239, 239, 239);
+                  cursor: pointer;
+                  display: inline-block;
+                  color: black;
+                  font-size: 14px;
+                  font-weight: 600;
+                  border-radius: 15px;
+                  padding: 8px 16px;
+                  text-decoration: none;
+                }
+              }
+            } 
+          }
+        }
+
+        &__new-items{
+          padding: 30px 0px 60px;
+          &__category{
+            &__top{
+              display: flex;
+              justify-content: space-between;
+              &__text{
+                font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+                font-size: 17px;
+                font-weight: 600;
+              }
+              &__link{
+                &__submit{
+                  color: rgb(0, 149, 238);
+                  display: block;
+                  font-size: 12px;
+                  font-weight: 600;
+                  position: relative;
+                  padding: 5px 14px 5px 5px;
+                  text-decoration: none;
+                }
+              }
+            }
+          }
         }
       }
-      &__copyright{
-        font-size: 11px;
+    }
+  }
+}
+
+@media screen and (min-width:1060px) {
+  .item-link-list{
+    text-decoration: none;
+  }
+
+  .advertisement{
+    img{
+      width: 100%;
+      height:100%;
+      vertical-align: bottom;
+    }        
+    .swiper-container {
+      width: 100vw;
+      height:390px;
+    }
+  }
+
+  .wrapper{
+    background-color: rgb(245, 245, 245);
+    .middle{
+      max-width: 1020px;
+      width: 100%;
+      margin: 0px auto;
+      &__contents{
+        position: relative;
+        &__famous{
+          background-color: #ffffff;
+          left: 50%;
+          margin-left: -50vw;
+          position: relative;
+          top: 0px;
+          width: 100vw;
+          padding: 40px 20px 20px;
+          .middle__contents__famous__text{
+            margin-bottom: 16px;
+            text-align: center;
+            font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+          }
+          &__tags{
+            text-align: center;
+            &__list{
+              display: inline-block;
+              &__tag{
+                display: inline-block;
+                .categorys__tag{
+                  background-color: rgb(239, 239, 239);
+                  cursor: pointer;
+                  display: inline-block;
+                  color: black;
+                  font-size: 14px;
+                  font-weight: 600;
+                  border-radius: 15px;
+                  padding: 8px 16px;
+                  text-decoration: none;
+                }
+              }
+            } 
+          }
+        }
+
+        &__new-items{
+          padding: 30px 0px 60px;
+          &__category{
+            &__top{
+              display: flex;
+              justify-content: space-between;
+              &__text{
+                font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+                font-size: 17px;
+                font-weight: 600;
+              }
+              &__link{
+                &__submit{
+                  color: rgb(0, 149, 238);
+                  display: block;
+                  font-size: 12px;
+                  font-weight: 600;
+                  position: relative;
+                  padding: 5px 14px 5px 5px;
+                  text-decoration: none;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

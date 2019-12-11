@@ -1,4 +1,4 @@
-$(function () {
+$(document).on('turbolinks:load', function() {
   /*初期表示*/
   $('.tabcontent').hide();
   $('.tabcontent').eq(0).show();
@@ -16,7 +16,7 @@ $(function () {
 });
 
 
-$(function () {
+$(document).on('turbolinks:load', function() {
   /*初期表示*/
   $('.tabcontent2').hide();
   $('.tabcontent2').eq(0).show();

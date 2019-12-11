@@ -110,14 +110,24 @@ $(document).on('turbolinks:load', function (){
     $(".sell_image").append(html)
   }
 
+
+
+  var iamges = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]  
+  
   function buildform(){
-    var html = `<input multiple="multiple" class="hidden_second" type="file" name="item[images][]" id="item_second" style="display: none;">`
+
+    $('label').attr('for', iamges[0]);
+
+    var html = `<input multiple="multiple" class="hidden" type="file" name="item[images][]" id="${iamges[0]}" style="display: none;">`
     
     $(".dropbox-have-item-0").prepend(html)
+    
+    iamges.shift();
   }
 
+  
   $(function(){
-    $('#item_images').change(function(){
+    $('.dropbox-have-item-0').on("change", ".hidden", function(){
       var file = $(this).prop('files')[0];
       if(!file.type.match('image.*')){
         return;
@@ -131,4 +141,14 @@ $(document).on('turbolinks:load', function (){
       fileReader.readAsDataURL(file);
     });
   });
+
+  
+  if (document.URL.match(/\/items\/\d+\/edit/)){
+    $('.category1').show();
+    $('.category2').show();
+    $(".form-group-size").show();
+    $(".form-group-brand").show();
+    $(".after-selected-postage").show();
+  };
+  
 });

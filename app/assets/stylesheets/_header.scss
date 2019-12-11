@@ -45,8 +45,8 @@
               background:none;
               height: 40px;
               width: 40px;
-              top: 0px;
-              right: 0px;
+              top: 0;
+              right: 10px;
               cursor: pointer;
               border-radius: 0px 4px 4px 0px;
               border:none;
@@ -55,6 +55,8 @@
                 font-size: 14px;
                 display: flex;
                 justify-content: center;
+                margin-top: -30px;
+                color: black;
 
               }
             }
@@ -110,7 +112,7 @@
             display: flex;
             top: 10px;
             right: 10px;
-            .hedder__menu__bottom__right__entry{
+            &__entry{
               text-align: center;
               .new-entry-link{
                 background-color: rgb(255, 81, 0);
@@ -141,6 +143,30 @@
                 text-decoration: none;
               }
             }
+            &__link:first-child{
+              display: none;
+            }
+            &__link{
+              padding: 0px 7px;
+              height: 44px;
+              line-height: 36px;
+              position: relative;
+              .logined{
+                align-items: center;
+                display: flex;
+                font-size: 14px;
+                height: 32px;
+                .icon{
+                  color: rgb(204, 204, 204);
+                  font-size: 20px;
+                  margin-right: 10px;
+                  width: 19px;
+                }
+                p{
+                  display: none;
+                }
+              }
+            }
           }
         }
       }
@@ -148,7 +174,7 @@
   }
 }
 
-@media screen and (min-width: 760px) {
+@media screen and (min-width: 760px) and (max-width: 1059px) {
   .wrapper{
     background-color: rgb(245, 245, 245);
     .hedder{
@@ -193,8 +219,8 @@
               background:none;
               height: 40px;
               width: 40px;
-              top: 0px;
-              right: 0px;
+              top: 0;
+              right: 0;
               cursor: pointer;
               border-radius: 0px 4px 4px 0px;
               border:none;
@@ -203,6 +229,8 @@
                 font-size: 14px;
                 display: flex;
                 justify-content: center;
+                margin-top: -30px;
+                color: black;
 
               }
             }
@@ -257,7 +285,7 @@
           }
           &__right{
             display: flex;
-            .hedder__menu__bottom__right__entry{
+            &__entry{
               text-align: center;
               .new-entry-link{
                 background-color: rgb(255, 81, 0);
@@ -286,6 +314,27 @@
                 border-color: rgb(0, 149, 238);
                 padding: 8px 10px;
                 text-decoration: none;
+              }
+            }
+            &__link:first-child{
+              display: none;
+            }
+            &__link{
+              padding: 0px 7px;
+              height: 44px;
+              line-height: 36px;
+              position: relative;
+              .logined{
+                align-items: center;
+                display: flex;
+                font-size: 14px;
+                height: 32px;
+                .icon{
+                  color: rgb(204, 204, 204);
+                  font-size: 20px;
+                  margin-right: 10px;
+                  width: 19px;
+                }
               }
             }
           }
@@ -340,8 +389,8 @@
               background:none;
               height: 40px;
               width: 40px;
-              top: 0px;
-              right: 0px;
+              top: 0;
+              right: 0;
               cursor: pointer;
               border-radius: 0px 4px 4px 0px;
               border:none;
@@ -350,6 +399,8 @@
                 font-size: 14px;
                 display: flex;
                 justify-content: center;
+                margin-top: -30px;
+                color: black;
 
               }
             }
@@ -404,7 +455,7 @@
           }
           &__right{
             display: flex;
-            .hedder__menu__bottom__right__entry{
+            &__entry{
               text-align: center;
               .new-entry-link{
                 background-color: rgb(255, 81, 0);
@@ -433,6 +484,26 @@
                 border-color: rgb(0, 149, 238);
                 padding: 8px 10px;
                 text-decoration: none;
+              }
+            }
+            &__link{
+              padding: 0px 14px;
+              height: 44px;
+              line-height: 36px;
+              position: relative;
+              .logined{
+                align-items: center;
+                display: flex;
+                font-size: 14px;
+                height: 32px;
+                .icon{
+                  max-width: 100%;
+                  max-height: 100%;
+                  color: rgb(204, 204, 204);
+                  font-size: 20px;
+                  margin-right: 10px;
+                  width: 19px;
+                }
               }
             }
           }
