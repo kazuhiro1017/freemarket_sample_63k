@@ -27,6 +27,11 @@ crumb :users_identification do
   parent :users_show
 end
 
+crumb :users_my_selling_items do
+  link "出品した商品 - 出品中"
+  parent :users_show
+end
+
 crumb :items_show do
   item = Item.find_by(id: params[:id])
   link "#{item.name}"

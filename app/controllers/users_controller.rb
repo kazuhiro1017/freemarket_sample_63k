@@ -3,7 +3,6 @@ class UsersController < ApplicationController
 before_action:set_session, only: :create
 
   def my_selling_items
-    
     user = User.find_by(id: session[:user_id])
     @my_items = user.items.order("created_at DESC")
   end
