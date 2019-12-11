@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 before_action:set_session,only: :create
 
   def show
+    @user = User.find_by(id: session[:user_id])
   end
 
   def profile
@@ -14,7 +15,7 @@ before_action:set_session,only: :create
   def signout
   end
 
-  def destroy
+  def logging_off
     session[:user_id] = nil
     redirect_to root_path
   end

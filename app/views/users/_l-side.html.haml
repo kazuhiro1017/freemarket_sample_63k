@@ -81,7 +81,7 @@
         メール/パスワード
         = fa_icon 'angle-right'
     %li
-      = link_to "#" do
+      = link_to identification_user_path(id: session[:user_id]) do
         本人情報
         = fa_icon 'angle-right'
     %li
