@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+
   root to: 'items#index'
   
   resources :items do
@@ -7,7 +8,8 @@ Rails.application.routes.draw do
       get "category_find"
     end
     member do
-      get "purchase"
+      get "purchase1"
+      post 'pay'
     end
   end
 
@@ -20,13 +22,38 @@ Rails.application.routes.draw do
       get 'address_add'
       get 'card_add'
       get 'complete'
-      get 'identification'
     end
     member do
+      get "signout"
       get "card"
       get "profile"
       get "signout"
-      post "destroy"
+      post "logging_off"
+      get 'identification'
     end
   end
+
+  resources :creditcard, only: [:new, :show] do
+    collection do
+      post 'show', to: 'creditcard#show'
+      post 'pay', to: 'creditcard#pay'
+      post 'pay_second', to: 'creditcard#pay_second'
+      post 'pay_third', to: 'creditcard#pay_third'
+      post 'delete', to: 'creditcard#delete'
+    end
+    member do
+      get "card"
+      get "registrationcard"
+    end
+  end
+
+  resources :purchase, only: [:index] do
+    collection do
+      get 'index', to: 'purchase#index'
+    end
+    member do
+      get 'done', to: 'purchase#done'
+    end
+  end
+
 end
