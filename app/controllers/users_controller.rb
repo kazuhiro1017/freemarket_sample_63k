@@ -125,48 +125,30 @@ before_action:set_session, only: :create
     @user.build_address
   end
 
-  private 
-    def user_params
-      params.require(:user).permit(
-        :nickname, :email, :password, :last_name, :first_name,
-        :last_name_kana, :first_name_kana, :phone_number)
-    end
-
-    def address_params
-      params.require(:user).permit(
-        address_attributes: [:id, :post_number, :prefecture,
-          :city, :address, :building])
-    end
-
-    def card_params
-      params.require(:user).permit(
-        card_attributes: [:id, :card_number, "expiry_date(1i)",
-         "expiry_date(2i)", "expiry_date(3i)", :security_code])
+  
+  def birthday_join
+    date = params[:birthday]
+    
+    if date["birthday(1i)"].empty? || date["birthday(2i)"].empty? || date["birthday(3i)"].empty?
+      return
     end
     
-    def birthday_join
-      date = params[:birthday]
-
-      if date["birthday(1i)"].empty? || date["birthday(2i)"].empty? || date["birthday(3i)"].empty?
-        return
-      end
-
-      Date.new date["birthday(1i)"].to_i,date["birthday(2i)"].to_i,date["birthday(3i)"].to_i
+    Date.new date["birthday(1i)"].to_i,date["birthday(2i)"].to_i,date["birthday(3i)"].to_i
+  end
+  
+  def card_expiry_join
+    date = card_params[:card_attributes]
+    
+    if date["expiry_date(1i)"].empty? || date["expiry_date(2i)"].empty? || date["expiry_date(3i)"].empty?
+      return
     end
-
-    def card_expiry_join
-      date = card_params[:card_attributes]
-
-      if date["expiry_date(1i)"].empty? || date["expiry_date(2i)"].empty? || date["expiry_date(3i)"].empty?
-        return
-      end
-
-      Date.new date["expiry_date(1i)"].to_i,date["expiry_date(2i)"].to_i,date["expiry_date(3i)"].to_i
-    end
-
-    def user_is_valid
-
-      @user = User.new(
+    
+    Date.new date["expiry_date(1i)"].to_i,date["expiry_date(2i)"].to_i,date["expiry_date(3i)"].to_i
+  end
+  
+  def user_is_valid
+    
+    @user = User.new(
       nickname: session[:nickname],
       email: session[:email],
       password: session[:password],
@@ -176,24 +158,24 @@ before_action:set_session, only: :create
       first_name_kana: session[:first_name_kana],
       birthday: session[:birthday],
       phone_number: session[:phone_number]
-      )
-      if @user.valid?
-      else
-        i = 0
-        @user.errors.full_messages.each do |message|
-          key_st = "alert" + "#{i}"
-          key = key_st.to_sym
-          flash[key] = message
-          i += 1
-        end
-        redirect_to action: "user_add"
+    )
+    if @user.valid?
+    else
+      i = 0
+      @user.errors.full_messages.each do |message|
+        key_st = "alert" + "#{i}"
+        key = key_st.to_sym
+        flash[key] = message
+        i += 1
       end
+      redirect_to action: "user_add"
     end
-
-    def address_is_valid
-
-      @address = Address.new(
-        post_number: session[:post_number],
+  end
+  
+  def address_is_valid
+    
+    @address = Address.new(
+      post_number: session[:post_number],
         prefecture: session[:prefecture],
         city: session[:city],
         address: session[:address],
@@ -213,7 +195,7 @@ before_action:set_session, only: :create
         return true
       end
     end
-
+    
     def set_session
       session[:post_number] = address_params[:address_attributes][:post_number]
       session[:prefecture] = address_params[:address_attributes][:prefecture]
@@ -221,8 +203,8 @@ before_action:set_session, only: :create
       session[:address] = address_params[:address_attributes][:address]
       session[:building] = address_params[:address_attributes][:building]
     end
-
-
+    
+    
     def card
       @item = Item.find(params[:id]) 
       card = Creditcard.where(user_id: @current_user.id).first
@@ -235,7 +217,26 @@ before_action:set_session, only: :create
         redirect_to root_path
       end
     end
-
-
+    
+    
+    
+  end
   
-end
+  private 
+    def user_params
+      params.require(:user).permit(
+        :nickname, :email, :password, :last_name, :first_name,
+        :last_name_kana, :first_name_kana, :phone_number)
+    end
+
+    def address_params
+      params.require(:user).permit(
+        address_attributes: [:id, :post_number, :prefecture,
+          :city, :address, :building])
+    end
+
+    def card_params
+      params.require(:user).permit(
+        card_attributes: [:id, :card_number, "expiry_date(1i)",
+         "expiry_date(2i)", "expiry_date(3i)", :security_code])
+    end
