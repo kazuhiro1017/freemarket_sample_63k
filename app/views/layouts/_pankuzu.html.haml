@@ -10,10 +10,16 @@
   - when ['users', 'signout']
     - breadcrumb :users_signout
 
+  - when ['users', 'identification']
+    - breadcrumb :users_identification
+
   - when ['users', 'card']
     - breadcrumb :users_card
 
   - when ['items', 'show']
     - breadcrumb :items_show
+
+  - when ['creditcard', 'card']
+    - breadcrumb :creditcard_card
 
   = breadcrumbs separator: " &nbsp;&nbsp;&#12297;&nbsp; "
