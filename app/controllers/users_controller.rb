@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
 
-# after_action :user_is_valid, only: :phone_add
-# after_action :address_is_valid, only: :address_add
-# after_action :card_is_valid, only: :card_add
-before_action:set_session,only: :create
+before_action:set_session, only: :create
 
   def show
     @user = User.find_by(id: session[:user_id])
@@ -30,12 +27,17 @@ before_action:set_session,only: :create
 
   def logging_in
     @user = User.find_by(email: user_params[:email])
-    if @user && @user.authenticate(user_params[:password])
-      session[:user_id] = @user.id
-      flash[:notice] = "ログインしました"
-      redirect_to("/items")
+    if verify_recaptcha(model: @user)
+      if @user && @user.authenticate(user_params[:password])
+        session[:user_id] = @user.id
+        flash[:notice] = "ログインしました"
+        redirect_to("/items")
+      else
+        flash[:alert] = "メールアドレスまたはパスワードが間違っています"
+        redirect_to("/users/login")
+      end
     else
-      flash[:alert] = "メールアドレスまたはパスワードが間違っています"
+      flash[:alert] = "「私はロボットではありません」にチェックを入れてください"
       redirect_to("/users/login")
     end
   end
@@ -56,6 +58,10 @@ before_action:set_session,only: :create
       session[:birthday] = birthday_join
     end
     @user = User.new
+    if verify_recaptcha(model: @user) == false && params[:user]
+      redirect_to action: "user_add"
+      flash[:alert] = "「私はロボットではありません」にチェックを入れてください"
+    end
   end
 
   def address_add
@@ -73,7 +79,7 @@ before_action:set_session,only: :create
   end
 
   def create
-    card_is_valid and return
+    address_is_valid and return
     @user = User.new(
       nickname: session[:nickname],
       email: session[:email],
@@ -94,8 +100,6 @@ before_action:set_session,only: :create
       building: session[:building]
     )
     
-
- 
     if @user.save
       session.clear
       session[:user_id] = @user.id
@@ -191,6 +195,7 @@ before_action:set_session,only: :create
         building: session[:building]
       )
       if @address.valid?
+        return false
       else
         i = 0
         @address.errors.full_messages.each do |message|
@@ -200,26 +205,6 @@ before_action:set_session,only: :create
           i += 1
         end
         redirect_to action: 'address_add'
-      end
-    end
-
-    def card_is_valid
-      @card = Card.new(
-        card_number: card_params[:card_attributes][:card_number],
-        expiry_date: card_expiry_join,
-        security_code: card_params[:card_attributes][:security_code]
-      )
-      if @card.valid?
-        return false
-      else
-        i = 0
-        @card.errors.full_messages.each do |message|
-          key_st = "alert" + "#{i}"
-          key = key_st.to_sym
-          flash[key] = message
-          i += 1
-        end
-        redirect_to action: 'card_add'
         return true
       end
     end

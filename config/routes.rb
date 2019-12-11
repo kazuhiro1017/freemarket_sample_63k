@@ -27,7 +27,6 @@ Rails.application.routes.draw do
       get "signout"
       get "card"
       get "profile"
-      get "signout"
       post "logging_off"
       get 'identification'
     end

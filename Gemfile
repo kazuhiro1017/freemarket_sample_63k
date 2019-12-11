@@ -87,6 +87,9 @@ gem 'devise'
 gem "faker"
 gem "gimei"
 gem 'bcrypt'
+gem 'gretel'
+gem 'dotenv-rails', groups: [:development, :test], require: 'dotenv/rails-now'
+gem 'recaptcha'
 gem 'payjp'
 gem 'jquery-turbolinks'
-gem 'dotenv-rails'
+# gem 'dotenv-rails'

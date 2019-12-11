@@ -40,7 +40,7 @@
       .main-k__form__be-collect-info
         ※本人情報は正しく入力してください。会員登録後、修正するには
         お時間をいただく場合があります。
-      .g-recaptcha{data: {sitekey: "6Lcl18QUAAAAAEvLZDKaF45DAa_dBjcAUjkJDI2l"}}
+      = recaptcha_tags
       .main-k__form__conf-message
         「次へ進む」のボタンを押すことにより、利用規約に同意したものとみなします
       = f.submit '次へ進む', class: 'main-k__form__btn'
