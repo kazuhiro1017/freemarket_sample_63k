@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   # belongs_to :brand_sub
   belongs_to :category
-  # belongs_to :user
+  belongs_to :user
   has_many :likes, dependent: :destroy
   # has_one :tran, dependent: :destroy
   has_many_attached :images
