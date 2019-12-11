@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :purchase1, :edit, :update, :destroy,:pay]
 
   def index
-    @items = Item.where(category: 1..199).order("created_at DESC").limit(10)
+    @items = Item.where(category: 1..199).where.not(user_id: session[:user_id]).order("created_at DESC").limit(10)
     @vuitton = Item.where(brand: "louis vuitton").where.not(user_id: session[:user_id]).order("created_at DESC").limit(10)
   end
 
