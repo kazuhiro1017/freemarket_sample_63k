@@ -73,7 +73,7 @@ before_action:set_session,only: :create
   end
 
   def create
-    card_is_valid and return
+    # card_is_valid and return
     @user = User.new(
       nickname: session[:nickname],
       email: session[:email],
