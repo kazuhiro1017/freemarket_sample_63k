@@ -68,6 +68,17 @@
           line-height: 46px;
         }
       }
+      .point2{
+        background: #ccc;
+        width: 320px;
+        height: 48px;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        div{
+          text-align: center;
+          line-height: 46px;
+        }
+      }
       .money{
         font-size: 26px;
         line-height: 3;
@@ -88,22 +99,26 @@
         font-size: 14px;
         margin-bottom: 20px;
       }
-      .point2{
-        background: #ccc;
-        width: 320px;
-        height: 48px;
-        margin: 0 auto;
-        margin-bottom: 10px;
-        div{
+      .point3{
+        margin-left: 200px;
+        button{
+          width: 325px;
+          height: 50px;
+          box-sizing: border-box;
+          margin-top: 24px;
+          background-color: #ea352d;
+          color: white;
+          font-size: 14px;
           text-align: center;
-          line-height: 46px;
+          margin-bottom: 20px;
         }
       }
     }
     .delivery{
       border-bottom: 1px solid $hex;
       &__box{
-        margin-left:200px ;
+        margin-left: 200px;
+        line-height: 30px;
       }
       ul{
         li{
@@ -130,7 +145,7 @@ a{
   color: black;
 }
 
-.footer-okamoto{
+.footer-o{
   height: 220px;
   margin: 0 auto;
   right: 0;
@@ -223,26 +238,8 @@ a{
 
 
 
- button{
-  width: 325px;
-  height: 50px;
-  box-sizing: border-box;
-  margin-top: 24px;
-  background-color: #ea352d;
-  color: white;
-  font-size: 14px;
-  text-align: center;
-  margin-bottom: 20px;
-}
- 
-.point3{
-  margin-left: 200px;
-}
 
-.delivery__box{
-  ul{
-    li{
-      line-height: 30px;
-    }
-  }
-}
+ 
+
+
+

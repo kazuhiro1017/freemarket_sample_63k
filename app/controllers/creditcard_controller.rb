@@ -15,7 +15,7 @@ class CreditcardController < ApplicationController
       end
   end
 
-  def pay2 #payjpとCardのデータベース作成を実施します。
+  def pay_second #payjpとCardのデータベース作成を実施します。
     Payjp.api_key = "sk_test_5dc292a9b6684847081b4730"
       customer = Payjp::Customer.create(
       card: params['payjp-token']
@@ -70,7 +70,6 @@ class CreditcardController < ApplicationController
   def card
     card = Creditcard.where(user_id: @current_user.id).first
     if card.blank?
-      redirect_to root_path
     else
       Payjp.api_key = "sk_test_5dc292a9b6684847081b4730"
       customer = Payjp::Customer.retrieve(card.customer_id)
