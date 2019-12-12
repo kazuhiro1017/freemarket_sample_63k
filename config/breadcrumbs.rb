@@ -7,7 +7,7 @@ crumb :users_show do
   parent :root
 end
 
-crumb :users_profile do
+crumb :users_edit do
   link "プロフィール"
   parent :users_show
 end
