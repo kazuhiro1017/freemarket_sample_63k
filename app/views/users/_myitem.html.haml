@@ -1,0 +1,9 @@
+= link_to item_path(myitem) do
+  .one_item
+    - if myitem.images.attached?
+      = image_tag myitem.images.last, class:'item_image'
+      .one_item_title
+        = myitem.name
+      .selling_now 出品中
+    = fa_icon 'chevron-right'
+  

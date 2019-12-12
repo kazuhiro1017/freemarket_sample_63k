@@ -18,9 +18,9 @@
   .wrapper{
     background-color: rgb(245, 245, 245);
     .middle{
-      max-width: 1020px;
       width: 100%;
       margin: 0px auto;
+      padding: 0px 10px;
       &__contents{
         position: relative;
         &__famous{
@@ -110,7 +110,7 @@
   .wrapper{
     background-color: rgb(245, 245, 245);
     .middle{
-      max-width: 1020px;
+      max-width: 700px;
       width: 100%;
       margin: 0px auto;
       &__contents{

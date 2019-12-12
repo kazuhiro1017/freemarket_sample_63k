@@ -20,7 +20,7 @@
     = form_for @user, url: logging_in_users_path, method: :post, html: {class: "main-k__email-pass-form"} do |f|
       = f.email_field :email, class: 'main-k__email-pass-form__email', placeholder: 'メールアドレス'
       = f.password_field :password, class: 'main-k__email-pass-form__password', placeholder: 'パスワード'
-      .g-recaptcha{data: {sitekey: "6Lcl18QUAAAAAEvLZDKaF45DAa_dBjcAUjkJDI2l"}}
+      = recaptcha_tags
       = f.submit 'ログイン', class: 'main-k__email-pass-form__btn'
       .main-k__email-pass-form__forgot-password
         パスワードをお忘れの方

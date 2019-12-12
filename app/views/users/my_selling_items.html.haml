@@ -1,0 +1,30 @@
+.wrapper
+  .hedder
+    = render "items/hedder"
+    = render "layouts/pankuzu"
+  - if session[:user_id]
+    .main
+      .content
+        .content__right
+          %h2.mypage-tab-head 出品した商品
+          %ul.listing-tabs
+            %li.three_boxes_first
+              %h3
+                %a.selling_now 出品中
+            %li.three_boxes
+              %h3
+                %a.selling_now 取引中
+            %li.three_boxes
+              %h3
+                %a.selling_now 売却済み
+          = render partial: 'myitem', collection: @my_items
+
+
+
+        = render "l-side"   
+
+
+
+
+  .footer
+    = render 'items/footer'

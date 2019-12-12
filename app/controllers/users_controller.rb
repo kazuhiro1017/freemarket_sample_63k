@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
 
-# after_action :user_is_valid, only: :phone_add
-# after_action :address_is_valid, only: :address_add
-# after_action :card_is_valid, only: :card_add
-before_action:set_session,only: :create
+before_action:set_session, only: :create
+
+  def my_selling_items
+    user = User.find_by(id: session[:user_id])
+    @my_items = user.items.order("created_at DESC")
+  end
 
   def show
     @user = User.find_by(id: session[:user_id])
@@ -39,12 +41,17 @@ before_action:set_session,only: :create
 
   def logging_in
     @user = User.find_by(email: user_params[:email])
-    if @user && @user.authenticate(user_params[:password])
-      session[:user_id] = @user.id
-      flash[:notice] = "ログインしました"
-      redirect_to("/items")
+    if verify_recaptcha(model: @user)
+      if @user && @user.authenticate(user_params[:password])
+        session[:user_id] = @user.id
+        flash[:notice] = "ログインしました"
+        redirect_to("/items")
+      else
+        flash[:alert] = "メールアドレスまたはパスワードが間違っています"
+        redirect_to("/users/login")
+      end
     else
-      flash[:alert] = "メールアドレスまたはパスワードが間違っています"
+      flash[:alert] = "「私はロボットではありません」にチェックを入れてください"
       redirect_to("/users/login")
     end
   end
@@ -65,6 +72,10 @@ before_action:set_session,only: :create
       session[:birthday] = birthday_join
     end
     @user = User.new
+    if verify_recaptcha(model: @user) == false && params[:user]
+      redirect_to action: "user_add"
+      flash[:alert] = "「私はロボットではありません」にチェックを入れてください"
+    end
   end
 
   def address_add
@@ -82,6 +93,7 @@ before_action:set_session,only: :create
   end
 
   def create
+    address_is_valid and return
     @user = User.new(
       nickname: session[:nickname],
       email: session[:email],
@@ -102,8 +114,6 @@ before_action:set_session,only: :create
       building: session[:building]
     )
     
-
- 
     if @user.save
       session.clear
       session[:user_id] = @user.id
@@ -124,49 +134,30 @@ before_action:set_session,only: :create
     @user.build_address
   end
 
-  private 
-    def user_params
-      params.require(:user).permit(
-        :nickname, :email, :password, :last_name, :first_name,
-        :last_name_kana, :first_name_kana, :phone_number)
-    end
-
-
-    def address_params
-      params.require(:user).permit(
-        address_attributes: [:id, :post_number, :prefecture,
-          :city, :address, :building])
-    end
-
-    def card_params
-      params.require(:user).permit(
-        card_attributes: [:id, :card_number, "expiry_date(1i)",
-         "expiry_date(2i)", "expiry_date(3i)", :security_code])
+  
+  def birthday_join
+    date = params[:birthday]
+    
+    if date["birthday(1i)"].empty? || date["birthday(2i)"].empty? || date["birthday(3i)"].empty?
+      return
     end
     
-    def birthday_join
-      date = params[:birthday]
-
-      if date["birthday(1i)"].empty? || date["birthday(2i)"].empty? || date["birthday(3i)"].empty?
-        return
-      end
-
-      Date.new date["birthday(1i)"].to_i,date["birthday(2i)"].to_i,date["birthday(3i)"].to_i
+    Date.new date["birthday(1i)"].to_i,date["birthday(2i)"].to_i,date["birthday(3i)"].to_i
+  end
+  
+  def card_expiry_join
+    date = card_params[:card_attributes]
+    
+    if date["expiry_date(1i)"].empty? || date["expiry_date(2i)"].empty? || date["expiry_date(3i)"].empty?
+      return
     end
-
-    def card_expiry_join
-      date = card_params[:card_attributes]
-
-      if date["expiry_date(1i)"].empty? || date["expiry_date(2i)"].empty? || date["expiry_date(3i)"].empty?
-        return
-      end
-
-      Date.new date["expiry_date(1i)"].to_i,date["expiry_date(2i)"].to_i,date["expiry_date(3i)"].to_i
-    end
-
-    def user_is_valid
-
-      @user = User.new(
+    
+    Date.new date["expiry_date(1i)"].to_i,date["expiry_date(2i)"].to_i,date["expiry_date(3i)"].to_i
+  end
+  
+  def user_is_valid
+    
+    @user = User.new(
       nickname: session[:nickname],
       email: session[:email],
       password: session[:password],
@@ -176,30 +167,31 @@ before_action:set_session,only: :create
       first_name_kana: session[:first_name_kana],
       birthday: session[:birthday],
       phone_number: session[:phone_number]
-      )
-      if @user.valid?
-      else
-        i = 0
-        @user.errors.full_messages.each do |message|
-          key_st = "alert" + "#{i}"
-          key = key_st.to_sym
-          flash[key] = message
-          i += 1
-        end
-        redirect_to action: "user_add"
+    )
+    if @user.valid?
+    else
+      i = 0
+      @user.errors.full_messages.each do |message|
+        key_st = "alert" + "#{i}"
+        key = key_st.to_sym
+        flash[key] = message
+        i += 1
       end
+      redirect_to action: "user_add"
     end
-
-    def address_is_valid
-
-      @address = Address.new(
-        post_number: session[:post_number],
+  end
+  
+  def address_is_valid
+    
+    @address = Address.new(
+      post_number: session[:post_number],
         prefecture: session[:prefecture],
         city: session[:city],
         address: session[:address],
         building: session[:building]
       )
       if @address.valid?
+        return false
       else
         i = 0
         @address.errors.full_messages.each do |message|
@@ -209,30 +201,10 @@ before_action:set_session,only: :create
           i += 1
         end
         redirect_to action: 'address_add'
-      end
-    end
-
-    def card_is_valid
-      @card = Card.new(
-        card_number: card_params[:card_attributes][:card_number],
-        expiry_date: card_expiry_join,
-        security_code: card_params[:card_attributes][:security_code]
-      )
-      if @card.valid?
-        return false
-      else
-        i = 0
-        @card.errors.full_messages.each do |message|
-          key_st = "alert" + "#{i}"
-          key = key_st.to_sym
-          flash[key] = message
-          i += 1
-        end
-        redirect_to action: 'card_add'
         return true
       end
     end
-
+    
     def set_session
       session[:post_number] = address_params[:address_attributes][:post_number]
       session[:prefecture] = address_params[:address_attributes][:prefecture]
@@ -240,8 +212,8 @@ before_action:set_session,only: :create
       session[:address] = address_params[:address_attributes][:address]
       session[:building] = address_params[:address_attributes][:building]
     end
-
-
+    
+    
     def card
       @item = Item.find(params[:id]) 
       card = Creditcard.where(user_id: @current_user.id).first
@@ -254,9 +226,26 @@ before_action:set_session,only: :create
         redirect_to root_path
       end
     end
-
-
-
-
+    
+    
+    
+  end
   
-end
+  private 
+    def user_params
+      params.require(:user).permit(
+        :nickname, :email, :password, :last_name, :first_name,
+        :last_name_kana, :first_name_kana, :phone_number)
+    end
+
+    def address_params
+      params.require(:user).permit(
+        address_attributes: [:id, :post_number, :prefecture,
+          :city, :address, :building])
+    end
+
+    def card_params
+      params.require(:user).permit(
+        card_attributes: [:id, :card_number, "expiry_date(1i)",
+         "expiry_date(2i)", "expiry_date(3i)", :security_code])
+    end
