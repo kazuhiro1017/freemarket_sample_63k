@@ -9,8 +9,17 @@ before_action:set_session,only: :create
     @user = User.find_by(id: session[:user_id])
   end
 
-  def profile
+
+  def edit
+    @user = User.find_by(id: params[:id])
   end
+
+  def update
+    @user = User.find_by(id: params[:id])
+    @user.update(nickname: params[:nickname])
+    redirect_to("/")
+  end
+
 
   def signout
   end
@@ -73,7 +82,6 @@ before_action:set_session,only: :create
   end
 
   def create
-    card_is_valid and return
     @user = User.new(
       nickname: session[:nickname],
       email: session[:email],
@@ -122,6 +130,7 @@ before_action:set_session,only: :create
         :nickname, :email, :password, :last_name, :first_name,
         :last_name_kana, :first_name_kana, :phone_number)
     end
+
 
     def address_params
       params.require(:user).permit(
@@ -245,6 +254,8 @@ before_action:set_session,only: :create
         redirect_to root_path
       end
     end
+
+
 
 
   
