@@ -69,6 +69,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @user_items = @item.user.items.order("created_at DESC").limit(6)
     @root = @item.category.root.name
     @parent = @item.category.parent.name
     @children = @item.category.name

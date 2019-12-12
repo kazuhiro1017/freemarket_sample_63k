@@ -1,0 +1,15 @@
+.another-box
+  = link_to item_path(showitems), {data: {"turbolinks": false}} do
+    .items-box-photo
+      - if showitems.images.attached?
+        = image_tag showitems.images.last, class:'item_image'
+    .items-box-text
+      %h3.items-box-name
+        = showitems.name
+      .items-box-num
+        .items-box-price
+          ="¥#{showitems.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse}"
+        .items-box-likes
+          %i.far.fa-heart
+          %span
+            34

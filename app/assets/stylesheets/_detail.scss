@@ -303,18 +303,20 @@ body{
     }
     .items-content{
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       flex-wrap: wrap;
       width: auto;
       margin: 0 auto;
-      .items-box{
+      img{
+        height: 220px;
+        width: 220px;
+      }
+      .another-box{
         background: #fff;
         width: 220px;
         position: relative;
         margin-bottom: 20px;
-        .items-box-link{
-          .items-box-photo{
-          }
+        a{
           .items-box-text{
             display: block;
             color: #333;
