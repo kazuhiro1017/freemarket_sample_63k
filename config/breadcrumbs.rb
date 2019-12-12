@@ -42,3 +42,4 @@ crumb :creditcard_card do
   link "支払い方法"
   parent :users_show
 end
+
