@@ -92,9 +92,13 @@
         (税込)
       %span.item-shipping-fee
         送料込み
-    -unless @item.user.id == session[:user_id]
-      =link_to purchase1_item_path, class: "item-buy-btn" do
+    -unless session[:user_id]
+      =link_to login_users_path, class: "item-buy-btn" do
         購入画面に進む
+    -if session[:user_id]
+      -unless @item.user.id == session[:user_id] 
+        =link_to purchase1_item_path, class: "item-buy-btn" do
+          購入画面に進む
     .item-description
       %p.item-description-inner
         = @item.description
