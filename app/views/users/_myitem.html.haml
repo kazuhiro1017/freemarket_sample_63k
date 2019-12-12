@@ -1,4 +1,4 @@
-= link_to item_path(myitem) do
+= link_to item_path(myitem), {data: {"turbolinks": false}} do
   .one_item
     - if myitem.images.attached?
       = image_tag myitem.images.last, class:'item_image'
