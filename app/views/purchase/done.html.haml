@@ -1,3 +1,13 @@
-%h2 購入が完了しました！
-%p Apple MacBook Pro 13インチ
-%p ¥135,000(送料込み)
+.container-k
+  = render "items/header"
+  .main-k
+    .main-k__header6
+      購入完了
+    .main-k__body
+      .main-k__body__finish-message
+        ありがとうございます。購入が完了しました。
+      = link_to root_path, {data: {"turbolinks": false}} do
+        .main-k__body__start-btn
+          トップページに戻る
+
+  = render partial: 'layouts/shared/footer'
