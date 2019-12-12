@@ -11,8 +11,17 @@ before_action:set_session, only: :create
     @user = User.find_by(id: session[:user_id])
   end
 
-  def profile
+
+  def edit
+    @user = User.find_by(id: params[:id])
   end
+
+  def update
+    @user = User.find_by(id: params[:id])
+    @user.update(nickname: params[:nickname])
+    redirect_to("/")
+  end
+
 
   def signout
   end

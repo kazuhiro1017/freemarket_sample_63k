@@ -33,16 +33,6 @@ class ItemsController < ApplicationController
 
 
 
-  # def purchase1
-  #   if card.blank?
-  #     redirect_to root_path
-  #   else
-  #     Payjp.api_key = "sk_test_5dc292a9b6684847081b4730"
-  #     customer = Payjp::Customer.retrieve(card.customer_id)
-  #     @default_card_information = customer.cards.retrieve(card.card_id)
-  #   end
-  # end
-
   def purchase1
     @item = Item.find(params[:id]) 
     card = Creditcard.where(user_id: @current_user.id).first
