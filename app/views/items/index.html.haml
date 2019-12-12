@@ -9,10 +9,10 @@
       .swiper-wrapper
         .swiper-slide
           =link_to "", class: "" do
-            %img{alt: "", src: "/assets/KZ190105004_TP_V.jpg"}/
+            %img{alt: "", src: "/assets/1257895030.jpg"}/
         .swiper-slide
           =link_to "", class: "" do
-            %img{alt: "", src: "/assets/KZ190105004_TP_V.jpg"}/
+            %img{alt: "", src: "/assets/KAZ20181201009_TP_V.jpg"}/
         .swiper-slide
           =link_to "", class: "" do
             %img{alt: "", src: "/assets/KZ190105004_TP_V.jpg"}/
@@ -21,8 +21,11 @@
       .swiper-button-next.swiper-button-white
       :javascript
         var mySwiper = new Swiper ('.swiper-container', {
-
+          
           loop: true,
+          autoplay: {
+            delay: 10000,
+          },
           pagination: {
             el: '.swiper-pagination',
           },
